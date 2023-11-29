@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Usuario extends Model
 {
-    use HasFactory;
+    protected $table = 'Usuario';
+    protected $primaryKey = 'ID_Usuario';
+    public $timestamps = false;
 }

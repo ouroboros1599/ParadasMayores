@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_SectorParada extends Model
 {
-    use HasFactory;
+    protected $table = 'SectorParada';
+    protected $primaryKey = 'ID_Area';
+    public $timestamps = false;
 }

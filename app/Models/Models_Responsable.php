@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Responsable extends Model
 {
-    use HasFactory;
+    protected $table = 'Responsable';
+    protected $primaryKey = 'ID_Responsable';
+    public $timestamps = false;
 }

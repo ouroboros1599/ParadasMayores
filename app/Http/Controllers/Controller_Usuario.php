@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class Controller_Usuario extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Usuario extends Controller
     public function index()
     {
         //
+        $usuario = Usuario::all();
+        return view('Usuario.index', compact('usuario'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Usuario extends Controller
     public function create()
     {
         //
+        return view('Usuario.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_Usuario extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        Usuario::create($request->all());
+        return redirect()->route('Usuario.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_Usuario extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Usuario $usuario)
     {
         //
+        return view('Usuario.show',compact('usuario'));
     }
 
     /**
@@ -57,6 +68,7 @@ class Controller_Usuario extends Controller
     public function edit($id)
     {
         //
+        return view('Usuario.edit', compact('usuario'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_Usuario extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Usuario $usuario)
     {
         //
+        $request->validate([
+
+        ]);
+        $usuario->update($request->all());
+
+        return redirect()->route('Usuario.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_Usuario extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Usuario $usuario)
     {
         //
+        $usuario->delete();
+        
+        return redirect()->route('Usuario.index')->with('success', 'eliminada exitosamente');
     }
 }

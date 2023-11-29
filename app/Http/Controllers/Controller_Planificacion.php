@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Planificacion;
 
 class Controller_Planificacion extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Planificacion extends Controller
     public function index()
     {
         //
+        $planificacion = Planificacion::all();
+        return view('Planificacion.index', compact('planificacion'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Planificacion extends Controller
     public function create()
     {
         //
+        return view('Planificacion.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_Planificacion extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        Planificacion::create($request->all());
+        return redirect()->route('Planificacion.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_Planificacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Planificacion $planificacion)
     {
         //
+        return view('Planificacion.show',compact('planificacion'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_Planificacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Planificacion $planificacion)
     {
         //
+        return view('Planificacion.edit', compact('planificacion'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_Planificacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Planificacion $planificacion)
     {
         //
+        $request->validate([
+
+        ]);
+        $planificacion->update($request->all());
+
+        return redirect()->route('Planificacion.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_Planificacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Planificacion $planificacion)
     {
         //
+        $planificacion->delete();
+        
+        return redirect()->route('Planificacion.index')->with('success', 'eliminada exitosamente');
     }
 }

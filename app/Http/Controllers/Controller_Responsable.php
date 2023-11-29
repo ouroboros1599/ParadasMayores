@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Responsable;
 
 class Controller_Responsable extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Responsable extends Controller
     public function index()
     {
         //
+        $responsable = Responsable::all();
+        return view('Responsable.index', compact('responsable'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Responsable extends Controller
     public function create()
     {
         //
+        return view('Responsable.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_Responsable extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        Responsable::create($request->all());
+        return redirect()->route('Responsable.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_Responsable extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Responsable $responsable)
     {
         //
+        return view('Responsable.show',compact('responsable'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_Responsable extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Responsable $responsable)
     {
         //
+        return view('Responsable.edit', compact('responsable'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_Responsable extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Responsable $responsable)
     {
         //
+        $request->validate([
+
+        ]);
+        $responsable->update($request->all());
+
+        return redirect()->route('Responsable.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_Responsable extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Responsable $responsable)
     {
         //
+        $responsable->delete();
+        
+        return redirect()->route('Responsable.index')->with('success', 'eliminada exitosamente');
     }
 }

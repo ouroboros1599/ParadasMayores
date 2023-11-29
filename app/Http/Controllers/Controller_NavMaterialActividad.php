@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NavMaterialActividad;
 
 class Controller_NavMaterialActividad extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_NavMaterialActividad extends Controller
     public function index()
     {
         //
+        $nav_mat_act = NavMaterialActividad::all();
+        return view('NavMaterialActividad.index', compact('nav_mat_act'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_NavMaterialActividad extends Controller
     public function create()
     {
         //
+        return view('NavMaterialActividad.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_NavMaterialActividad extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        NavMaterialActividad::create($request->all());
+        return redirect()->route('NavMaterialActividad.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_NavMaterialActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(NavMaterialActividad $nav_mat_act)
     {
         //
+        return view('NavMaterialActividad.show',compact('nav_mat_act'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_NavMaterialActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(NavMaterialActividad $nav_mat_act)
     {
         //
+        return view('NavMaterialActividad.edit', compact('nav_mat_act'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_NavMaterialActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, NavMaterialActividad $nav_mat_act)
     {
         //
+        $request->validate([
+
+        ]);
+        $nav_mat_act->update($request->all());
+
+        return redirect()->route('NavMaterialActividad.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_NavMaterialActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NavMaterialActividad $nav_mat_act)
     {
         //
+        $nav_mat_act->delete();
+        
+        return redirect()->route('NavMaterialActividad.index')->with('success', 'eliminada exitosamente');
     }
 }

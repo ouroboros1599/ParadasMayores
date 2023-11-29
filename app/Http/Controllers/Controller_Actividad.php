@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Actividad;
 
 class Controller_Actividad extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Actividad extends Controller
     public function index()
     {
         //
+        $actividad = Actividad::all();
+        return view('Actividad.index', compact('actividad'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Actividad extends Controller
     public function create()
     {
         //
+        return view('Actividad.create');
     }
 
     /**
@@ -35,50 +39,67 @@ class Controller_Actividad extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        Actividad::create($request->all());
+        return redirect()->route('Actividad.index')->with('success', 'creada exitosamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Actividad $actividad)
     {
         //
+        return view('Actividad.show',compact('actividad'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Actividad $actividad)
     {
         //
+        return view('Actividad.edit', compact('actividad'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Actividad $actividad)
     {
         //
+        $request->validate([
+
+        ]);
+        $actividad->update($request->all());
+
+        return redirect()->route('Actividad.index')->with('success','actualizada exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Actividad $actividad)
     {
         //
+        $actividad->delete();
+        
+        return redirect()->route('Actividad.index')->with('success', 'eliminada exitosamente');
     }
 }

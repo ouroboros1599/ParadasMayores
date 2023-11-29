@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NavResponsableActividad;
 
 class Controller_NavResponsableActividad extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_NavResponsableActividad extends Controller
     public function index()
     {
         //
+        $nav_resp_act = NavResponsableActividad::all();
+        return view('NavResponsableActividad.index', compact('nav_resp_act'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_NavResponsableActividad extends Controller
     public function create()
     {
         //
+        return view('NavResponsableActividad.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_NavResponsableActividad extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        NavResponsableActividad::create($request->all());
+        return redirect()->route('NavResponsableActividad.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_NavResponsableActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(NavResponsableActividad $nav_resp_act)
     {
         //
+        return view('NavResponsableActividad.show',compact('nav_resp_act'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_NavResponsableActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(NavResponsableActividad $nav_resp_act)
     {
         //
+        return view('NavResponsableActividad.edit', compact('nav_resp_act'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_NavResponsableActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, NavResponsableActividad $nav_resp_act)
     {
         //
+        $request->validate([
+
+        ]);
+        $nav_resp_act->update($request->all());
+
+        return redirect()->route('NavResponsableActividad.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_NavResponsableActividad extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NavResponsableActividad $nav_resp_act)
     {
         //
+        $nav_resp_act->delete();
+        
+        return redirect()->route('NavResponsableActividad.index')->with('success', 'eliminada exitosamente');
     }
 }

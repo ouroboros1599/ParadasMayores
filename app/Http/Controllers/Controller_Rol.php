@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Rol;
 
 class Controller_Rol extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Rol extends Controller
     public function index()
     {
         //
+        $rol = Rol::all();
+        return view('Rol.index', compact('rol'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Rol extends Controller
     public function create()
     {
         //
+        return view('Rol.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_Rol extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        Rol::create($request->all());
+        return redirect()->route('Rol.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_Rol extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rol $rol)
     {
         //
+        return view('Rol.show',compact('rol'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_Rol extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Rol $rol)
     {
         //
+        return view('Rol.edit', compact('rol'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_Rol extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Rol $rol)
     {
         //
+        $request->validate([
+
+        ]);
+        $rol->update($request->all());
+
+        return redirect()->route('Rol.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_Rol extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rol $rol)
     {
         //
+        $rol->delete();
+        
+        return redirect()->route('Rol.index')->with('success', 'eliminada exitosamente');
     }
 }

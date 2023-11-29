@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Material;
 
 class Controller_Material extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Material extends Controller
     public function index()
     {
         //
+        $material = Material::all();
+        return view('Material.index', compact('material'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Material extends Controller
     public function create()
     {
         //
+        return view('Material.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_Material extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+
+        Material::create($request->all());
+        return redirect()->route('Material.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_Material extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Material $material)
     {
         //
+        return view('Material.show',compact('material'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_Material extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Material $material)
     {
         //
+        return view('Material.edit', compact('material'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_Material extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Material $material)
     {
         //
+        $request->validate([
+
+        ]);
+        $material->update($request->all());
+
+        return redirect()->route('Material.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_Material extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Material $material)
     {
         //
+        $material->delete();
+        
+        return redirect()->route('Material.index')->with('success', 'eliminada exitosamente');
     }
 }

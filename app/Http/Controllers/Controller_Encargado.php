@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Encargado;
 
 class Controller_Encargado extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Encargado extends Controller
     public function index()
     {
         //
+        $encargado = Encargado::all();
+        return view('Encargado.index', compact('encargado'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Encargado extends Controller
     public function create()
     {
         //
+        return view('Encargado.create');
     }
 
     /**
@@ -35,6 +39,11 @@ class Controller_Encargado extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        Encargado::create($request->all());
+        return redirect()->route('Encargado.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +52,10 @@ class Controller_Encargado extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Encargado $encargado)
     {
         //
+        return view('Encargado.show',compact('encargado'));
     }
 
     /**
@@ -54,9 +64,10 @@ class Controller_Encargado extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Encargado $encargado)
     {
         //
+        return view('Encargado.edit', compact('encargado'));
     }
 
     /**
@@ -66,9 +77,15 @@ class Controller_Encargado extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Encargado $encargado)
     {
         //
+        $request->validate([
+
+        ]);
+        $encargado->update($request->all());
+
+        return redirect()->route('Encargado.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +94,11 @@ class Controller_Encargado extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Encargado $encargado)
     {
         //
+        $encargado->delete();
+        
+        return redirect()->route('Encargado.index')->with('success', 'eliminada exitosamente');
     }
 }

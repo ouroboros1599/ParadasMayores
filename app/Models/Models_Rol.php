@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Rol extends Model
 {
-    use HasFactory;
+    protected $table = 'Rol';
+    protected $primaryKey = 'ID_Rol';
+    public $timestamps = false;
 }

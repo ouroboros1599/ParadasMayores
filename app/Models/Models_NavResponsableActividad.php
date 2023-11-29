@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_NavResponsableActividad extends Model
 {
-    use HasFactory;
+    protected $table = 'Nav_Responsable_Actividad';
 }

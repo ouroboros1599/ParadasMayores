@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Bodeguero extends Model
 {
-    use HasFactory;
+    protected $table = 'Bodeguero';
+    protected $primaryKey = 'ID_Bodeguero';
+    public $timestamps = false;
 }

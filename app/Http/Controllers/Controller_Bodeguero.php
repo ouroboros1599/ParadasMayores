@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bodeguero;
 
 class Controller_Bodeguero extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_Bodeguero extends Controller
     public function index()
     {
         //
+        $bodeguero = Bodeguero::all();
+        return view('Bodeguero.index', compact('bodeguero'))
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_Bodeguero extends Controller
     public function create()
     {
         //
+        return view('Bodeguero.create');
     }
 
     /**
@@ -35,6 +39,11 @@ class Controller_Bodeguero extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        Bodeguero::create($request->all());
+        return redirect()->('Bodeguero.index')->with('success','creada exitosamente');
     }
 
     /**
@@ -43,9 +52,10 @@ class Controller_Bodeguero extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bodeguero $bodeguero)
     {
         //
+        return view('Bodeguero.show', compact('bodeguero'));
     }
 
     /**
@@ -54,9 +64,10 @@ class Controller_Bodeguero extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bodeguero $bodeguero)
     {
         //
+        return view('Bodeguero.edit', compact('bodeguero'));
     }
 
     /**
@@ -66,9 +77,15 @@ class Controller_Bodeguero extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Bodeguero $bodeguero)
     {
         //
+        $request->validate([
+
+        ]);
+        $bodeguero->update($request->all());
+
+        return redirect()->route('Bodeguero.index')->with('success', 'creado exitosamente');
     }
 
     /**
@@ -77,8 +94,10 @@ class Controller_Bodeguero extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bodeguero $bodeguero)
     {
         //
+        $bodeguero->delete();
+        return redirect()->route('Bodeguero.index')->with('success', 'eliminado exitosamente');
     }
 }

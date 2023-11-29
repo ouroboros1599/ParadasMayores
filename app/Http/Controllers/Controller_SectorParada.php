@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SectorParada;
 
 class Controller_SectorParada extends Controller
 {
@@ -14,6 +15,8 @@ class Controller_SectorParada extends Controller
     public function index()
     {
         //
+        $sector_parada = SectorParada::all();
+        return view('SectorParada.index', compact('sector_parada'));
     }
 
     /**
@@ -24,6 +27,7 @@ class Controller_SectorParada extends Controller
     public function create()
     {
         //
+        return view('SectorParada.create');
     }
 
     /**
@@ -35,6 +39,12 @@ class Controller_SectorParada extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+        ]);
+        
+        SectorParada::create($request->all());
+        return redirect()->route('SectorParada.index')->with('success', 'creada exitosamente');
     }
 
     /**
@@ -43,9 +53,10 @@ class Controller_SectorParada extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SectorParada $sector_parada)
     {
         //
+        return view('SectorParada.show',compact('sector_parada'));
     }
 
     /**
@@ -54,9 +65,10 @@ class Controller_SectorParada extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SectorParada $sector_parada)
     {
         //
+        return view('SectorParada.edit',compact('sector_parada'));
     }
 
     /**
@@ -66,9 +78,15 @@ class Controller_SectorParada extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SectorParada $sector_parada)
     {
         //
+        $request->validate([
+
+        ]);
+        $sector_parada->update($request->all());
+
+        return redirect()->route('SectorParada.index')->with('success','actualizada exitosamente');
     }
 
     /**
@@ -77,8 +95,11 @@ class Controller_SectorParada extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SectorParada $sector_parada)
     {
         //
+        $sector_parada->delete();
+        
+        return redirect()->route('SectorParada.index')->with('success', 'eliminada exitosamente');
     }
 }

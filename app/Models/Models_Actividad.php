@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Actividad extends Model
 {
-    use HasFactory;
+    protected $table = 'Actividad';
+    protected $primaryKey = 'ID_Actividad';
+    public $timestamps = false;
 }

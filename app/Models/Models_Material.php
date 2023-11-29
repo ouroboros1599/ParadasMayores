@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Models_Material extends Model
 {
-    use HasFactory;
+    protected $table = 'Material';
+    protected $primaryKey = 'ID_Material';
+    public $timestamps = false;
+
 }
