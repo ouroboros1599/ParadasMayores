@@ -14,7 +14,10 @@ class CreatePlanificacionsTable extends Migration
     public function up()
     {
         Schema::create('planificacions', function (Blueprint $table) {
-            $table->id();
+            $table->id('ID_Planificacion');
+            $table->string('NombreParada', 50);
+            $table->dateTime('FechaInicioPlanificada');
+            $table->dateTime('FechaTerminoPlanificada');
             $table->timestamps();
         });
     }

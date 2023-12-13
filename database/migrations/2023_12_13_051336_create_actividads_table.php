@@ -14,7 +14,16 @@ class CreateActividadsTable extends Migration
     public function up()
     {
         Schema::create('actividads', function (Blueprint $table) {
-            $table->id();
+            $table->id('ID_Actividad');
+            $table->string('NombreActividad',50);
+            $table->string('OrdenTrabajo', 50);
+            $table->tinyInteger('Critica');
+            $table->string('EstadoActividad', 50);
+            $table->dateTime('InicioReal')->nullable();
+            $table->dateTime('FinReal')->nullable();
+            
+            $table->integer('Planificacion_ID_Planificacion');
+
             $table->timestamps();
         });
     }
