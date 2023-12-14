@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    use HasFactory;
+    protected $table = 'Usuario';
+    protected $primaryKey = 'ID_Usuario';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'NombreUsuario',
+        'Correo',
+        'Contrasenia',
+        'Rol_ID_Rol'
+    ];
+
+    //Relación con tabla Rol
+    public function roles()
+    {
+        return $this->belongsTo(Rol::class, 'Rol_ID_Rol', 'ID_Rol');
+    }
 }

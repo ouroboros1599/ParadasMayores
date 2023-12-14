@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
-    use HasFactory;
+    protected $table = 'Empresa';
+    protected $primaryKey = 'ID_Empresa';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'NombreEmpresa',
+        'SectorParada',
+    ];
+
+    //Relación con tabla PlanificaciónEmpresa
+    public function planificacionEmpresa()
+    {
+        return $this->hasMany(PlanificacionEmpresa::class, 'Empresa_ID_Empresa', 'ID_Empresa');
+    }
 }
