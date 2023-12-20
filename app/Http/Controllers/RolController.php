@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rol;
 use Illuminate\Http\Request;
+use App\Models\Rol;
 
 class RolController extends Controller
 {
@@ -14,7 +14,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Rol::all();
+        return view('rol.index', compact('roles'));
     }
 
     /**
@@ -24,7 +25,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
+        return view('rol.create');
     }
 
     /**
@@ -35,51 +36,81 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validación de campos
+        $request->validate([
+            'NombreRol' => 'required|string|max:45',
+        ]);
+
+        // Crear un nuevo rol
+        $rol = Rol::create([
+            'NombreRol' => $request->input('NombreRol'),
+        ]);
+
+        // Redireccionamiento
+        return redirect()->route('rol.index')->with('success', 'Rol creado exitosamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rol $rol)
+    public function show($id)
     {
-        //
+        $rol = Rol::findOrFail($id);
+        return view('rol.show', compact('rol'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $rol)
+    public function edit($id)
     {
-        //
+        $rol = Rol::findOrFail($id);
+        return view('rol.edit', compact('rol'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, $id)
     {
-        //
+        // Validación de campos
+        $request->validate([
+            'NombreRol' => 'required|string|max:45',
+        ]);
+
+        // Actualizar el rol
+        $rol = Rol::findOrFail($id);
+        $rol->update([
+            'NombreRol' => $request->input('NombreRol'),
+        ]);
+
+        // Redireccionamiento
+        return redirect()->route('rol.index')->with('success', 'Rol actualizado exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy($id)
     {
-        //
+        // Eliminar el rol
+        $rol = Rol::findOrFail($id);
+        $rol->delete();
+
+        // Redireccionamiento
+        return redirect()->route('rol.index')->with('success', 'Rol eliminado exitosamente.');
     }
 }
