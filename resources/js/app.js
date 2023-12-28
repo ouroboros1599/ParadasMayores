@@ -1,10 +1,11 @@
-require('./bootstrap');
-import axios from 'axios';
-import {CreateApp} from 'vue';
-import ExampleComponent from './components/ExampleComponent.vue';
+require("./bootstrap");
+import { createApp } from "vue";
+import axios from "axios";
 
-CreateApp({
-    components:{
-        ExampleComponent
-    }
-}).mount('#app');
+import ExampleComponent from "./components/ExampleComponent.vue";
+
+const app = createApp({});
+
+app.component("example-componente", ExampleComponent);
+
+app.mount("#app");

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     
     <title>@yield('tituloPagina')</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
     <header>
@@ -16,12 +20,12 @@
     </header>
 
     <body>
-        <div class="container">
-            @yield('contenido')
+        <div id="app">
+            <div class="container">
+                @yield('contenido')
+            </div>
         </div>
-
     </body>
-
     <footer>
         <div class="footer">
             @yield('footer')
