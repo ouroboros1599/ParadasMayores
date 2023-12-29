@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActividadMaterialTalentoHumano extends Model
 {
-    protected $table = 'actividad_material_talentohumano';
+    // protected $table = 'actividad_material_talentohumano';
     protected $primaryKey = 'ID_Nav_ActividadMaterial';
     public $timestamps = false;
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Planificacion extends Model
 {
-    protected $table = 'planificacion';
+    // protected $table = 'planificacion';
     protected $primaryKey = 'ID_Planificacion';
     public $timestamps = false;
 

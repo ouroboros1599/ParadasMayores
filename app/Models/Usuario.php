@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    protected $table = 'usuario';
+    // protected $table = 'usuario';
     protected $primaryKey = 'ID_Usuario';
     public $timestamps = false;
 
@@ -18,6 +18,10 @@ class Usuario extends Model
         'Rol_ID_Rol'
     ];
 
+    protected $hidden = [
+        'contrasenia'
+    ];
+    
     //Relación con tabla Rol
     public function roles()
     {
