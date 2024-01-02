@@ -14,21 +14,32 @@
     <!-- Titulo de la pagina -->
     <title>@yield('tituloPagina')</title>
 </head>
-    <body id="app">  
-        <header>
-            <div class="header">
-                @yield('header')
+<body id="app">  
+    <header>
+        <div class="header">
+            @yield('header')
+            <div class="w-full h-28 bg-[#0a2140] flex">
+                <div class="flex-initial">
+                    <img class="h-full " src="./img/smec-blanco.png" alt="">
+                </div>
+                <div class="flex-1 self-center">
+                    <h1 class="text-3xl font-bold text-center text-white">@yield('encabezado')</h1>
+                </div>
+                <div class="flex-initial">
+                    <img class="h-full " src="./img/user.png" alt="">
+                </div>
             </div>
-        </header>
-
-        <div class="container">
-            @yield('contenido')
         </div>
+    </header>
+
+    <div class="w-full h-full" >
+        @yield('contenido')
+    </div>
         
-        <footer>
-            <div class="footer">
-                @yield('footer')
-            </div>
-        </footer>
-    </body>
+    <footer>
+        <div class="w-full h-24 bg-slate-900">
+            @yield('footer')
+        </div>
+    </footer>
+</body>
 </html>

@@ -1,20 +1,9 @@
 @extends('layout/main')
 
-@section('tituloPagina', '')
+@section('tituloPagina', 'Planificacion')
 
 @section('contenido')
-    <div>
-        <div class="w-full h-28 bg-[#0a2140] flex">
-            <div class="flex-initial">
-                <img class="h-full " src="./img/smec-blanco.png" alt="">
-            </div>
-            <div class="flex-1 self-center">
-                <h1 class="text-3xl font-bold text-center text-white">Planificación Paradas Mayores</h1>
-            </div>
-            <div class="flex-initial">
-                <img class="h-full " src="./img/user.png" alt="">
-            </div>
-        </div>
+    @section('encabezado', 'PLANIFICACIÓN DE PARADAS MAYORES')    
         <div class="w-full h-full ">
             <div class="m-10 bg-slate-100 flex space-x-12">
                 <div class="flex-1">
@@ -274,6 +263,5 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-24 bg-slate-900"></div>
-    </div>
+    
 @endsection
