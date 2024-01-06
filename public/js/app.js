@@ -17244,7 +17244,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Configuración del gráfico
   var options = {
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: false
   };
 
   // Crear el gráfico de torta

@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Configuración del gráfico
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
   };
 
   // Crear el gráfico de torta
