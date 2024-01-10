@@ -17145,15 +17145,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _charts_pieChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./charts/pieChart.js */ "./resources/js/charts/pieChart.js");
 /* harmony import */ var _charts_linearChart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./charts/linearChart.js */ "./resources/js/charts/linearChart.js");
-/* harmony import */ var _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue");
+/* harmony import */ var _charts_progressBar_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./charts/progressBar.js */ "./resources/js/charts/progressBar.js");
+/* harmony import */ var _charts_progressBar2_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./charts/progressBar2.js */ "./resources/js/charts/progressBar2.js");
+/* harmony import */ var _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue");
 // require("./bootstrap");
 
 
 
 
 
+
+
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
-app.component("example-componente", _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+app.component("example-componente", _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
 app.mount("#app");
 
 /***/ }),
@@ -17187,7 +17191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, {
       label: 'Proyectado',
       borderColor: '#FFA800',
-      data: [0, 10, 20, 30, 40, 50, 60, 100],
+      data: [0, 15, 25, 35, 40, 55, 65, 100],
       fill: false
     }]
   };
@@ -17251,6 +17255,106 @@ document.addEventListener('DOMContentLoaded', function () {
   // Crear el gráfico de torta
   new chart_js_auto__WEBPACK_IMPORTED_MODULE_0__["default"](ctx, {
     type: 'pie',
+    data: data,
+    options: options
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/charts/progressBar.js":
+/*!********************************************!*\
+  !*** ./resources/js/charts/progressBar.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  var ctx = document.getElementById('progressChart').getContext('2d');
+  var data = {
+    labels: ['%OT Liberadas'],
+    datasets: [{
+      axis: 'x',
+      label: '%OT Liberadas',
+      data: [65],
+      fill: false,
+      backgroundColor: ['#2E51E2'],
+      borderColor: ['#1A2151'],
+      borderWidth: 1
+    }]
+  };
+  var options = {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        display: false,
+        stacked: true
+      },
+      y: {
+        display: false,
+        stacked: true
+      }
+    }
+    // plugins: {
+    //   legend:{
+    //     display:false
+    //   }
+    // }
+  };
+
+  new chart_js_auto__WEBPACK_IMPORTED_MODULE_0__["default"](ctx, {
+    type: 'bar',
+    data: data,
+    options: options
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/charts/progressBar2.js":
+/*!*********************************************!*\
+  !*** ./resources/js/charts/progressBar2.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  var ctx = document.getElementById('progressChart2').getContext('2d');
+  var data = {
+    labels: ['%Materiales Liberadas'],
+    datasets: [{
+      axis: 'y',
+      label: '%Materiales Liberadas',
+      data: [65],
+      fill: false,
+      backgroundColor: ['#2E51E2'],
+      borderColor: ['#1A2151'],
+      borderWidth: 1
+    }]
+  };
+  var options = {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        display: false,
+        stacked: true
+      },
+      y: {
+        display: false,
+        stacked: true
+      }
+    }
+  };
+  new chart_js_auto__WEBPACK_IMPORTED_MODULE_0__["default"](ctx, {
+    type: 'bar',
     data: data,
     options: options
   });

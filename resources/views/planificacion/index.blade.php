@@ -1,11 +1,12 @@
 @extends('layout/main')
 
-@section('tituloPagina', 'Planificacion')
+@section('tituloPagina', 'PM | Planificación')
 
 @section('contenido')
     @section('encabezado', 'PLANIFICACIÓN DE PARADAS MAYORES')    
         <div class="w-full h-full ">
-            <div class="m-10 bg-slate-100 flex space-x-12">
+            <div class="m-10 flex space-x-12 justify-center items-center">
+
                 <div class="flex-1">
                     <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
                         <div class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
@@ -20,6 +21,37 @@
                             style="width: 80%">
                             % Materiales Disponibles
                         </div>
+                    </div>
+                </div>
+
+                {{-- <div>
+                    <div class=" bg-slate-100 rounded-2xl flex-1">
+                        <div class="w-96 h-12 flex items-center justify-center mx-auto">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                        <div class="h-5">
+                            <script  src="{{ asset('js/charts/progressBar.js') }}"></script> 
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class=" bg-slate-100 rounded-2xl flex-1">
+                        <div class="w-96 h-12 flex items-center justify-center mx-auto">
+                            <canvas id="progressChart2"></canvas>
+                        </div>
+                        <div class="h-5">
+                            <script  src="{{ asset('js/charts/progressBar2.js') }}"></script> 
+                        </div>
+                    </div>
+                </div> --}}
+
+                <div>
+                    <div class="flex-1">
+                        <ul class="m-10 space-x-10">
+                                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Guardar</button>
+                                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Importar</button>
+                        </ul>
                     </div>
                 </div>
                 <div class="flex-1">
@@ -37,12 +69,12 @@
                                 class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
                                 placeholder="Buscar" required>
                             <button type="submit"
-                                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
+                                class="text-white absolute right-2.5 bottom-2.5 bg-blue-800 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="m-10 bg-slate-100 flex">
+            <div class="m-10 flex">
                 <div class="flex-1">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
@@ -247,7 +279,7 @@
                     </div>
 
                 </div>
-                <div class="flex-none">
+                {{-- <div class="flex-none">
                     <ul class="m-10">
                         <li class="py-5">
                             <button class="bg-blue-500 rounded-2xl p-3 text-white">
@@ -260,7 +292,7 @@
                             </button>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function (){
             {
                 label: 'Proyectado',
                 borderColor: '#FFA800',
-                data: [0, 10, 20, 30, 40, 50, 60, 100],
+                data: [0, 15, 25, 35, 40, 55, 65, 100],
                 fill: false,
             },
         ],

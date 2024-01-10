@@ -1,14 +1,14 @@
 @extends('layout/main')
-@section('tituloPagina', 'Ejecución Paradas Mayores')
+@section('tituloPagina', 'PM | Ejecución')
 
 @section('contenido')
     @section('encabezado', 'EJECUCIÓN DE PARADAS MAYORES')
     <div class="w-full h-full">
         <div class="m-10 flex space-x-10">
             <div class="flex-1 text-right space-x-10">
-                <button class="bg-blue-500 rounded-2xl p-3 text-white">GUARDAR</button>
-                <button class="bg-blue-500 rounded-2xl p-3 text-white">EXPORTAR</button>
-                <button class="bg-blue-500 rounded-2xl p-3 text-white">HALLAZGOS</button>
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">GUARDAR</button>
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">EXPORTAR</button>
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">HALLAZGOS</button>
             </div>
             <div class="flex-1 ">
                 <form>
@@ -25,7 +25,7 @@
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
                             placeholder="Buscar" required>
                         <button type="submit"
-                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
+                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-800 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
                     </div>
                 </form>
             </div>
