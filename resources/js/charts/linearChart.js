@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', function (){
         labels:[' 1',' 2',' 3',' 4',' 5',' 6',' 7',' 8'],
         datasets:[
             {
-                label: 'Programado',
+                label: 'PROGRAMADA',
                 borderColor: '#0019FF',
                 data: [0, 10, 20, 30, 40, 50, 60, 100],
                 fill: false,
             },
             {
-                label: 'Real',
+                label: 'REAL',
                 borderColor: '#FF0000',
                 data: [0, 5, 15, 35, 40, 45, 60, 100],
                 fill: false,
             },
             {
-                label: 'Proyectado',
+                label: 'PROYECTADO',
                 borderColor: '#FFA800',
                 data: [0, 15, 25, 35, 40, 55, 65, 100],
                 fill: false,

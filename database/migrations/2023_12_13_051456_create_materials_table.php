@@ -14,13 +14,13 @@ class CreateMaterialsTable extends Migration
     public function up()
     {
         Schema::create('materials', function (Blueprint $table) {
-            $table->id('ID_Material');
+            $table->id();
             $table->string('NombreMaterial', 50);
             $table->integer('CantidadMaterialRequerida');
             $table->integer('CantidadMaterialDisponible');
             $table->string('Ubicacion', 50);
 
-            $table->integer('Responsable_ID_Responsable');
+            $table->integer('responsable_id');
             
             $table->timestamps();
         });

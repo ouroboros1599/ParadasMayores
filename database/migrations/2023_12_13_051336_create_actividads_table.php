@@ -14,7 +14,7 @@ class CreateActividadsTable extends Migration
     public function up()
     {
         Schema::create('actividads', function (Blueprint $table) {
-            $table->id('ID_Actividad');
+            $table->id();
             $table->string('NombreActividad',50);
             $table->string('OrdenTrabajo', 50);
             $table->tinyInteger('Critica');
@@ -22,7 +22,7 @@ class CreateActividadsTable extends Migration
             $table->dateTime('InicioReal')->nullable();
             $table->dateTime('FinReal')->nullable();
             
-            $table->integer('Planificacion_ID_Planificacion');
+            $table->integer('planificacion_id');
 
             $table->timestamps();
         });

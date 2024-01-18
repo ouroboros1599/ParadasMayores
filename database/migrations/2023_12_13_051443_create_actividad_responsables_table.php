@@ -16,8 +16,8 @@ class CreateActividadResponsablesTable extends Migration
         Schema::create('actividad_responsables', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('Actividad_ID_Actividad');
-            $table->integer('Responsable_ID_Responsable');
+            $table->integer('actividad_id');
+            $table->integer('responsable_id');
 
             $table->timestamps();
         });

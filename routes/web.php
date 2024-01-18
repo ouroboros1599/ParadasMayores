@@ -55,3 +55,6 @@ Route::resource('rol', RolController::class);
 Route::resource('talentohumano',TalentoHumanoController::class);
 //Usuario
 Route::resource('usuario', UsuarioController::class);
+
+//test 
+Route::get('test', [ActividadController::class, 'test']);

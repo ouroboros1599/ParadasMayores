@@ -14,11 +14,11 @@ class CreateActividadMaterialTalentoHumanosTable extends Migration
     public function up()
     {
         Schema::create('actividad_material_talento_humanos', function (Blueprint $table) {
-            $table->id('ID_Nav_ActividadMaterial');
+            $table->id();
 
-            $table->integer('Actividad_ID_Actividad');
-            $table->integer('Material_ID_Material');
-            $table->integer('TalentoHumano_ID_TalentoHumano');
+            $table->integer('actividad_id');
+            $table->integer('material_id');
+            $table->integer('talento_humano_id');
 
             $table->timestamps();
         });

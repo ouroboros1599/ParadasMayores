@@ -8,9 +8,16 @@ use App\Models\Responsable;
 use App\Models\Material;
 use App\Models\TalentoHumano;
 use App\Models\Planificacion;
+use Illuminate\Support\Facades\Log;
 
 class ActividadController extends Controller
 {
+    public function test(){
+        $actividad = Actividad::all();
+        // Log::info($actividad);
+        return $actividad;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +26,8 @@ class ActividadController extends Controller
     public function index()
     {
         $actividades = Actividad::all();
-        return view('actividad.index', compact('actividades'));
+        // return view('actividad.index', compact('actividades'));
+        return $actividades;
     }
 
     /**

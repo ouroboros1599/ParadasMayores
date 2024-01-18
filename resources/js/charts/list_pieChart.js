@@ -2,11 +2,11 @@ import Chart from 'chart.js/auto';
 
 document.addEventListener('DOMContentLoaded', function () {
   // Obtener el contexto del lienzo
-  const ctx = document.getElementById('myPieChart').getContext('2d');
+  const ctx = document.getElementById('listPieChart').getContext('2d');
 
   // Configuración del gráfico de torta
   const data = {
-    labels: ['INICIADA', 'NO INICIADA', 'TERMINADA', 'CANCELADA', 'ATRASADA'],
+    labels: ['EN EJECUCIÓN', 'NO INICIADA', 'TERMINADA', 'CANCELADA', 'REPROGRAMADA'],
     datasets: [{
       data: [25, 30, 20, 15, 10 ],
       backgroundColor: ['#1A2151', '#233185', '#233185', '#263ECF', '#2E51E2'], // Colores

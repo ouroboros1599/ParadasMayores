@@ -14,10 +14,10 @@ class CreatePlanificacionEmpresasTable extends Migration
     public function up()
     {
         Schema::create('planificacion_empresas', function (Blueprint $table) {
-            $table->id('ID_Nav_PlanificacionEmpresa');
+            $table->id();
 
-            $table->integer('Planificacion_ID_Planificacion');
-            $table->integer('Empresa_ID_Empresa');
+            $table->integer('planificacion_id');
+            $table->integer('empresa_id');
 
             $table->timestamps();
         });

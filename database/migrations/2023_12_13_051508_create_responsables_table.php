@@ -14,12 +14,12 @@ class CreateResponsablesTable extends Migration
     public function up()
     {
         Schema::create('responsables', function (Blueprint $table) {
-            $table->id('ID_Responsable');
+            $table->id();
             $table->string('NombreResponsable', 50);
             $table->string('ApellidoPaternoResponsable', 50);
             $table->string('ApellidoMaternoResponsable', 50);
 
-            $table->integer('Cargo_ID_Cargo');
+            $table->integer('cargo_id');
 
             $table->timestamps();
         });
