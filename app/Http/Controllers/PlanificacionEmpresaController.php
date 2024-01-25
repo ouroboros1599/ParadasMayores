@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Planificacion_Empresa;
+use App\Models\PlanificacionEmpresa;
 use App\Models\Planificacion;
 use App\Models\Empresa;
 
@@ -16,8 +16,9 @@ class PlanificacionEmpresaController extends Controller
      */
     public function index()
     {
-        $planificacionEmpresas = Planificacion_Empresa::all();
-        return view('planificacionEmpresa.index', compact('planificacionEmpresas'));
+        $planificacionEmpresas = PlanificacionEmpresa::all();
+        // return view('planificacionEmpresa.index', compact('planificacionEmpresas'));
+        return $planificacionEmpresas;
     }
 
     /**
@@ -29,7 +30,7 @@ class PlanificacionEmpresaController extends Controller
     {
         $planificaciones = Planificacion::all();
         $empresas = Empresa::all();
-        return view('planificacionEmpresa.create', compact('planificaciones', 'empresas'));
+        return view('planificacionEmpresa.create', ['planificaciones'=>$planificaciones, 'empresas'=>$empresas]);
     }
 
     /**
@@ -40,18 +41,12 @@ class PlanificacionEmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'Planificacion_ID_Planificacion' => 'required|exists:db_ParadaMayor.Planificacion,ID_Planificacion',
-            'Empresa_ID_Empresa' => 'required|exists:db_ParadaMayor.Empresa,ID_Empresa',
-        ]);
+        $planificacionEmpresa = PlanificacionEmpresa::find($request->planificacionEmpresa_id);
 
-        // Crear una nueva relación Planificacion_Empresa
-        Planificacion_Empresa::create([
+        $planificacionEmpresa->planificacionEmpresas()->create([
             'Planificacion_ID_Planificacion' => $request->input('Planificacion_ID_Planificacion'),
             'Empresa_ID_Empresa' => $request->input('Empresa_ID_Empresa'),
         ]);
-
         // Redireccionamiento
         return redirect()->route('planificacionEmpresa.index')->with('success', 'Relación Planificacion-Empresa creada exitosamente.');
     }
@@ -64,8 +59,8 @@ class PlanificacionEmpresaController extends Controller
      */
     public function show($id)
     {
-        $planificacionEmpresa = Planificacion_Empresa::findOrFail($id);
-        return view('planificacionEmpresa.show', compact('planificacionEmpresa'));
+        $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
+        return view('planificacionEmpresa.show', ['planificacionEmpresa'=>$planificacionEmpresa]);
     }
 
     /**
@@ -76,10 +71,10 @@ class PlanificacionEmpresaController extends Controller
      */
     public function edit($id)
     {
-        $planificacionEmpresa = Planificacion_Empresa::findOrFail($id);
+        $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
         $planificaciones = Planificacion::all();
         $empresas = Empresa::all();
-        return view('planificacionEmpresa.edit', compact('planificacionEmpresa', 'planificaciones', 'empresas'));
+        return view('planificacionEmpresa.edit', ['planificacionEmpresa'=>$planificacionEmpresa, 'planificaciones'=>$planificaciones, 'empresas'=>$empresas]);
     }
 
     /**
@@ -91,14 +86,8 @@ class PlanificacionEmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'Planificacion_ID_Planificacion' => 'required|exists:db_ParadaMayor.Planificacion,ID_Planificacion',
-            'Empresa_ID_Empresa' => 'required|exists:db_ParadaMayor.Empresa,ID_Empresa',
-        ]);
-
         // Actualizar la relación Planificacion_Empresa
-        $planificacionEmpresa = Planificacion_Empresa::findOrFail($id);
+        $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
         $planificacionEmpresa->update([
             'Planificacion_ID_Planificacion' => $request->input('Planificacion_ID_Planificacion'),
             'Empresa_ID_Empresa' => $request->input('Empresa_ID_Empresa'),
@@ -117,7 +106,7 @@ class PlanificacionEmpresaController extends Controller
     public function destroy($id)
     {
         // Eliminar la relación Planificacion_Empresa
-        $planificacionEmpresa = Planificacion_Empresa::findOrFail($id);
+        $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
         $planificacionEmpresa->delete();
 
         // Redireccionamiento

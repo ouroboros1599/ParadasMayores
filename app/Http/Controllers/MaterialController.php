@@ -16,7 +16,8 @@ class MaterialController extends Controller
     public function index()
     {
         $materiales = Material::all();
-        return view('material.index', compact('materiales'));
+        // return view('material.index', compact('materiales'));
+        return $materiales;
     }
 
     /**
@@ -27,7 +28,7 @@ class MaterialController extends Controller
     public function create()
     {
         $responsables = Responsable::all();
-        return view('material.create', compact('responsables'));
+        return view('material.create', ['responsables'=>$responsables]);
     }
 
     /**
@@ -38,24 +39,15 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreMaterial' => 'required|string|max:50|unique:material',
-            'CantidadMaterialRequerida' => 'required|integer',
-            'CantidadMaterialDisponible' => 'required|integer',
-            'Ubicacion' => 'required|string|max:50',
-            'Responsable_ID_Responsable' => 'required|exists:responsable,ID_Responsable',
-        ]);
+        $material = Material::find($request->material_id);
 
-        // Crear un nuevo material
-        Material::create([
+        $material->materials()->create([
             'NombreMaterial' => $request->input('NombreMaterial'),
             'CantidadMaterialRequerida' => $request->input('CantidadMaterialRequerida'),
             'CantidadMaterialDisponible' => $request->input('CantidadMaterialDisponible'),
             'Ubicacion' => $request->input('Ubicacion'),
             'Responsable_ID_Responsable' => $request->input('Responsable_ID_Responsable'),
         ]);
-
         // Redireccionamiento
         return redirect()->route('material.index')->with('success', 'Material creado exitosamente.');
     }
@@ -69,7 +61,7 @@ class MaterialController extends Controller
     public function show($id)
     {
         $material = Material::findOrFail($id);
-        return view('material.show', compact('material'));
+        return view('material.show', ['material'=>$material]);
     }
 
     /**
@@ -82,7 +74,7 @@ class MaterialController extends Controller
     {
         $material = Material::findOrFail($id);
         $responsables = Responsable::all();
-        return view('material.edit', compact('material', 'responsables'));
+        return view('material.edit', ['material'=>$material, 'responsables'=>$responsables]);
     }
 
     /**
@@ -94,14 +86,6 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreMaterial' => 'required|string|max:50|unique:material,NombreMaterial,' . $id . ',ID_Material',
-            'CantidadMaterialRequerida' => 'required|integer',
-            'CantidadMaterialDisponible' => 'required|integer',
-            'Ubicacion' => 'required|string|max:50',
-            'Responsable_ID_Responsable' => 'required|exists:responsable,ID_Responsable',
-        ]);
 
         // Actualizar el material
         $material = Material::findOrFail($id);

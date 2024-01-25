@@ -2,36 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ActividadMaterialTalentoHumano extends Model
 {
-    // protected $table = 'actividad_material_talentohumano';
-    protected $primaryKey = 'ID_Nav_ActividadMaterial';
     public $timestamps = false;
+    protected $guraded = [];
 
-    protected $fillable = [
-        'Actividad_ID_Actividad',
-        'Material_ID_Material',
-        'TalentoHuamno_ID_TalentoHumano',
-    ];
-
-    //Relación con tabla Actividad
     public function actividad()
     {
-        return $this->belongsTo(Actividad::class, 'Actividad_ID_Actividad', 'ID_Actividad');
+        return $this->belongsTo(Actividad::class);
     }
 
-    //Relación con tabla Material
     public function material()
     {
-        return $this->belongsTo(Material::class, 'Material_ID_Material', 'ID_Material');
+        return $this->belongsTo(Material::class);
     }
 
-    //Relación con tabla TalentoHumano
     public function talentoHumano()
     {
-        return $this->belongsTo(TalentoHumano::class, 'TalentoHumano_ID_TalentoHumano', 'ID_TalentoHumano');
+        return $this->belongsTo(TalentoHumano::class);
     }
 }

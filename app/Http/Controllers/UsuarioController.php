@@ -16,7 +16,8 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::all();
-        return view('usuario.index', compact('usuarios'));
+        // return view('usuario.index', compact('usuarios'));
+        return $usuarios;
     }
 
     /**
@@ -27,7 +28,7 @@ class UsuarioController extends Controller
     public function create()
     {
         $roles = Rol::all();
-        return view('usuario.create', compact('roles'));
+        return view('usuario.create', ['roles'=>$roles]);
     }
 
     /**
@@ -38,20 +39,14 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreUsuario' => 'required|string|max:45',
-            'Correo' => 'required|string|email|max:100|unique:db_ParadaMayor.Usuario,Correo',
-            'Contrasenia' => 'required|string|max:20',
-            'Rol_ID_Rol' => 'required|exists:db_ParadaMayor.Rol,ID_Rol',
-        ]);
+        $usuario = Usuario::find($request->usuario_id);
 
-        // Crear un nuevo usuario
-        $usuario = Usuario::create([
+        $usuario->usuarios()->create([
             'NombreUsuario' => $request->input('NombreUsuario'),
             'Correo' => $request->input('Correo'),
             'Contrasenia' => $request->input('Contrasenia'),
             'Rol_ID_Rol' => $request->input('Rol_ID_Rol'),
+
         ]);
 
         // Redireccionamiento
@@ -67,7 +62,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $usuario = Usuario::findOrFail($id);
-        return view('usuario.show', compact('usuario'));
+        return view('usuario.show', ['usuarios'=>$usuario]);
     }
 
     /**
@@ -80,7 +75,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::findOrFail($id);
         $roles = Rol::all();
-        return view('usuario.edit', compact('usuario', 'roles'));
+        return view('usuario.edit', ['usuario'=>$usuario, 'rol'=>$roles]);
     }
 
     /**
@@ -92,13 +87,6 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreUsuario' => 'required|string|max:45',
-            'Correo' => 'required|string|email|max:100|unique:db_ParadaMayor.Usuario,Correo,' . $id . ',ID_Usuario',
-            'Contrasenia' => 'required|string|max:20',
-            'Rol_ID_Rol' => 'required|exists:db_ParadaMayor.Rol,ID_Rol',
-        ]);
 
         // Actualizar el usuario
         $usuario = Usuario::findOrFail($id);

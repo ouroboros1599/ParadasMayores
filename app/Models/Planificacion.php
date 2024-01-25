@@ -2,30 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Planificacion extends Model
 {
-    // protected $table = 'planificacion';
-    protected $primaryKey = 'ID_Planificacion';
+
     public $timestamps = false;
 
-    protected $fillable = [
-        'NombreParada',
-        'FechaInicioPlanificada',
-        'FechaTerminoPlanificada',
-    ];
+    protected $guarded = [];
 
-    //Relación con tabla PlanificacionEmpresa
     public function empresas()
     {
-        return $this->belongsToMany(Empresa::class, 'Planificacion_Empresa', 'Planificacion_ID_Planificacion', 'Empresa_ID_Empresa');
+        return $this->belongsToMany(Empresa::class);
     }
 
-    //Relacion con tabla Actividad
     public function actividades()
     {
-        return $this->hasMany(Actividad::class, 'Planificacion_ID_Planificacion', 'ID_Planificacion');
+        return $this->hasMany(Actividad::class);
     }
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cargo;
 
-class CargoController extends Controller
+class PM_ListadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class CargoController extends Controller
      */
     public function index()
     {
-        $cargos = Cargo::all();
-        return $cargos;
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        return view('cargo.create');
+        //
     }
 
     /**
@@ -36,13 +34,7 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        $cargo = Cargo::find($request->cargo_id);
-        $cargo->cargos()->create([
-            'NombreCargo' => $request->input('NombreCargo'),
-        ]);
-
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo creado exitosamente.');
+        //
     }
 
     /**
@@ -53,8 +45,7 @@ class CargoController extends Controller
      */
     public function show($id)
     {
-        $cargo = Cargo::findOrFail($id);
-        return view('cargo.show', ['cargo'=>$cargo]);
+        //
     }
 
     /**
@@ -65,8 +56,7 @@ class CargoController extends Controller
      */
     public function edit($id)
     {
-        $cargo = Cargo::findOrFail($id);
-        return view('cargo.edit', ['cargo'=>$cargo]);
+        //
     }
 
     /**
@@ -78,15 +68,7 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        // Actualizar el cargo
-        $cargo = Cargo::findOrFail($id);
-        $cargo->update([
-            'NombreCargo' => $request->input('NombreCargo'),
-        ]);
-
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo actualizado exitosamente.');
+        //
     }
 
     /**
@@ -97,11 +79,6 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
-        // Eliminar el cargo
-        $cargo = Cargo::findOrFail($id);
-        $cargo->delete();
-
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo eliminado exitosamente.');
+        //
     }
 }

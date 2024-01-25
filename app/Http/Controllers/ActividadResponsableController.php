@@ -17,7 +17,8 @@ class ActividadResponsableController extends Controller
     public function index()
     {
         $actividadResponsable = ActividadResponsable::with(['actividad', 'responsable'])->get();
-        return view('actividadResponsable.index', compact('actividadResponsable'));
+        // return view('actividadResponsable.index', compact('actividadResponsable'));
+        return $actividadResponsable;
     }
 
     /**
@@ -30,7 +31,7 @@ class ActividadResponsableController extends Controller
         $actividades = Actividad::all();
         $responsables = Responsable::all();
 
-        return view('actividadResponsable.create', compact('actividades', 'responsables'));
+        return view('actividadResponsable.create', ['actividades'=>$actividades, 'responsables'=>$responsables]);
     }
 
     /**
@@ -41,14 +42,9 @@ class ActividadResponsableController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'ID_Actividad' => 'required|exists:actividad,ID_Actividad',
-            'ID_Responsable' => 'required|exists:responsable,ID_Responsable',
-        ]);
+        $actividadResponsable = ActividadResponsable::find($request->responsable_id);
 
-        // Crear una nueva relación en la tabla pivote
-        ActividadResponsable::create([
+        $actividadResponsable->actividad_responsables()->create([
             'Actividad_ID_Actividad' => $request->input('ID_Actividad'),
             'Responsable_ID_Responsable' => $request->input('ID_Responsable'),
         ]);
@@ -66,7 +62,7 @@ class ActividadResponsableController extends Controller
     public function show($id)
     {
         $actividadResponsable = ActividadResponsable::with(['actividad', 'responsable'])->findOrFail($id);
-        return view('actividadResponsable.show', compact('actividadResponsable'));
+        return view('actividadResponsable.show', ['actividadResponsable'=>$actividadResponsable]);
     }
 
     /**
@@ -81,7 +77,7 @@ class ActividadResponsableController extends Controller
         $actividades = Actividad::all();
         $responsables = Responsable::all();
 
-        return view('actividadResponsable.edit', compact('actividadResponsable', 'actividades', 'responsables'));
+        return view('actividadResponsable.edit', ['actividadResponsable'=>$actividadResponsable, 'actividades'=>$actividades, 'responsables'=>$responsables]);
     }
 
     /**
@@ -93,12 +89,6 @@ class ActividadResponsableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'ID_Actividad' => 'required|exists:actividad,ID_Actividad',
-            'ID_Responsable' => 'required|exists:responsable,ID_Responsable',
-        ]);
-
         // Actualizar la relación en la tabla pivote
         $actividadResponsable = ActividadResponsable::findOrFail($id);
         $actividadResponsable->update([

@@ -26,7 +26,6 @@ class ActividadController extends Controller
     public function index()
     {
         $actividades = Actividad::all();
-        // return view('actividad.index', compact('actividades'));
         return $actividades;
     }
 
@@ -42,7 +41,7 @@ class ActividadController extends Controller
         $materiales = Material::all();
         $talentoHumano = TalentoHumano::all();
 
-        return view('actividad.create', compact('planificaciones', 'responsables', 'materiales', 'talentoHumano'));
+        return view('actividad.create', ['planificaciones'=>$planificaciones, 'responsables'=>$responsables, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
     }
 
     /**
@@ -53,22 +52,9 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreActividad' => 'required|string|max:50',
-            'OrdenTrabajo' => 'required|string|max:50',
-            'Critica' => 'required|boolean',
-            'EstadoActividad' => 'required|string|max:50',
-            'InicioReal' => 'nullable|date',
-            'FinReal' => 'nullable|date',
-            'Planificacion_ID_Planificacion' => 'required|exists:planificacion,ID_Planificacion',
-            'ID_TalentoHumano.*' => 'exists:talentohumano,ID_TalentoHumano', 
-            'ID_Material.*' => 'exists:material,ID_Material', 
-            'ID_Responsable.*' => 'exists:responsable,ID_Responsable', 
-        ]);
+        $actividad = Actividad::find($request->actividad_id);
 
-        // Crear una nueva actividad
-        $actividad = Actividad::create([
+        $actividad->actividads()->create([
             'NombreActividad' => $request->input('NombreActividad'),
             'OrdenTrabajo' => $request->input('OrdenTrabajo'),
             'Critica' => $request->input('Critica'),
@@ -78,12 +64,10 @@ class ActividadController extends Controller
             'Planificacion_ID_Planificacion' => $request->input('Planificacion_ID_Planificacion'),
         ]);
 
-        // Asociaciones con talento humano, materiales y responsables
         $actividad->materiales()->attach($request->input('ID_Material', []));
         $actividad->talentoHumano()->attach($request->input('ID_TalentoHumano', []));
         $actividad->responsables()->attach($request->input('ID_Responsable', []));
 
-        // Redireccionamiento
         return redirect()->route('actividad.index')->with('success', 'Actividad creada exitosamente.');
     }
 
@@ -96,7 +80,7 @@ class ActividadController extends Controller
     public function show($id)
     {
         $actividad = Actividad::findOrFail($id);
-        return view('actividad.show', compact('actividad'));
+        return view('actividad.show', ['actividad'=>$actividad]);
     }
 
     /**
@@ -112,8 +96,7 @@ class ActividadController extends Controller
         $responsables = Responsable::all();
         $materiales = Material::all();
         $talentoHumano = TalentoHumano::all();
-
-        return view('actividad.edit', compact('actividad', 'planificaciones', 'responsables', 'materiales', 'talentoHumano'));
+        return view('actividad.edit', ['actividades'=>$actividad, 'planificaciones'=>$planificaciones, 'responsables'=>$responsables, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
     }
 
     /**
@@ -125,21 +108,7 @@ class ActividadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreActividad' => 'required|string|max:50',
-            'OrdenTrabajo' => 'required|string|max:50',
-            'Critica' => 'required|boolean',
-            'EstadoActividad' => 'required|string|max:50',
-            'InicioReal' => 'nullable|date',
-            'FinReal' => 'nullable|date',
-            'Planificacion_ID_Planificacion' => 'required|exists:planificacion,ID_Planificacion',
-            'ID_TalentoHumano.*' => 'exists:talentohumano,ID_TalentoHumano', 
-            'ID_Material.*' => 'exists:material,ID_Material', 
-            'ID_Responsable.*' => 'exists:responsable,ID_Responsable', 
-        ]);
 
-        // Actualizar la actividad
         $actividad = Actividad::findOrFail($id);
         $actividad->update([
             'NombreActividad' => $request->input('NombreActividad'),
@@ -151,12 +120,10 @@ class ActividadController extends Controller
             'Planificacion_ID_Planificacion' => $request->input('Planificacion_ID_Planificacion'),
         ]);
 
-        // Sincronizar las asociaciones con talento humano, materiales y responsables
         $actividad->materiales()->sync($request->input('ID_Material', []));
         $actividad->talentoHumano()->sync($request->input('ID_TalentoHumano', []));
         $actividad->responsables()->sync($request->input('ID_Responsable', []));
 
-        // Redireccionamiento
         return redirect()->route('actividad.index')->with('success', 'Actividad actualizada exitosamente.');
     }
 
@@ -168,14 +135,12 @@ class ActividadController extends Controller
      */
     public function destroy($id)
     {
-        // Eliminar la actividad
         $actividad = Actividad::findOrFail($id);
         $actividad->materiales()->detach();
         $actividad->talentoHumano()->detach();
         $actividad->responsables()->detach();
         $actividad->delete();
 
-        // Redireccionamiento
         return redirect()->route('actividad.index')->with('success', 'Actividad eliminada exitosamente.');
     }
 }

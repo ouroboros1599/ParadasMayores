@@ -16,7 +16,8 @@ class TalentoHumanoController extends Controller
     public function index()
     {
         $talentoHumano = TalentoHumano::all();
-        return view('talentoHumano.index', compact('talentoHumano'));
+        // return view('talentoHumano.index', compact('talentoHumano'));
+        return $talentoHumano;
     }
 
     /**
@@ -27,7 +28,7 @@ class TalentoHumanoController extends Controller
     public function create()
     {
         $responsables = Responsable::all();
-        return view('talentoHumano.create', compact('responsables'));
+        return view('talentoHumano.create', ['responsables'=>$responsables]);
     }
 
     /**
@@ -38,16 +39,8 @@ class TalentoHumanoController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreTalento' => 'required|string|max:50',
-            'CantidadTalentoHumanoRequerido' => 'required|integer',
-            'CantidadTalentoHumanoDisponible' => 'required|integer',
-            'Responsable_ID_Responsable' => 'required|exists:db_ParadaMayor.Responsable,ID_Responsable',
-        ]);
-
-        // Crear un nuevo talento humano
-        $talentoHumano = TalentoHumano::create([
+        $talentoHumano = TalentoHumano::find($request->talentoHumano_id);
+        $talentoHumano->talentoHumanos()->create([
             'NombreTalento' => $request->input('NombreTalento'),
             'CantidadTalentoHumanoRequerido' => $request->input('CantidadTalentoHumanoRequerido'),
             'CantidadTalentoHumanoDisponible' => $request->input('CantidadTalentoHumanoDisponible'),
@@ -67,7 +60,7 @@ class TalentoHumanoController extends Controller
     public function show($id)
     {
         $talentoHumano = TalentoHumano::findOrFail($id);
-        return view('talentoHumano.show', compact('talentoHumano'));
+        return view('talentoHumano.show', ['talentoHumano'=>$talentoHumano]);
     }
 
     /**
@@ -80,7 +73,7 @@ class TalentoHumanoController extends Controller
     {
         $talentoHumano = TalentoHumano::findOrFail($id);
         $responsables = Responsable::all();
-        return view('talentoHumano.edit', compact('talentoHumano', 'responsables'));
+        return view('talentoHumano.edit', ['talentoHumano'=>$talentoHumano,'responsables'=>$responsables]);
     }
 
     /**
@@ -92,13 +85,6 @@ class TalentoHumanoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreTalento' => 'required|string|max:50',
-            'CantidadTalentoHumanoRequerido' => 'required|integer',
-            'CantidadTalentoHumanoDisponible' => 'required|integer',
-            'Responsable_ID_Responsable' => 'required|exists:db_ParadaMayor.Responsable,ID_Responsable',
-        ]);
 
         // Actualizar el talento humano
         $talentoHumano = TalentoHumano::findOrFail($id);

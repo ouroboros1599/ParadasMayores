@@ -16,7 +16,8 @@ class ResponsableController extends Controller
     public function index()
     {
         $responsables = Responsable::all();
-        return view('responsable.index', compact('responsables'));
+        // return view('responsable.index', compact('responsables'));
+        return $responsables;
     }
 
     /**
@@ -27,7 +28,7 @@ class ResponsableController extends Controller
     public function create()
     {
         $cargos = Cargo::all();
-        return view('responsable.create', compact('cargos'));
+        return view('responsable.create', ['cargos'=>$cargos]);
     }
 
     /**
@@ -38,22 +39,14 @@ class ResponsableController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreResponsable' => 'required|string|max:50',
-            'ApellidoPaternoResponsable' => 'required|string|max:50',
-            'ApellidoMaternoResponsable' => 'required|string|max:50',
-            'Cargo_ID_Cargo' => 'required|exists:db_ParadaMayor.Cargo,ID_Cargo',
-        ]);
+        $responsable = Responsable::find($request->responsable_id);
 
-        // Crear un nuevo responsable
-        $responsable = Responsable::create([
+        $responsable->responsables()->create([
             'NombreResponsable' => $request->input('NombreResponsable'),
             'ApellidoPaternoResponsable' => $request->input('ApellidoPaternoResponsable'),
             'ApellidoMaternoResponsable' => $request->input('ApellidoMaternoResponsable'),
             'Cargo_ID_Cargo' => $request->input('Cargo_ID_Cargo'),
         ]);
-
         // Redireccionamiento
         return redirect()->route('responsable.index')->with('success', 'Responsable creado exitosamente.');
     }
@@ -67,7 +60,7 @@ class ResponsableController extends Controller
     public function show($id)
     {
         $responsable = Responsable::findOrFail($id);
-        return view('responsable.show', compact('responsable'));
+        return view('responsable.show', ['responsable'=>$responsable]);
     }
 
     /**
@@ -80,7 +73,7 @@ class ResponsableController extends Controller
     {
         $responsable = Responsable::findOrFail($id);
         $cargos = Cargo::all();
-        return view('responsable.edit', compact('responsable', 'cargos'));
+        return view('responsable.edit', ['responsable'=>$responsable, 'cargos'=>$cargos]);
     }
 
     /**
@@ -92,13 +85,6 @@ class ResponsableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreResponsable' => 'required|string|max:50',
-            'ApellidoPaternoResponsable' => 'required|string|max:50',
-            'ApellidoMaternoResponsable' => 'required|string|max:50',
-            'Cargo_ID_Cargo' => 'required|exists:db_ParadaMayor.Cargo,ID_Cargo',
-        ]);
 
         // Actualizar el responsable
         $responsable = Responsable::findOrFail($id);

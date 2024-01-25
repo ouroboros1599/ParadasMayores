@@ -20,7 +20,7 @@
             @yield('header')
             <div class="flex w-full h-28 bg-[#0a2140]">
                 <div class="flex-initial">
-                    <img class="h-full " src="./img/smec-logo-blanco.png" alt="">
+                    <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="">
                 </div>
                 <div class="flex-1 self-center">
                     <h1 class="text-3xl font-bold text-center text-white">@yield('encabezado')</h1>
@@ -69,7 +69,7 @@
     <footer>
         <div class="w-full h-24 text-center p-10 text-sm bg-slate-900 text-white ">
             @yield('footer')
-            <p>Paradas Mayores © 2024 - {{date('Y')}} </p>
+            <p>Paradas Mayores &copy; 2024 - {{date('Y')}} </p>
         </div>
     </footer>
 </body>

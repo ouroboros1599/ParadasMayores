@@ -149,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /**
-* @vue/compiler-core v3.4.11
+* @vue/compiler-core v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -5978,7 +5978,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/compiler-core */ "./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js");
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /**
-* @vue/compiler-dom v3.4.11
+* @vue/compiler-dom v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -6538,7 +6538,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /**
-* @vue/reactivity v3.4.11
+* @vue/reactivity v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -6659,7 +6659,7 @@ class ReactiveEffect {
     /**
      * @internal
      */
-    this._dirtyLevel = 3;
+    this._dirtyLevel = 2;
     /**
      * @internal
      */
@@ -6671,7 +6671,7 @@ class ReactiveEffect {
     /**
      * @internal
      */
-    this._queryings = 0;
+    this._shouldSchedule = false;
     /**
      * @internal
      */
@@ -6680,10 +6680,9 @@ class ReactiveEffect {
   }
   get dirty() {
     if (this._dirtyLevel === 1) {
-      this._dirtyLevel = 0;
-      this._queryings++;
       pauseTracking();
-      for (const dep of this.deps) {
+      for (let i = 0; i < this._depsLength; i++) {
+        const dep = this.deps[i];
         if (dep.computed) {
           triggerComputed(dep.computed);
           if (this._dirtyLevel >= 2) {
@@ -6691,13 +6690,15 @@ class ReactiveEffect {
           }
         }
       }
+      if (this._dirtyLevel < 2) {
+        this._dirtyLevel = 0;
+      }
       resetTracking();
-      this._queryings--;
     }
     return this._dirtyLevel >= 2;
   }
   set dirty(v) {
-    this._dirtyLevel = v ? 3 : 0;
+    this._dirtyLevel = v ? 2 : 0;
   }
   run() {
     this._dirtyLevel = 0;
@@ -6824,24 +6825,28 @@ function triggerEffects(dep, dirtyLevel, debuggerEventExtraInfo) {
   var _a;
   pauseScheduling();
   for (const effect2 of dep.keys()) {
-    if (!effect2.allowRecurse && effect2._runnings) {
-      continue;
-    }
-    if (effect2._dirtyLevel < dirtyLevel && (!effect2._runnings || effect2.allowRecurse || dirtyLevel !== 2)) {
+    if (effect2._dirtyLevel < dirtyLevel && dep.get(effect2) === effect2._trackId) {
       const lastDirtyLevel = effect2._dirtyLevel;
       effect2._dirtyLevel = dirtyLevel;
-      if (lastDirtyLevel === 0 && (!effect2._queryings || dirtyLevel !== 2)) {
+      if (lastDirtyLevel === 0) {
+        effect2._shouldSchedule = true;
         if (true) {
           (_a = effect2.onTrigger) == null ? void 0 : _a.call(effect2, (0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__.extend)({ effect: effect2 }, debuggerEventExtraInfo));
         }
         effect2.trigger();
-        if (effect2.scheduler) {
-          queueEffectSchedulers.push(effect2.scheduler);
-        }
       }
     }
   }
+  scheduleEffects(dep);
   resetScheduling();
+}
+function scheduleEffects(dep) {
+  for (const effect2 of dep.keys()) {
+    if (effect2.scheduler && effect2._shouldSchedule && (!effect2._runnings || effect2.allowRecurse) && dep.get(effect2) === effect2._trackId) {
+      effect2._shouldSchedule = false;
+      queueEffectSchedulers.push(effect2.scheduler);
+    }
+  }
 }
 
 const createDep = (cleanup, computed) => {
@@ -6925,7 +6930,7 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
     if (dep) {
       triggerEffects(
         dep,
-        3,
+        2,
          true ? {
           target,
           type,
@@ -7524,7 +7529,8 @@ class ComputedRefImpl {
     this["__v_isReadonly"] = false;
     this.effect = new ReactiveEffect(
       () => getter(this._value),
-      () => triggerRefValue(this, 1)
+      () => triggerRefValue(this, 1),
+      () => this.dep && scheduleEffects(this.dep)
     );
     this.effect.computed = this;
     this.effect.active = this._cacheable = !isSSR;
@@ -7532,11 +7538,14 @@ class ComputedRefImpl {
   }
   get value() {
     const self = toRaw(this);
-    trackRefValue(self);
     if (!self._cacheable || self.effect.dirty) {
       if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__.hasChanged)(self._value, self._value = self.effect.run())) {
         triggerRefValue(self, 2);
       }
+    }
+    trackRefValue(self);
+    if (self.effect._dirtyLevel >= 1) {
+      triggerRefValue(self, 1);
     }
     return self._value;
   }
@@ -7590,7 +7599,7 @@ function trackRefValue(ref2) {
     );
   }
 }
-function triggerRefValue(ref2, dirtyLevel = 3, newVal) {
+function triggerRefValue(ref2, dirtyLevel = 2, newVal) {
   ref2 = toRaw(ref2);
   const dep = ref2.dep;
   if (dep) {
@@ -7639,12 +7648,12 @@ class RefImpl {
     if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__.hasChanged)(newVal, this._rawValue)) {
       this._rawValue = newVal;
       this._value = useDirectValue ? newVal : toReactive(newVal);
-      triggerRefValue(this, 3, newVal);
+      triggerRefValue(this, 2, newVal);
     }
   }
 }
 function triggerRef(ref2) {
-  triggerRefValue(ref2, 3,  true ? ref2.value : 0);
+  triggerRefValue(ref2, 2,  true ? ref2.value : 0);
 }
 function unref(ref2) {
   return isRef(ref2) ? ref2.value : ref2;
@@ -7918,7 +7927,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /**
-* @vue/runtime-core v3.4.11
+* @vue/runtime-core v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -12328,7 +12337,7 @@ const normalizeSlot = (key, rawSlot, ctx) => {
     return rawSlot;
   }
   const normalized = withCtx((...args) => {
-    if ( true && currentInstance) {
+    if ( true && currentInstance && (!ctx || ctx.root === currentInstance.root)) {
       warn$1(
         `Slot "${key}" invoked outside of the render function: this will not track dependencies used in the slot. Invoke the slot function inside the render function instead.`
       );
@@ -12464,9 +12473,10 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   } else {
     const _isString = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isString)(ref);
     const _isRef = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isRef)(ref);
+    const isVFor = rawRef.f;
     if (_isString || _isRef) {
       const doSet = () => {
-        if (rawRef.f) {
+        if (isVFor) {
           const existing = _isString ? (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(setupState, ref) ? setupState[ref] : refs[ref] : ref.value;
           if (isUnmount) {
             (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isArray)(existing) && (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.remove)(existing, refValue);
@@ -12499,11 +12509,11 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
           warn$1("Invalid template ref type:", ref, `(${typeof ref})`);
         }
       };
-      if (value) {
+      if (isUnmount || isVFor) {
+        doSet();
+      } else {
         doSet.id = -1;
         queuePostRenderEffect(doSet, parentSuspense);
-      } else {
-        doSet();
       }
     } else if (true) {
       warn$1("Invalid template ref type:", ref, `(${typeof ref})`);
@@ -13013,11 +13023,12 @@ function propHasMismatch(el, key, clientValue, vnode) {
     } else {
       if (el.hasAttribute(key)) {
         actual = el.getAttribute(key);
+      } else if (key === "value" && el.tagName === "TEXTAREA") {
+        actual = el.value;
       } else {
-        const serverValue = el[key];
-        actual = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isObject)(serverValue) || serverValue == null ? "" : String(serverValue);
+        actual = false;
       }
-      expected = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isObject)(clientValue) || clientValue == null ? "" : String(clientValue);
+      expected = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isRenderableAttrValue)(clientValue) ? String(clientValue) : false;
     }
     if (actual !== expected) {
       mismatchType = `attribute`;
@@ -16005,7 +16016,7 @@ function isMemoSame(cached, memo) {
   return true;
 }
 
-const version = "3.4.11";
+const version = "3.4.15";
 const warn =  true ? warn$1 : 0;
 const ErrorTypeStrings = ErrorTypeStrings$1 ;
 const devtools =  true ? devtools$1 : 0;
@@ -16199,7 +16210,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
 /**
-* @vue/runtime-dom v3.4.11
+* @vue/runtime-dom v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -17467,35 +17478,52 @@ const vModelSelect = {
       el[assignKey](
         el.multiple ? isSetModel ? new Set(selectedVal) : selectedVal : selectedVal[0]
       );
+      el._assigning = true;
+      (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+        el._assigning = false;
+      });
     });
     el[assignKey] = getModelAssigner(vnode);
   },
   // set value in mounted & updated because <select> relies on its children
   // <option>s.
-  mounted(el, { value }) {
-    setSelected(el, value);
+  mounted(el, { value, oldValue, modifiers: { number } }) {
+    setSelected(el, value, oldValue, number);
   },
   beforeUpdate(el, _binding, vnode) {
     el[assignKey] = getModelAssigner(vnode);
   },
-  updated(el, { value }) {
-    setSelected(el, value);
+  updated(el, { value, oldValue, modifiers: { number } }) {
+    if (!el._assigning) {
+      setSelected(el, value, oldValue, number);
+    }
   }
 };
-function setSelected(el, value) {
+function setSelected(el, value, oldValue, number) {
   const isMultiple = el.multiple;
-  if (isMultiple && !(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isArray)(value) && !(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isSet)(value)) {
+  const isArrayValue = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isArray)(value);
+  if (isMultiple && !isArrayValue && !(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isSet)(value)) {
      true && (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.warn)(
       `<select multiple v-model> expects an Array or Set value for its binding, but got ${Object.prototype.toString.call(value).slice(8, -1)}.`
     );
+    return;
+  }
+  if (isArrayValue && (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.looseEqual)(value, oldValue)) {
     return;
   }
   for (let i = 0, l = el.options.length; i < l; i++) {
     const option = el.options[i];
     const optionValue = getValue(option);
     if (isMultiple) {
-      if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isArray)(value)) {
-        option.selected = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.looseIndexOf)(value, optionValue) > -1;
+      if (isArrayValue) {
+        const optionType = typeof optionValue;
+        if (optionType === "string" || optionType === "number") {
+          option.selected = value.includes(
+            number ? (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.looseToNumber)(optionValue) : optionValue
+          );
+        } else {
+          option.selected = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.looseIndexOf)(value, optionValue) > -1;
+        }
       } else {
         option.selected = value.has(optionValue);
       }
@@ -17821,6 +17849,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isPlainObject: () => (/* binding */ isPlainObject),
 /* harmony export */   isPromise: () => (/* binding */ isPromise),
 /* harmony export */   isRegExp: () => (/* binding */ isRegExp),
+/* harmony export */   isRenderableAttrValue: () => (/* binding */ isRenderableAttrValue),
 /* harmony export */   isReservedProp: () => (/* binding */ isReservedProp),
 /* harmony export */   isSSRSafeAttrName: () => (/* binding */ isSSRSafeAttrName),
 /* harmony export */   isSVGTag: () => (/* binding */ isSVGTag),
@@ -17849,7 +17878,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   toTypeString: () => (/* binding */ toTypeString)
 /* harmony export */ });
 /**
-* @vue/shared v3.4.11
+* @vue/shared v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -18201,6 +18230,13 @@ const isKnownHtmlAttr = /* @__PURE__ */ makeMap(
 const isKnownSvgAttr = /* @__PURE__ */ makeMap(
   `xmlns,accent-height,accumulate,additive,alignment-baseline,alphabetic,amplitude,arabic-form,ascent,attributeName,attributeType,azimuth,baseFrequency,baseline-shift,baseProfile,bbox,begin,bias,by,calcMode,cap-height,class,clip,clipPathUnits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,contentScriptType,contentStyleType,crossorigin,cursor,cx,cy,d,decelerate,descent,diffuseConstant,direction,display,divisor,dominant-baseline,dur,dx,dy,edgeMode,elevation,enable-background,end,exponent,fill,fill-opacity,fill-rule,filter,filterRes,filterUnits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,format,from,fr,fx,fy,g1,g2,glyph-name,glyph-orientation-horizontal,glyph-orientation-vertical,glyphRef,gradientTransform,gradientUnits,hanging,height,href,hreflang,horiz-adv-x,horiz-origin-x,id,ideographic,image-rendering,in,in2,intercept,k,k1,k2,k3,k4,kernelMatrix,kernelUnitLength,kerning,keyPoints,keySplines,keyTimes,lang,lengthAdjust,letter-spacing,lighting-color,limitingConeAngle,local,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mask,maskContentUnits,maskUnits,mathematical,max,media,method,min,mode,name,numOctaves,offset,opacity,operator,order,orient,orientation,origin,overflow,overline-position,overline-thickness,panose-1,paint-order,path,pathLength,patternContentUnits,patternTransform,patternUnits,ping,pointer-events,points,pointsAtX,pointsAtY,pointsAtZ,preserveAlpha,preserveAspectRatio,primitiveUnits,r,radius,referrerPolicy,refX,refY,rel,rendering-intent,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,result,rotate,rx,ry,scale,seed,shape-rendering,slope,spacing,specularConstant,specularExponent,speed,spreadMethod,startOffset,stdDeviation,stemh,stemv,stitchTiles,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,string,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,style,surfaceScale,systemLanguage,tabindex,tableValues,target,targetX,targetY,text-anchor,text-decoration,text-rendering,textLength,to,transform,transform-origin,type,u1,u2,underline-position,underline-thickness,unicode,unicode-bidi,unicode-range,units-per-em,v-alphabetic,v-hanging,v-ideographic,v-mathematical,values,vector-effect,version,vert-adv-y,vert-origin-x,vert-origin-y,viewBox,viewTarget,visibility,width,widths,word-spacing,writing-mode,x,x-height,x1,x2,xChannelSelector,xlink:actuate,xlink:arcrole,xlink:href,xlink:role,xlink:show,xlink:title,xlink:type,xmlns:xlink,xml:base,xml:lang,xml:space,y,y1,y2,yChannelSelector,z,zoomAndPan`
 );
+function isRenderableAttrValue(value) {
+  if (value == null) {
+    return false;
+  }
+  const type = typeof value;
+  return type === "string" || type === "number" || type === "boolean";
+}
 
 const escapeRE = /["'&<>]/;
 function escapeHtml(string) {
@@ -19109,7 +19145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_compiler_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vue/compiler-dom */ "./node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js");
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /**
-* vue v3.4.11
+* vue v3.4.15
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/

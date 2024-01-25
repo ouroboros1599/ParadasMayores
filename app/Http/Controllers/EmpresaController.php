@@ -15,7 +15,8 @@ class EmpresaController extends Controller
     public function index()
     {
         $empresas = Empresa::all();
-        return view('empresa.index', compact('empresas'));
+        // return view('empresa.index', compact('empresas'));
+        return $empresas;
     }
 
     /**
@@ -36,19 +37,18 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreEmpresa' => 'required|string|max:50|unique:empresa',
-            'SectorParada' => 'required|string|max:50',
+        $empresa = Empresa::find($request->empresa_id);
+        
+        $empresa->empresas()->create([
+            'NombreEmpresa' => '',
+            'SectorParada' => '',
         ]);
 
-        // Crear una nueva empresa
         Empresa::create([
             'NombreEmpresa' => $request->input('NombreEmpresa'),
             'SectorParada' => $request->input('SectorParada'),
         ]);
 
-        // Redireccionamiento
         return redirect()->route('empresa.index')->with('success', 'Empresa creada exitosamente.');
     }
 
@@ -61,7 +61,7 @@ class EmpresaController extends Controller
     public function show($id)
     {
         $empresa = Empresa::findOrFail($id);
-        return view('empresa.show', compact('empresa'));
+        return view('empresa.show', ['empresa'=>$empresa]);
     }
 
     /**
@@ -73,7 +73,7 @@ class EmpresaController extends Controller
     public function edit($id)
     {
         $empresa = Empresa::findOrFail($id);
-        return view('empresa.edit', compact('empresa'));
+        return view('empresa.edit', ['empresa'=>$empresa]);
     }
 
     /**
@@ -85,20 +85,13 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreEmpresa' => 'required|string|max:50|unique:empresa,NombreEmpresa,' . $id . ',ID_Empresa',
-            'SectorParada' => 'required|string|max:50',
-        ]);
 
-        // Actualizar la empresa
         $empresa = Empresa::findOrFail($id);
         $empresa->update([
             'NombreEmpresa' => $request->input('NombreEmpresa'),
             'SectorParada' => $request->input('SectorParada'),
         ]);
 
-        // Redireccionamiento
         return redirect()->route('empresa.index')->with('success', 'Empresa actualizada exitosamente.');
     }
 
@@ -110,11 +103,9 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        // Eliminar la empresa
         $empresa = Empresa::findOrFail($id);
         $empresa->delete();
 
-        // Redireccionamiento
         return redirect()->route('empresa.index')->with('success', 'Empresa eliminada exitosamente.');
     }
 }

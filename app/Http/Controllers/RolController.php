@@ -15,7 +15,8 @@ class RolController extends Controller
     public function index()
     {
         $roles = Rol::all();
-        return view('rol.index', compact('roles'));
+        // return view('rol.index', compact('roles'));
+        return $roles;
     }
 
     /**
@@ -36,13 +37,10 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreRol' => 'required|string|max:45',
-        ]);
-
         // Crear un nuevo rol
-        $rol = Rol::create([
+        $rol = Rol::find($request->rol_id);
+        
+        $rol->rols()->create([
             'NombreRol' => $request->input('NombreRol'),
         ]);
 
@@ -59,7 +57,7 @@ class RolController extends Controller
     public function show($id)
     {
         $rol = Rol::findOrFail($id);
-        return view('rol.show', compact('rol'));
+        return view('rol.show', ['rol'=>$rol]);
     }
 
     /**
@@ -71,7 +69,7 @@ class RolController extends Controller
     public function edit($id)
     {
         $rol = Rol::findOrFail($id);
-        return view('rol.edit', compact('rol'));
+        return view('rol.edit', ['rol'=>$rol]);
     }
 
     /**
@@ -83,10 +81,6 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de campos
-        $request->validate([
-            'NombreRol' => 'required|string|max:45',
-        ]);
 
         // Actualizar el rol
         $rol = Rol::findOrFail($id);
