@@ -45,157 +45,157 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 1
                                 </th>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">PM_MANT_Planta
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Iniciada
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
                                 
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 2 
                                 </th>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">PM_MANT_Planta
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Iniciada
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                                                
-                            </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
-                                <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
-                                </th>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                                                
-                            </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
-                                <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
-                                </th>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                                                
-                            </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
-                                <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
-                                </th>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                                                
-                            </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
-                                <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
-                                </th>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
-                                </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
                                 
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 3 
                                 </th>
                                 <td class="px-3 py-4">-
                                 </td>
+                                <td class="px-3 py-4">PM_MANT_Planta
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Iniciada
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                                                
+                            </tr>
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 4 
+                                </th>
                                 <td class="px-3 py-4">-
                                 </td>
+                                <td class="px-3 py-4">PM_MANT_Planta
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Iniciada
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                                                
+                            </tr>
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 5 
+                                </th>
                                 <td class="px-3 py-4">-
                                 </td>
+                                <td class="px-3 py-4">PM_MANT_Planta
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Iniciada
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                                                
+                            </tr>
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 6 
+                                </th>
                                 <td class="px-3 py-4">-
                                 </td>
+                                <td class="px-3 py-4">PM_MANT_Planta
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Iniciada
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                
+                            </tr>
+                            <tr class="bg-[#2f55e1] border-b border-blue-400 text-center">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Empresa 7 
+                                </th>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">PM_MANT_Planta
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">Iniciada
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
                                 
                             </tr>

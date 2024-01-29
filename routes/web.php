@@ -34,31 +34,32 @@ Route::get('/', function () {
 });
 
 //Enrutamiento 
-//ParadasMayores
+//ParadasMayores CRUD
 Route::resource('pm_planificacion', PM_PlanificacionController::class);
 Route::resource('pm_ejecucion', PM_EjecucionController::class);
 Route::resource('pm_listado', PM_ListadoController::class);
+//Enturtamiento clases API
 //Actividad
-Route::resource('actividad', ActividadController::class);
+Route::apiResource('actividad', ActividadController::class);
 //Nav Actividad Material TalentoHumano
-Route::resource('actividad_material_talentohumano', ActividadMaterialTalentoHumanoController::class);
+Route::apiResource('actividad_material_talentohumano', ActividadMaterialTalentoHumanoController::class);
 //Nav Actividad Responsable
-Route::resource('actividad_responsable', ActividadResponsableController::class);
+Route::apiResource('actividad_responsable', ActividadResponsableController::class);
 //Cargo
-Route::resource('cargo', CargoController::class);
+Route::apiResource('cargo', CargoController::class);
 //Empresa
-Route::resource('empresa', EmpresaController::class);
+Route::apiResource('empresa', EmpresaController::class);
 //Material
-Route::resource('material', MaterialController::class);
+Route::apiResource('material', MaterialController::class);
 //Planificación
-Route::resource('planificacion', PlanificacionController::class);
+Route::apiResource('planificacion', PlanificacionController::class);
 //Nav Planificacion Empresa
-Route::resource('planificacion_empresa', PlanificacionEmpresaController::class);
+Route::apiResource('planificacion_empresa', PlanificacionEmpresaController::class);
 //Responsable
-Route::resource('responsable', ResponsableController::class);
+Route::apiResource('responsable', ResponsableController::class);
 //Rol
-Route::resource('rol', RolController::class);
+Route::apiResource('rol', RolController::class);
 //TalentoHumano
-Route::resource('talentohumano',TalentoHumanoController::class);
+Route::apiResource('talentohumano',TalentoHumanoController::class);
 //Usuario
-Route::resource('usuario', UsuarioController::class);
+Route::apiResource('usuario', UsuarioController::class);
