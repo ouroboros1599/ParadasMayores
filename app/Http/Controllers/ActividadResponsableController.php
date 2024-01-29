@@ -18,7 +18,7 @@ class ActividadResponsableController extends Controller
     {
         $actividadResponsable = ActividadResponsable::with(['actividad', 'responsable'])->get();
         // return view('actividadResponsable.index', compact('actividadResponsable'));
-        return $actividadResponsable;
+        return response()->json($actividadResponsable, 200);
     }
 
     /**
@@ -49,8 +49,7 @@ class ActividadResponsableController extends Controller
             'Responsable_ID_Responsable' => $request->input('ID_Responsable'),
         ]);
 
-        // Redireccionamiento
-        return redirect()->route('actividadResponsable.index')->with('success', 'Relación creada exitosamente.');
+        return response()->json($actividadResponsable, 201);
     }
 
     /**
@@ -62,7 +61,7 @@ class ActividadResponsableController extends Controller
     public function show($id)
     {
         $actividadResponsable = ActividadResponsable::with(['actividad', 'responsable'])->findOrFail($id);
-        return view('actividadResponsable.show', ['actividadResponsable'=>$actividadResponsable]);
+        return response()->json($actividadResponsable, 200);
     }
 
     /**
@@ -71,14 +70,14 @@ class ActividadResponsableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $actividadResponsable = ActividadResponsable::findOrFail($id);
-        $actividades = Actividad::all();
-        $responsables = Responsable::all();
+    // public function edit($id)
+    // {
+    //     $actividadResponsable = ActividadResponsable::findOrFail($id);
+    //     $actividades = Actividad::all();
+    //     $responsables = Responsable::all();
 
-        return view('actividadResponsable.edit', ['actividadResponsable'=>$actividadResponsable, 'actividades'=>$actividades, 'responsables'=>$responsables]);
-    }
+    //     return view('actividadResponsable.edit', ['actividadResponsable'=>$actividadResponsable, 'actividades'=>$actividades, 'responsables'=>$responsables]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -96,8 +95,7 @@ class ActividadResponsableController extends Controller
             'Responsable_ID_Responsable' => $request->input('ID_Responsable'),
         ]);
 
-        // Redireccionamiento
-        return redirect()->route('actividadResponsable.index')->with('success', 'Relación actualizada exitosamente.');
+        return response()->json($actividadResponsable, 200);
     }
 
     /**
@@ -112,7 +110,6 @@ class ActividadResponsableController extends Controller
         $actividadResponsable = ActividadResponsable::findOrFail($id);
         $actividadResponsable->delete();
 
-        // Redireccionamiento
-        return redirect()->route('actividadResponsable.index')->with('success', 'Relación eliminada exitosamente.');
+        return response()->json(null, 204);
     }
 }

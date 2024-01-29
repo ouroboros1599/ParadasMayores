@@ -14,6 +14,7 @@ class PM_ListadoController extends Controller
     public function index()
     {
         //
+        return view('pm_listado.index');
     }
 
     /**

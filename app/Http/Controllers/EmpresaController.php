@@ -16,7 +16,7 @@ class EmpresaController extends Controller
     {
         $empresas = Empresa::all();
         // return view('empresa.index', compact('empresas'));
-        return $empresas;
+        return response()->json($empresas, 200);
     }
 
     /**
@@ -49,7 +49,7 @@ class EmpresaController extends Controller
             'SectorParada' => $request->input('SectorParada'),
         ]);
 
-        return redirect()->route('empresa.index')->with('success', 'Empresa creada exitosamente.');
+        return response()->json($empresa, 201);
     }
 
     /**
@@ -61,7 +61,7 @@ class EmpresaController extends Controller
     public function show($id)
     {
         $empresa = Empresa::findOrFail($id);
-        return view('empresa.show', ['empresa'=>$empresa]);
+        return response()->json($empresa, 200);
     }
 
     /**
@@ -70,11 +70,11 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $empresa = Empresa::findOrFail($id);
-        return view('empresa.edit', ['empresa'=>$empresa]);
-    }
+    // public function edit($id)
+    // {
+    //     $empresa = Empresa::findOrFail($id);
+    //     return view('empresa.edit', ['empresa'=>$empresa]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -92,7 +92,7 @@ class EmpresaController extends Controller
             'SectorParada' => $request->input('SectorParada'),
         ]);
 
-        return redirect()->route('empresa.index')->with('success', 'Empresa actualizada exitosamente.');
+        return response()->json($empresa, 200);
     }
 
     /**
@@ -106,6 +106,6 @@ class EmpresaController extends Controller
         $empresa = Empresa::findOrFail($id);
         $empresa->delete();
 
-        return redirect()->route('empresa.index')->with('success', 'Empresa eliminada exitosamente.');
+        return response()->json($empresa, 204);
     }
 }

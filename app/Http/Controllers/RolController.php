@@ -16,7 +16,7 @@ class RolController extends Controller
     {
         $roles = Rol::all();
         // return view('rol.index', compact('roles'));
-        return $roles;
+        return response()->json($roles, 200);
     }
 
     /**
@@ -45,7 +45,7 @@ class RolController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('rol.index')->with('success', 'Rol creado exitosamente.');
+        return response()->json($rol, 201);
     }
 
     /**
@@ -57,7 +57,7 @@ class RolController extends Controller
     public function show($id)
     {
         $rol = Rol::findOrFail($id);
-        return view('rol.show', ['rol'=>$rol]);
+        return response()->json($rol, 200);
     }
 
     /**
@@ -66,11 +66,11 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $rol = Rol::findOrFail($id);
-        return view('rol.edit', ['rol'=>$rol]);
-    }
+    // public function edit($id)
+    // {
+    //     $rol = Rol::findOrFail($id);
+    //     return view('rol.edit', ['rol'=>$rol]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -89,7 +89,7 @@ class RolController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('rol.index')->with('success', 'Rol actualizado exitosamente.');
+        return response()->json($rol, 200);
     }
 
     /**
@@ -105,6 +105,6 @@ class RolController extends Controller
         $rol->delete();
 
         // Redireccionamiento
-        return redirect()->route('rol.index')->with('success', 'Rol eliminado exitosamente.');
+        return response()->json($rol, 204);
     }
 }

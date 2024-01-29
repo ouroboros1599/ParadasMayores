@@ -15,6 +15,9 @@ use App\Http\Controllers\ResponsableController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TalentoHumanoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PM_EjecucionController;
+use App\Http\Controllers\PM_ListadoController;
+use App\Http\Controllers\PM_PlanificacionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +34,10 @@ Route::get('/', function () {
 });
 
 //Enrutamiento 
+//ParadasMayores
+Route::resource('pm_planificacion', PM_PlanificacionController::class);
+Route::resource('pm_ejecucion', PM_EjecucionController::class);
+Route::resource('pm_listado', PM_ListadoController::class);
 //Actividad
 Route::resource('actividad', ActividadController::class);
 //Nav Actividad Material TalentoHumano
@@ -55,6 +62,3 @@ Route::resource('rol', RolController::class);
 Route::resource('talentohumano',TalentoHumanoController::class);
 //Usuario
 Route::resource('usuario', UsuarioController::class);
-
-//test 
-Route::get('test', [ActividadController::class, 'test']);

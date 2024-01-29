@@ -14,6 +14,7 @@ class PM_EjecucionController extends Controller
     public function index()
     {
         //
+        return view('pm_ejecucion.index');
     }
 
     /**

@@ -12,12 +12,6 @@ use Illuminate\Support\Facades\Log;
 
 class ActividadController extends Controller
 {
-    public function test(){
-        $actividad = Actividad::all();
-        // Log::info($actividad);
-        return $actividad;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +20,8 @@ class ActividadController extends Controller
     public function index()
     {
         $actividades = Actividad::all();
-        return $actividades;
+        // return $actividades;
+        return response()->json($actividades, 200);
     }
 
     /**
@@ -52,6 +47,7 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
+        
         $actividad = Actividad::find($request->actividad_id);
 
         $actividad->actividads()->create([
@@ -68,7 +64,8 @@ class ActividadController extends Controller
         $actividad->talentoHumano()->attach($request->input('ID_TalentoHumano', []));
         $actividad->responsables()->attach($request->input('ID_Responsable', []));
 
-        return redirect()->route('actividad.index')->with('success', 'Actividad creada exitosamente.');
+        // return redirect()->route('actividad.index')->with('success', 'Actividad creada exitosamente.');
+        return response()->json($actividad, 201);
     }
 
     /**
@@ -80,7 +77,7 @@ class ActividadController extends Controller
     public function show($id)
     {
         $actividad = Actividad::findOrFail($id);
-        return view('actividad.show', ['actividad'=>$actividad]);
+        return response()->json($actividad, 200); 
     }
 
     /**
@@ -89,15 +86,15 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $actividad = Actividad::findOrFail($id);
-        $planificaciones = Planificacion::all();
-        $responsables = Responsable::all();
-        $materiales = Material::all();
-        $talentoHumano = TalentoHumano::all();
-        return view('actividad.edit', ['actividades'=>$actividad, 'planificaciones'=>$planificaciones, 'responsables'=>$responsables, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
-    }
+    // public function edit($id)
+    // {
+    //     $actividad = Actividad::findOrFail($id);
+    //     $planificaciones = Planificacion::all();
+    //     $responsables = Responsable::all();
+    //     $materiales = Material::all();
+    //     $talentoHumano = TalentoHumano::all();
+    //     return view('actividad.edit', ['actividades'=>$actividad, 'planificaciones'=>$planificaciones, 'responsables'=>$responsables, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -124,7 +121,7 @@ class ActividadController extends Controller
         $actividad->talentoHumano()->sync($request->input('ID_TalentoHumano', []));
         $actividad->responsables()->sync($request->input('ID_Responsable', []));
 
-        return redirect()->route('actividad.index')->with('success', 'Actividad actualizada exitosamente.');
+            return response()->json($actividad, 200);
     }
 
     /**
@@ -141,6 +138,6 @@ class ActividadController extends Controller
         $actividad->responsables()->detach();
         $actividad->delete();
 
-        return redirect()->route('actividad.index')->with('success', 'Actividad eliminada exitosamente.');
+        return response()->json(null, 204);
     }
 }

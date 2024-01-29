@@ -19,7 +19,7 @@ class ActividadMaterialTalentoHumanoController extends Controller
     {
         $actividadMaterialTalentoHumano = ActividadMaterialTalentoHumano::with(['actividad', 'material', 'talentoHumano'])->get();
         // return view('actividadMaterialTalentoHumano.index', compact('actividadMaterialTalentoHumano'));
-        return $actividadMaterialTalentoHumano;
+        return response()->json($actividadMaterialTalentoHumano, 200);
     }
 
     /**
@@ -52,7 +52,7 @@ class ActividadMaterialTalentoHumanoController extends Controller
             'TalentoHumano_ID_TalentoHumano' => $request->input('ID_talentoHumano'),
         ]);
 
-        return redirect()->route('actividadMaterialTalentoHumano.index')->with('success', 'Relación creada exitosamente.');
+        return response()->json($actividadMaterialTalentoHumano, 201);
     }
 
     /**
@@ -64,7 +64,8 @@ class ActividadMaterialTalentoHumanoController extends Controller
     public function show($id)
     {
         $relacion = ActividadMaterialTalentoHumano::with(['actividad', 'material', 'talentoHumano'])->findOrFail($id);
-        return view('actividadMaterialTalentoHumano.show', ['relacion'=>$relacion]);
+        // return view('actividadMaterialTalentoHumano.show', ['relacion'=>$relacion]);
+        return response()->json($relacion, 200);
     }
 
     /**
@@ -73,15 +74,15 @@ class ActividadMaterialTalentoHumanoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $ActividadMaterialTalentoHumano = ActividadMaterialTalentoHumano::findOrFail($id);
-        $actividades = Actividad::all();
-        $materiales = Material::all();
-        $talentoHumano = TalentoHumano::all();
+    // public function edit($id)
+    // {
+    //     $ActividadMaterialTalentoHumano = ActividadMaterialTalentoHumano::findOrFail($id);
+    //     $actividades = Actividad::all();
+    //     $materiales = Material::all();
+    //     $talentoHumano = TalentoHumano::all();
 
-        return view('actividadMaterialTalentoHumano.edit', ['ActividadMaterialTalentoHumano'=>$ActividadMaterialTalentoHumano, 'actividades'=>$actividades, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
-    }
+    //     return view('actividadMaterialTalentoHumano.edit', ['ActividadMaterialTalentoHumano'=>$ActividadMaterialTalentoHumano, 'actividades'=>$actividades, 'materiales'=>$materiales, 'talentoHumano'=>$talentoHumano]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -100,7 +101,7 @@ class ActividadMaterialTalentoHumanoController extends Controller
             'TalentoHumano_ID_TalentoHumano' => $request->input('ID_TalentoHumano'),
         ]);
 
-        return redirect()->route('actividadMaterialTalentoHumano.index')->with('success', 'Relación actualizada exitosamente.');
+        return response()->json($ActividadMaterialTalentoHumano, 200);
     }
 
     /**
@@ -114,6 +115,6 @@ class ActividadMaterialTalentoHumanoController extends Controller
         $ActividadMaterialTalentoHumano = ActividadMaterialTalentoHumano::findOrFail($id);
         $ActividadMaterialTalentoHumano->delete();
 
-        return redirect()->route('actividadMaterialTalentoHumano.index')->with('success', 'Relación eliminada exitosamente.');
+        return response()->json(null, 204);
     }
 }

@@ -17,7 +17,7 @@ class ResponsableController extends Controller
     {
         $responsables = Responsable::all();
         // return view('responsable.index', compact('responsables'));
-        return $responsables;
+        return response()->json($responsables, 200);
     }
 
     /**
@@ -28,7 +28,7 @@ class ResponsableController extends Controller
     public function create()
     {
         $cargos = Cargo::all();
-        return view('responsable.create', ['cargos'=>$cargos]);
+        return response()->json($cargos, 200);
     }
 
     /**
@@ -48,7 +48,7 @@ class ResponsableController extends Controller
             'Cargo_ID_Cargo' => $request->input('Cargo_ID_Cargo'),
         ]);
         // Redireccionamiento
-        return redirect()->route('responsable.index')->with('success', 'Responsable creado exitosamente.');
+        return response()->json($responsable, 201);
     }
 
     /**
@@ -60,7 +60,7 @@ class ResponsableController extends Controller
     public function show($id)
     {
         $responsable = Responsable::findOrFail($id);
-        return view('responsable.show', ['responsable'=>$responsable]);
+        return response()->json($responsable, 200);
     }
 
     /**
@@ -69,12 +69,12 @@ class ResponsableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $responsable = Responsable::findOrFail($id);
-        $cargos = Cargo::all();
-        return view('responsable.edit', ['responsable'=>$responsable, 'cargos'=>$cargos]);
-    }
+    // public function edit($id)
+    // {
+    //     $responsable = Responsable::findOrFail($id);
+    //     $cargos = Cargo::all();
+    //     return view('responsable.edit', ['responsable'=>$responsable, 'cargos'=>$cargos]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -96,7 +96,7 @@ class ResponsableController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('responsable.index')->with('success', 'Responsable actualizado exitosamente.');
+        return response()->json($responsable, 200);
     }
 
     /**
@@ -112,6 +112,6 @@ class ResponsableController extends Controller
         $responsable->delete();
 
         // Redireccionamiento
-        return redirect()->route('responsable.index')->with('success', 'Responsable eliminado exitosamente.');
+        return response()->json($responsable, 204);
     }
 }

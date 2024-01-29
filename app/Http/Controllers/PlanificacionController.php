@@ -17,7 +17,7 @@ class PlanificacionController extends Controller
     {
         $planificaciones = Planificacion::all();
         return view('planificacion.index', ['planificaciones'=>$planificaciones]);
-        // return $planificaciones;
+        // return response()->json($planificaciones, 200);;
     }
 
     /**
@@ -48,7 +48,7 @@ class PlanificacionController extends Controller
             'Empresa_ID_Empresa' => $request->input('Empresa_ID_Empresa'),
         ]);
         // Redireccionamiento
-        return redirect()->route('planificacion.index')->with('success', 'Planificación creada exitosamente.');
+        return response()->json($planificacion, 201);
     }
 
     /**
@@ -60,7 +60,7 @@ class PlanificacionController extends Controller
     public function show($id)
     {
         $planificacion = Planificacion::findOrFail($id);
-        return view('planificacion.show', ['planificacion'=>$planificacion]);
+        return response()->json($planificacion, 200);
     }
 
     /**
@@ -69,12 +69,12 @@ class PlanificacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $planificacion = Planificacion::findOrFail($id);
-        $empresas = Empresa::all();
-        return view('planificacion.edit', ['planificacion'=>$planificacion, 'empresas'=>$empresas]);
-    }
+    // public function edit($id)
+    // {
+    //     $planificacion = Planificacion::findOrFail($id);
+    //     $empresas = Empresa::all();
+    //     return view('planificacion.edit', ['planificacion'=>$planificacion, 'empresas'=>$empresas]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -95,7 +95,7 @@ class PlanificacionController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('planificacion.index')->with('success', 'Planificación actualizada exitosamente.');
+        return response()->json($planificacion, 200);
     }
 
     /**
@@ -111,6 +111,6 @@ class PlanificacionController extends Controller
         $planificacion->delete();
 
         // Redireccionamiento
-        return redirect()->route('planificacion.index')->with('success', 'Planificación eliminada exitosamente.');
+        return response()->json($planificacion, 204);
     }
 }

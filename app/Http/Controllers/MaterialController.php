@@ -17,7 +17,7 @@ class MaterialController extends Controller
     {
         $materiales = Material::all();
         // return view('material.index', compact('materiales'));
-        return $materiales;
+        return response()->json($materiales, 200);
     }
 
     /**
@@ -48,8 +48,8 @@ class MaterialController extends Controller
             'Ubicacion' => $request->input('Ubicacion'),
             'Responsable_ID_Responsable' => $request->input('Responsable_ID_Responsable'),
         ]);
-        // Redireccionamiento
-        return redirect()->route('material.index')->with('success', 'Material creado exitosamente.');
+        
+        return response()->json($material, 201);
     }
 
     /**
@@ -61,7 +61,7 @@ class MaterialController extends Controller
     public function show($id)
     {
         $material = Material::findOrFail($id);
-        return view('material.show', ['material'=>$material]);
+        return response()->json($material, 200);
     }
 
     /**
@@ -70,12 +70,12 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $material = Material::findOrFail($id);
-        $responsables = Responsable::all();
-        return view('material.edit', ['material'=>$material, 'responsables'=>$responsables]);
-    }
+    // public function edit($id)
+    // {
+    //     $material = Material::findOrFail($id);
+    //     $responsables = Responsable::all();
+    //     return view('material.edit', ['material'=>$material, 'responsables'=>$responsables]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -98,7 +98,7 @@ class MaterialController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('material.index')->with('success', 'Material actualizado exitosamente.');
+        return response()->json($material, 200);
     }
 
     /**
@@ -114,6 +114,6 @@ class MaterialController extends Controller
         $material->delete();
 
         // Redireccionamiento
-        return redirect()->route('material.index')->with('success', 'Material eliminado exitosamente.');
+        return response()->json($material, 204);
     }
 }

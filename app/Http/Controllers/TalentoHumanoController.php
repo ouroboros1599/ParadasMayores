@@ -17,7 +17,7 @@ class TalentoHumanoController extends Controller
     {
         $talentoHumano = TalentoHumano::all();
         // return view('talentoHumano.index', compact('talentoHumano'));
-        return $talentoHumano;
+        return response()->json($talentoHumano, 200);
     }
 
     /**
@@ -48,7 +48,7 @@ class TalentoHumanoController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('talentoHumano.index')->with('success', 'Talento Humano creado exitosamente.');
+        return response()->json($talentoHumano, 201);
     }
 
     /**
@@ -60,7 +60,7 @@ class TalentoHumanoController extends Controller
     public function show($id)
     {
         $talentoHumano = TalentoHumano::findOrFail($id);
-        return view('talentoHumano.show', ['talentoHumano'=>$talentoHumano]);
+        return response()->json($talentoHumano, 200);
     }
 
     /**
@@ -69,12 +69,12 @@ class TalentoHumanoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $talentoHumano = TalentoHumano::findOrFail($id);
-        $responsables = Responsable::all();
-        return view('talentoHumano.edit', ['talentoHumano'=>$talentoHumano,'responsables'=>$responsables]);
-    }
+    // public function edit($id)
+    // {
+    //     $talentoHumano = TalentoHumano::findOrFail($id);
+    //     $responsables = Responsable::all();
+    //     return view('talentoHumano.edit', ['talentoHumano'=>$talentoHumano,'responsables'=>$responsables]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -96,7 +96,7 @@ class TalentoHumanoController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('talentoHumano.index')->with('success', 'Talento Humano actualizado exitosamente.');
+        return response()->json($talentoHumano, 200);
     }
 
     /**
@@ -112,6 +112,6 @@ class TalentoHumanoController extends Controller
         $talentoHumano->delete();
 
         // Redireccionamiento
-        return redirect()->route('talentoHumano.index')->with('success', 'Talento Humano eliminado exitosamente.');
+        return response()->json($talentoHumano, 204);
     }
 }

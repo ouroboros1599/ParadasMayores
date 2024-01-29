@@ -17,7 +17,7 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::all();
         // return view('usuario.index', compact('usuarios'));
-        return $usuarios;
+        return response()->json($usuarios, 200);
     }
 
     /**
@@ -50,7 +50,7 @@ class UsuarioController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('usuario.index')->with('success', 'Usuario creado exitosamente.');
+        return response()->json($usuario, 201);
     }
 
     /**
@@ -62,7 +62,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $usuario = Usuario::findOrFail($id);
-        return view('usuario.show', ['usuarios'=>$usuario]);
+        return response()->json($usuario, 200);
     }
 
     /**
@@ -71,12 +71,12 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $usuario = Usuario::findOrFail($id);
-        $roles = Rol::all();
-        return view('usuario.edit', ['usuario'=>$usuario, 'rol'=>$roles]);
-    }
+    // public function edit($id)
+    // {
+    //     $usuario = Usuario::findOrFail($id);
+    //     $roles = Rol::all();
+    //     return view('usuario.edit', ['usuario'=>$usuario, 'rol'=>$roles]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -98,7 +98,7 @@ class UsuarioController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('usuario.index')->with('success', 'Usuario actualizado exitosamente.');
+        return response()->json($usuario, 200);
     }
 
     /**
@@ -114,6 +114,6 @@ class UsuarioController extends Controller
         $usuario->delete();
 
         // Redireccionamiento
-        return redirect()->route('usuario.index')->with('success', 'Usuario eliminado exitosamente.');
+        return response()->json($usuario, 204);
     }
 }

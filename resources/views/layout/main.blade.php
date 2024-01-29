@@ -45,17 +45,17 @@
         @yield('nav')
         <ul class="w-full h-16 bg-[#0a2140] flex space-x-10 items-center text-center justify-center">
             <li>
-                <a href="{{route('usuario.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                <a href="{{route('pm_listado.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                     LISTADO DE PARADAS MAYORES
                 </a>
             </li>
             <li>
-                <a href="{{route('planificacion.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                <a href="{{route('pm_planificacion.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                     PLANIFICACIÓN
                 </a>
             </li>
             <li>
-                <a href="{{route('rol.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                <a href="{{route('pm_ejecucion.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                     EJECUCIÓN
                 </a>
             </li>

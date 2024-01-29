@@ -15,7 +15,7 @@ class CargoController extends Controller
     public function index()
     {
         $cargos = Cargo::all();
-        return $cargos;
+        return response()->json($cargos, 200);
     }
 
     /**
@@ -41,8 +41,7 @@ class CargoController extends Controller
             'NombreCargo' => $request->input('NombreCargo'),
         ]);
 
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo creado exitosamente.');
+        return response()->json($cargo, 201);
     }
 
     /**
@@ -54,7 +53,7 @@ class CargoController extends Controller
     public function show($id)
     {
         $cargo = Cargo::findOrFail($id);
-        return view('cargo.show', ['cargo'=>$cargo]);
+        return response()->json($cargo, 200);
     }
 
     /**
@@ -63,11 +62,11 @@ class CargoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $cargo = Cargo::findOrFail($id);
-        return view('cargo.edit', ['cargo'=>$cargo]);
-    }
+    // public function edit($id)
+    // {
+    //     $cargo = Cargo::findOrFail($id);
+    //     return view('cargo.edit', ['cargo'=>$cargo]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -85,8 +84,7 @@ class CargoController extends Controller
             'NombreCargo' => $request->input('NombreCargo'),
         ]);
 
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo actualizado exitosamente.');
+        return response()->json($cargo, 200);
     }
 
     /**
@@ -101,7 +99,6 @@ class CargoController extends Controller
         $cargo = Cargo::findOrFail($id);
         $cargo->delete();
 
-        // Redireccionamiento
-        return redirect()->route('cargo.index')->with('success', 'Cargo eliminado exitosamente.');
+        return response()->json($cargo, 204);
     }
 }

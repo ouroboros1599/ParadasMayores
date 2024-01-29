@@ -14,6 +14,7 @@ class PM_PlanificacionController extends Controller
     public function index()
     {
         //
+        return view('pm_planificacion.index');
     }
 
     /**

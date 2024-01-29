@@ -18,7 +18,7 @@ class PlanificacionEmpresaController extends Controller
     {
         $planificacionEmpresas = PlanificacionEmpresa::all();
         // return view('planificacionEmpresa.index', compact('planificacionEmpresas'));
-        return $planificacionEmpresas;
+        return response()->json($planificacionEmpresas, 200);
     }
 
     /**
@@ -48,7 +48,7 @@ class PlanificacionEmpresaController extends Controller
             'Empresa_ID_Empresa' => $request->input('Empresa_ID_Empresa'),
         ]);
         // Redireccionamiento
-        return redirect()->route('planificacionEmpresa.index')->with('success', 'Relación Planificacion-Empresa creada exitosamente.');
+        return response()->json($planificacionEmpresa, 201);
     }
 
     /**
@@ -60,7 +60,7 @@ class PlanificacionEmpresaController extends Controller
     public function show($id)
     {
         $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
-        return view('planificacionEmpresa.show', ['planificacionEmpresa'=>$planificacionEmpresa]);
+        return response()->json($planificacionEmpresa, 200);
     }
 
     /**
@@ -69,13 +69,13 @@ class PlanificacionEmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
-        $planificaciones = Planificacion::all();
-        $empresas = Empresa::all();
-        return view('planificacionEmpresa.edit', ['planificacionEmpresa'=>$planificacionEmpresa, 'planificaciones'=>$planificaciones, 'empresas'=>$empresas]);
-    }
+    // public function edit($id)
+    // {
+    //     $planificacionEmpresa = PlanificacionEmpresa::findOrFail($id);
+    //     $planificaciones = Planificacion::all();
+    //     $empresas = Empresa::all();
+    //     return view('planificacionEmpresa.edit', ['planificacionEmpresa'=>$planificacionEmpresa, 'planificaciones'=>$planificaciones, 'empresas'=>$empresas]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -94,7 +94,7 @@ class PlanificacionEmpresaController extends Controller
         ]);
 
         // Redireccionamiento
-        return redirect()->route('planificacionEmpresa.index')->with('success', 'Relación Planificacion-Empresa actualizada exitosamente.');
+        return response()->json($planificacionEmpresa, 200);
     }
 
     /**
@@ -110,6 +110,6 @@ class PlanificacionEmpresaController extends Controller
         $planificacionEmpresa->delete();
 
         // Redireccionamiento
-        return redirect()->route('planificacionEmpresa.index')->with('success', 'Relación Planificacion-Empresa eliminada exitosamente.');
+        return response()->json($planificacionEmpresa, 204);
     }
 }
