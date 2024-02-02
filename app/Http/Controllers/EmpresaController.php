@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Empresa;
 
 class EmpresaController extends Controller
 {
@@ -14,19 +13,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::all();
-        // return view('empresa.index', compact('empresas'));
-        return response()->json($empresas, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('empresa.create');
+        //
     }
 
     /**
@@ -37,19 +24,7 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        $empresa = Empresa::find($request->empresa_id);
-        
-        $empresa->empresas()->create([
-            'NombreEmpresa' => '',
-            'SectorParada' => '',
-        ]);
-
-        Empresa::create([
-            'NombreEmpresa' => $request->input('NombreEmpresa'),
-            'SectorParada' => $request->input('SectorParada'),
-        ]);
-
-        return response()->json($empresa, 201);
+        //
     }
 
     /**
@@ -60,21 +35,8 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        $empresa = Empresa::findOrFail($id);
-        return response()->json($empresa, 200);
+        //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit($id)
-    // {
-    //     $empresa = Empresa::findOrFail($id);
-    //     return view('empresa.edit', ['empresa'=>$empresa]);
-    // }
 
     /**
      * Update the specified resource in storage.
@@ -85,14 +47,7 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $empresa = Empresa::findOrFail($id);
-        $empresa->update([
-            'NombreEmpresa' => $request->input('NombreEmpresa'),
-            'SectorParada' => $request->input('SectorParada'),
-        ]);
-
-        return response()->json($empresa, 200);
+        //
     }
 
     /**
@@ -103,9 +58,6 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        $empresa = Empresa::findOrFail($id);
-        $empresa->delete();
-
-        return response()->json($empresa, 204);
+        //
     }
 }

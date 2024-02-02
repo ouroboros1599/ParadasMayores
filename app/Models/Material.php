@@ -4,20 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class material extends Model
 {
-
     public $timestamps = false;
-
     protected $guarded = [];
 
-    public function responsable()
+    //relación con clase materialActividad
+    public function materialActividad()
     {
-        return $this->belongsTo(Responsable::class);
-    }
-
-    public function actividadesMateriales()
-    {
-        return $this->hasMany(ActividadMaterialTalentoHumano::class);
+        return $this->hasMany(materialActividad::class);
     }
 }

@@ -28,7 +28,6 @@
             </div>
         </div>
 
-
         <div class="flex m-10 space-x-10">
             <div class=" bg-slate-100 rounded-2xl flex-1">
                 <div class="h-96 p-5">
@@ -49,7 +48,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="m-10 flex ">
             <div class="flex-1">

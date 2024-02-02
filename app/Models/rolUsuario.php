@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rol extends Model
+class rolUsuario extends Model
 {
-
     public $timestamps = false;
-
     protected $guarded = [];
 
+    //relación con clase usuario
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->hasMany(usuario::class);
     }
 }
