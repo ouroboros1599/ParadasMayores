@@ -15,15 +15,7 @@ class CreateParadaMayorsTable extends Migration
     {
         Schema::create('parada_mayors', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('activo');
-            $table->string('nombreParada');
-            $table->string('sectorParada');
-            $table->dateTime('fechaInicioPlanificada');
-            $table->dateTime('fechaFinPlanificada');
             $table->timestamps();
-
-            $table->integer('empresa_id');
-            $table->integer('usuario_id');
         });
     }
 

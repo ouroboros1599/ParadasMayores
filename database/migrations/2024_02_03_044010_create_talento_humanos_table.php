@@ -15,12 +15,6 @@ class CreateTalentoHumanosTable extends Migration
     {
         Schema::create('talento_humanos', function (Blueprint $table) {
             $table->id();
-            $table->string('NombreTalento', 50);
-            $table->integer('CantidadTalentoHumanoRequerido');
-            $table->integer('CantidadTalentoHumanoDisponible');
-
-            $table->integer('responsable_id');
-
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTalentoHumanoActividadTable extends Migration
+class CreateMaterialesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTalentoHumanoActividadTable extends Migration
      */
     public function up()
     {
-        Schema::create('talento_humano_actividad', function (Blueprint $table) {
-            $table->id(['talentoHumano_id','actividad_id']);
-            $table->integer('cantidadTalentoHumanoRequerida');
+        Schema::create('materiales', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-
-            $table->integer('rolActividad_id');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateTalentoHumanoActividadTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('talento_humano_actividad');
+        Schema::dropIfExists('materiales');
     }
 }

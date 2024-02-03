@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanificacionEmpresasTable extends Migration
+class CreateRolUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePlanificacionEmpresasTable extends Migration
      */
     public function up()
     {
-        Schema::create('planificacion_empresas', function (Blueprint $table) {
+        Schema::create('rol_usuarios', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('planificacion_id');
-            $table->integer('empresa_id');
-
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreatePlanificacionEmpresasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planificacion_empresas');
+        Schema::dropIfExists('rol_usuarios');
     }
 }
