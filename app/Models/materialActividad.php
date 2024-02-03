@@ -4,19 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class materialActividad extends Model
+class MaterialActividad extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
 
     //relación con clase actividad
-    public function actividad()
+    public function Actividad()
     {
-        return $this->belongsTo(actividad::class);
+        return $this->belongsTo(Actividad::class);
     }
     //relación con clase material
-    public function material()
+    public function Material()
     {
-        return $this->belongsTo(material::class);
+        return $this->belongsTo(Material::class);
     }
 }

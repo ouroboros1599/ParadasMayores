@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RolActividad;
 
 class RolActividadController extends Controller
 {
@@ -14,6 +15,8 @@ class RolActividadController extends Controller
     public function index()
     {
         //
+        $rolesActividades = RolActividad::all();
+        return response()->json($rolesActividades, 200);
     }
 
     /**
@@ -25,6 +28,8 @@ class RolActividadController extends Controller
     public function store(Request $request)
     {
         //
+        $rolesActividades = RolActividad::create($request->all());
+        return response()->json($rolesActividades, 201);
     }
 
     /**
@@ -36,6 +41,8 @@ class RolActividadController extends Controller
     public function show($id)
     {
         //
+        $rolesActividades = RolActividad::findOrFail($id);
+        return response()->json($rolesActividades, 200);
     }
 
     /**
@@ -48,6 +55,9 @@ class RolActividadController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $rolesActividades = RolActividad::findOrFail($id);
+        $rolesActividades->update($request->all());
+        return response()->json($$rolesActividades, 200);
     }
 
     /**
@@ -59,5 +69,8 @@ class RolActividadController extends Controller
     public function destroy($id)
     {
         //
+        $rolesActividades = RolActividad::findOrFail($id);
+        $rolesActividades->delete();
+        return response()->json(null, 204);
     }
 }

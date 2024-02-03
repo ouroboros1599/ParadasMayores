@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MaterialActividad;
 
 class MaterialActividadController extends Controller
 {
@@ -14,6 +15,8 @@ class MaterialActividadController extends Controller
     public function index()
     {
         //
+        $materialActividad = MaterialActividad::all();
+        return response()->json($materialActividad, 200);
     }
 
     /**
@@ -25,6 +28,8 @@ class MaterialActividadController extends Controller
     public function store(Request $request)
     {
         //
+        $materialActividad = MaterialActividad::create($request->all());
+        return response()->json($materialActividad, 201);
     }
 
     /**
@@ -36,6 +41,8 @@ class MaterialActividadController extends Controller
     public function show($id)
     {
         //
+        $materialActividad = MaterialActividad::findOrFail($id);
+        return response()->json($materialActividad, 200);
     }
 
     /**
@@ -48,6 +55,9 @@ class MaterialActividadController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $materialActividad = MaterialActividad::findOrFail($id);
+        $materialActividad->update($request->all());
+        return response()->json($materialActividad, 200);
     }
 
     /**
@@ -59,5 +69,8 @@ class MaterialActividadController extends Controller
     public function destroy($id)
     {
         //
+        $materialActividad = MaterialActividad::findOrFail($id);
+        $materialActividad->delete();
+        return response()->json(null, 204);
     }
 }

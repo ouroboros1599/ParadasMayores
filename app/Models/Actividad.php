@@ -4,24 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class actividad extends Model
+class Actividad extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
 
     //relación con clase paradaMayor
-    public function paradaMayor()
+    public function ParadaMayor()
     {
-        return $this->belongsTo(paradaMayor::class);
+        return $this->belongsTo(ParadaMayor::class);
     }
     //relación con clase materialActividad
-    public function materialActividad()
+    public function MaterialActividad()
     {
-        return $this->hasMany(materialActividad::class);
+        return $this->hasMany(MaterialActividad::class);
     }
     //relación con clase talentoHumanoActividad
-    public function talentoHumanoActividad()
+    public function TalentoHumanoActividad()
     {
-        return $this->hasMany(talentoHumanoActividad::class);
+        return $this->hasMany(TalentoHumanoActividad::class);
     }
 }

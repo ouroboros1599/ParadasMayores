@@ -4,24 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class talentoHumanoActividad extends Model
+class TalentoHumanoActividad extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
 
     //relación con clase actividad
-    public function actividad()
+    public function Actividad()
     {
-        return $this->belongsTo(actividad::class);
+        return $this->belongsTo(Actividad::class);
     }
     //relación con clase rolActividad
-    public function rolActividad()
+    public function RolActividad()
     {
-        return $this->belongsTo(rolActividad::class);
+        return $this->belongsTo(RolActividad::class);
     }
     //relación con clase talentoHumano
-    public function talentoHumano()
+    public function TalentoHumano()
     {
-        return $this->belongsTo(talentoHumano::class);
+        return $this->belongsTo(TalentoHumano::class);
     }
 }

@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class empresa extends Model
+class Empresa extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
 
     //relacion con clase paradaMayor
-    public function paradaMayor()
+    public function ParadaMayor()
     {
-        return $this->hasMany(paradaMayor::class);
+        return $this->hasMany(ParadaMayor::class);
     }
 }

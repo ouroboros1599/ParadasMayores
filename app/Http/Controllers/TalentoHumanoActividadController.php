@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TalentoHumanoActividad;
 
 class TalentoHumanoActividadController extends Controller
 {
@@ -14,6 +15,8 @@ class TalentoHumanoActividadController extends Controller
     public function index()
     {
         //
+        $talentosHumanosActividades = TalentoHumanoActividad::all();
+        return response()->json($talentosHumanosActividades, 200);
     }
 
     /**
@@ -25,6 +28,8 @@ class TalentoHumanoActividadController extends Controller
     public function store(Request $request)
     {
         //
+        $talentosHumanosActividades = TalentoHumanoActividad::create($request->all());
+        return response()->json($talentosHumanosActividades, 201);
     }
 
     /**
@@ -36,6 +41,8 @@ class TalentoHumanoActividadController extends Controller
     public function show($id)
     {
         //
+        $talentosHumanosActividades = TalentoHumanoActividad::findOrFail($id);
+        return response()->json($talentosHumanosActividades);
     }
 
     /**
@@ -48,6 +55,9 @@ class TalentoHumanoActividadController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $talentosHumanosActividades = TalentoHumanoActividad::findOrFail($id);
+        $talentosHumanosActividades->update($request->all());
+        return response()->json($talentosHumanosActividades, 200);
     }
 
     /**
@@ -59,5 +69,9 @@ class TalentoHumanoActividadController extends Controller
     public function destroy($id)
     {
         //
+        $talentosHumanosActividades = TalentoHumanoActividad::findOrFail($id);
+        $talentosHumanosActividades->delete();
+        return response()->json(null, 204);
+
     }
 }
