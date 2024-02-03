@@ -14,8 +14,11 @@ class CreateTalentoHumanoActividadTable extends Migration
     public function up()
     {
         Schema::create('talento_humano_actividad', function (Blueprint $table) {
-            $table->id();
+            $table->id(['talentoHumano_id','actividad_id']);
+            $table->integer('talentoHumanoRequerido');
             $table->timestamps();
+
+            $table->integer('rolActividad_id');
         });
     }
 

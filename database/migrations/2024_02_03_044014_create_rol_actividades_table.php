@@ -15,6 +15,7 @@ class CreateRolActividadesTable extends Migration
     {
         Schema::create('rol_actividades', function (Blueprint $table) {
             $table->id();
+            $table->string('nombreCargo');
             $table->timestamps();
         });
     }

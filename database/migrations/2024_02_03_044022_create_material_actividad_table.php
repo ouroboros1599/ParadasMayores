@@ -14,7 +14,8 @@ class CreateMaterialActividadTable extends Migration
     public function up()
     {
         Schema::create('material_actividad', function (Blueprint $table) {
-            $table->id();
+            $table->id(['actividad_id','material_id']);
+            $table->integer('materialRequerido');
             $table->timestamps();
         });
     }
