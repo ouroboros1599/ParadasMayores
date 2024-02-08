@@ -20,8 +20,8 @@ class Actividad extends Model
         return $this->hasMany(MaterialActividad::class);
     }
     //relación con clase talentoHumanoActividad
-    public function TalentoHumanoActividad()
+    public function talentoHumanos()
     {
-        return $this->hasMany(TalentoHumanoActividad::class);
+        return $this->belongsToMany(TalentoHumano::class);
     }
 }

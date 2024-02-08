@@ -13,17 +13,17 @@ class CreateActividadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividades', function (Blueprint $table) {
+        Schema::create('actividads', function (Blueprint $table) {
             $table->id();
             $table->string('nombreActividad');
             $table->string('ordenTrabajo');
-            $table->tinyInteger('critica');
-            $table->string('estadoActividad');
-            $table->dateTime('inicioReal');
-            $table->dateTime('finReal');
+            $table->tinyInteger('critica')->nullable();
+            $table->string('estadoActividad')->nullable();
+            $table->dateTime('inicioReal')->nullable();
+            $table->dateTime('finReal')->nullable();
             $table->timestamps();
 
-            $table->integer('paradaMayor_id');
+            $table->integer('paradaMayor_id')->nullable();
         });
     }
 
@@ -34,6 +34,6 @@ class CreateActividadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades');
+        Schema::dropIfExists('actividads');
     }
 }

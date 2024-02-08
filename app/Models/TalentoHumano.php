@@ -10,8 +10,8 @@ class TalentoHumano extends Model
     protected $guarded = [];
 
     //relación con clase talentoHumanoActividad
-    public function TalentoHumanoActividad()
+    public function actividads()
     {
-        return $this->hasMany(TalentoHumanoActividad::class);
+        return $this->belongsToMany(Actividad::class);
     }
 }
