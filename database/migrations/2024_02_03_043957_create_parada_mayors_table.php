@@ -15,15 +15,15 @@ class CreateParadaMayorsTable extends Migration
     {
         Schema::create('parada_mayors', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('activo');
-            $table->string('nombreParada');
-            $table->string('sectorParada');
-            $table->dateTime('inicioPlanificado');
-            $table->dateTime('finPlanificado');
+            $table->tinyInteger('activo')->nullable();
+            $table->string('nombreParada')->nullable();
+            $table->string('sectorParada')->nullable();
+            $table->dateTime('inicioPlanificado')->nullable();
+            $table->dateTime('finPlanificado')->nullable();
             $table->timestamps();
 
-            $table->integer('empresa_id');
-            $table->integer('usuario_id');
+            $table->integer('empresa_id')->nullable();
+            $table->integer('usuario_id')->nullable();
         });
     }
 

@@ -15,8 +15,8 @@ class CreateActividadTalentoHumanoTable extends Migration
     {
         Schema::dropIfExists('talento_humano_actividad');
         Schema::create('actividad_talento_humano', function (Blueprint $table) {
-            $table->integer('actividad_id');
-            $table->integer('talento_humano_id');
+            $table->integer('actividad_id')->nullable();
+            $table->integer('talento_humano_id')->nullable();
         });
     }
 

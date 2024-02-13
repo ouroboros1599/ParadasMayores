@@ -15,12 +15,9 @@ class CreateActividadesTable extends Migration
     {
         Schema::create('actividads', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreActividad');
-            $table->string('ordenTrabajo');
+            $table->string('nombreActividad')->nullable();
             $table->tinyInteger('critica')->nullable();
             $table->string('estadoActividad')->nullable();
-            $table->dateTime('inicioReal')->nullable();
-            $table->dateTime('finReal')->nullable();
             $table->timestamps();
 
             $table->integer('paradaMayor_id')->nullable();

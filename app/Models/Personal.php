@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Personal extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
 
-    //relación con clase tarea
     public function Tareas()
     {
-        return $this->belongsToMany(Tarea::class);
+        return $this->belongToMany(Tarea::class);
     }
 }

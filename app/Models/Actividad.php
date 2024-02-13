@@ -14,14 +14,9 @@ class Actividad extends Model
     {
         return $this->belongsTo(ParadaMayor::class);
     }
-    //relación con clase materialActividad
-    public function MaterialActividad()
+    //realción con clase tarea
+    public function Tareas()
     {
-        return $this->hasMany(MaterialActividad::class);
-    }
-    //relación con clase talentoHumanoActividad
-    public function talentoHumanos()
-    {
-        return $this->belongsToMany(TalentoHumano::class);
+        return $this->belongsToMany(Tarea::class);
     }
 }
