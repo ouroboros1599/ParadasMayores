@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TalentoHumano;
+use App\Models\Tarea;
 
-class TalentoHumanoController extends Controller
+class TareaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TalentoHumanoController extends Controller
     public function index()
     {
         //
-        $talentosHumanos = TalentoHumano::all();
-        return response()->json($talentosHumanos, 200);
+        $tareas = Tarea::all();
+        return response()->json($tareas, 200);
     }
 
     /**
@@ -28,8 +28,8 @@ class TalentoHumanoController extends Controller
     public function store(Request $request)
     {
         //
-        $talentosHumanos = TalentoHumano::create($request->all());
-        return response()->json($talentosHumanos, 201);
+        $tareas = Tarea::create($request->all());
+        return response()->json($tareas, 201);
     }
 
     /**
@@ -41,8 +41,8 @@ class TalentoHumanoController extends Controller
     public function show($id)
     {
         //
-        $talentosHumanos = TalentoHumano::findOrfail($id);
-        return response()->json($talentosHumanos, 200);
+        $tareas = Tarea::findOrFail($id);
+        return response()->json($tareas, 200);
     }
 
     /**
@@ -55,9 +55,9 @@ class TalentoHumanoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $talentosHumanos = TalentoHumano::findOrfail($id);
-        $talentosHumanos->update($request->all());
-        return response()->json($talentosHumanos, 200);
+        $tareas = Tarea::findOrFail($id);
+        $tareas->update($request->all());
+        return response()->json($tareas, 200);
     }
 
     /**
@@ -69,8 +69,8 @@ class TalentoHumanoController extends Controller
     public function destroy($id)
     {
         //
-        $talentosHumanos = TalentoHumano::findOrfail($id);
-        $talentosHumanos->delete();
-        return response()->json($talentosHumanos, 204);
+        $tareas = Tarea::findOrFail($id);
+        $tareas->delete();
+        return response()->json(null, 204);
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RolActividad;
+use App\Models\Personal;
 
-class RolActividadController extends Controller
+class PersonalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class RolActividadController extends Controller
     public function index()
     {
         //
-        $rolesActividades = RolActividad::all();
-        return response()->json($rolesActividades, 200);
+        $personals = Personal::all();
+        return response()->json($personals, 200);
     }
 
     /**
@@ -28,8 +28,8 @@ class RolActividadController extends Controller
     public function store(Request $request)
     {
         //
-        $rolesActividades = RolActividad::create($request->all());
-        return response()->json($rolesActividades, 201);
+        $personals = Personal::create($request->all());
+        return response()->json($personals, 201);
     }
 
     /**
@@ -41,8 +41,8 @@ class RolActividadController extends Controller
     public function show($id)
     {
         //
-        $rolesActividades = RolActividad::findOrFail($id);
-        return response()->json($rolesActividades, 200);
+        $personals = Personal::findOrFail($id);
+        return response()->json($personals, 200);
     }
 
     /**
@@ -55,9 +55,9 @@ class RolActividadController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rolesActividades = RolActividad::findOrFail($id);
-        $rolesActividades->update($request->all());
-        return response()->json($$rolesActividades, 200);
+        $personals = Personal::findOrFail($id);
+        $personals->update($request->all());
+        return response()->json($personals, 200);
     }
 
     /**
@@ -69,8 +69,8 @@ class RolActividadController extends Controller
     public function destroy($id)
     {
         //
-        $rolesActividades = RolActividad::findOrFail($id);
-        $rolesActividades->delete();
+        $personals = Personal::findOrFail($id);
+        $personals->delete();
         return response()->json(null, 204);
     }
 }
