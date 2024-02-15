@@ -1,36 +1,15 @@
 <template>
-    <div class="w-full h-full ">
-        <div class="m-10 flex space-x-12 justify-center items-center">
 
-            <div class="flex-1">
-                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
-                    <div class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                        style="width: 80%">
-                        % OT Liberadas
-                    </div>
-                </div>
+    <div class="w-full h-full">
+        <div class="m-10 flex space-x-10">
+            <div class="flex-1 text-right space-x-10">
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">GUARDAR</button>
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">EXPORTAR</button>
+                <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">HALLAZGOS</button>
             </div>
-            <div class="flex-1">
-                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
-                    <div class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                        style="width: 80%">
-                        % Materiales Disponibles
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div class="flex-1">
-                    <ul class="m-10 space-x-10">
-                            <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Guardar</button>
-                            <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Importar</button>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="flex-1">
+            <div class="flex-1 ">
                 <form>
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Buscar</label>
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +20,7 @@
                         </div>
                         <input type="search" id="default-search"
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                            placeholder="Buscar" required>
+                            placeholder="Buscar">
                         <button type="submit"
                             class="text-white absolute right-2.5 bottom-2.5 bg-blue-800 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
                     </div>
@@ -49,7 +28,17 @@
             </div>
         </div>
 
-        <div class="m-10 flex">
+        <div class="flex m-10 space-x-10">
+            <div class=" bg-slate-100 rounded-2xl flex-1">
+                <PieChart_Ejecucion></PieChart_Ejecucion>
+            </div>
+
+            <div class="bg-slate-100 rounded-2xl flex-1">
+                <LineChart_Ejecucion></LineChart_Ejecucion>
+            </div>
+        </div>
+
+        <div class="m-10 flex ">
             <div class="flex-1">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
@@ -59,25 +48,13 @@
                                     Actividades
                                 </th>
                                 <th scope="col" class="px-3 py-3">
-                                    Campo de Revisión
-                                </th>
-                                <th scope="col" class="px-3 py-3">
-                                    Orden Trabajo
-                                </th>
-                                <th scope="col" class="px-3 py-3">
                                     Actividad Critica
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Encargado
                                 </th>
                                 <th scope="col" class="px-3 py-3">
-                                    Materiales
-                                </th>
-                                <th scope="col" class="px-3 py-3">
-                                    Ubicacion de Material
-                                </th>
-                                <th scope="col" class="px-3 py-3">
-                                    Materiales Disponibles
+                                    Estado Actividad
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Inicio Programado
@@ -85,6 +62,21 @@
                                 <th scope="col" class="px-3 py-3">
                                     Fin Programado
                                 </th>
+                                <th scope="col" class="px-3 py-3">
+                                    Inicio Real
+                                </th>
+                                <th scope="col" class="px-3 py-3">
+                                    Fin Real
+                                </th>
+                                <th scope="col" class="px-3 py-3">
+                                    % Avance Planificado
+                                </th> 
+                                <th scope="col" class="px-3 py-3">
+                                    % Avance Real
+                                </th>
+                                <th scope="col" class="px-3 py-3">
+                                    Comentario
+                                </th>                               
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -92,167 +84,188 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 1
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                             <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 2
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                             <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 3
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                             <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 4
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                             <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 5
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                             <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 6
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400 ">
+                            <tr class="bg-[#2f55e1] border-b border-blue-400">
                                 <th scope="row"
                                     class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 7
                                 </th>
-                                <td class="px-3 py-4">CR-1
-                                </td>
-                                <td class="px-3 py-4">OT-1
-                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
-                                <td class="px-3 py-4">1 Foco
-                                </td>
-                                <td class="px-3 py-4">Bodega
-                                </td>
-                                <td class="px-3 py-4">1
+                                <td class="px-3 py-4">Iniciada
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:0
+                                <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </template>

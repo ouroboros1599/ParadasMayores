@@ -6,11 +6,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Promise\Utils as PromiseUtils;
 use Illuminate\Http\Request;
 //importar otras clases a las cuales se les va a hacer peticiones GET - POST
-use App\Models\Empresa;
 use App\Models\Actividad;
-use App\Models\Responsable;
+use App\Models\Tarea;
 use App\Models\Material;
-use App\Models\TalentoHumano;
+use App\Models\Personal;
+
 
 class PM_PlanificacionController extends Controller
 {
@@ -62,27 +62,27 @@ class PM_PlanificacionController extends Controller
     public function create()
     {
         //
-        $url  = 'http://localhost:8000/web/';
-        $axios = new Client(['uri' =>$url]);
+        // $url  = 'http://localhost:8000/web/';
+        // $axios = new Client(['uri' =>$url]);
 
-        $promises = [
-            'planificaciones'=>$axios->getAsync('planificaciones'),
-            'responsable'=>$axios->getAsync('responsables'),
-            'materiales'=>$axios->getAsync('materiales'),
-            'talentohumano'=>$axios->getAsync('talentohumano'),
-        ];
+        // $promises = [
+        //     'planificaciones'=>$axios->getAsync('planificaciones'),
+        //     'responsable'=>$axios->getAsync('responsables'),
+        //     'materiales'=>$axios->getAsync('materiales'),
+        //     'talentohumano'=>$axios->getAsync('talentohumano'),
+        // ];
 
-        $results = PromiseUtils::all($promises)->wait();
+        // $results = PromiseUtils::all($promises)->wait();
 
-        $planificacionesData = $results['planificaciones']->getBody()->getContents();
-        $responsablesData = $results['responsables']->getBody()->getContents();
-        $materialesData = $results['materiales']->getBody()->getContents();
-        $talentohumanoData = $results['talentohumano']->getBody()->getContents();
+        // $planificacionesData = $results['planificaciones']->getBody()->getContents();
+        // $responsablesData = $results['responsables']->getBody()->getContents();
+        // $materialesData = $results['materiales']->getBody()->getContents();
+        // $talentohumanoData = $results['talentohumano']->getBody()->getContents();
 
-        return view('pm_planificacion.create', compact('planificacionesData',
-                                                        'responsablesData',
-                                                        'materialesData',
-                                                        'talentohumanoData',)); 
+        // return view('pm_planificacion.create', compact('planificacionesData',
+        //                                                 'responsablesData',
+        //                                                 'materialesData',
+        //                                                 'talentohumanoData',)); 
     }
 
     /**

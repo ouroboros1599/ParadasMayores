@@ -1,7 +1,7 @@
 <template>
     <div class="h-full w-full">
         <div class="m-10 flex space-x-10 "> 
-            <div class=" bg-slate-100 rounded-2xl w-1/2 h-96 flex items-center justify-center mx-auto ">
+            <div class=" bg-slate-100 rounded-2xl w-1/2 h-fit flex items-center justify-center mx-auto ">
                 <PieChart_Listado></PieChart_Listado>
             </div>
         </div>
@@ -214,7 +214,7 @@
                         </div>
                         <input type="search" id="default-search"
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                            placeholder="Buscar" required>
+                            placeholder="Buscar">
                         <button type="submit"
                             class="text-white absolute right-2.5 bottom-2.5 bg-blue-800 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
                     </div>
