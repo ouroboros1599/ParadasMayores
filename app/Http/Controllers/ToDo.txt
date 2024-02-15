@@ -1,4 +1,0 @@
-
-Revisar la documentación para poder manejar los Controllers de las clases pivotes.
-debido a que no existen sus models, ya que segun ultima reunion con Matias estos no son necesarios y se 
-pueden relacionar directamente las clases con "belongsToMany" 

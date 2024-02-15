@@ -2,10 +2,7 @@
     <div class="h-full w-full">
         <div class="m-10 flex space-x-10 "> 
             <div class=" bg-slate-100 rounded-2xl w-1/2 h-96 flex items-center justify-center mx-auto ">
-                <canvas id="listPieChart"></canvas> 
-            </div>
-            <div>
-                <script src="{{ asset('js/charts/list_pieChart.js') }}"></script>
+                <PieChart_Listado></PieChart_Listado>
             </div>
         </div>
 

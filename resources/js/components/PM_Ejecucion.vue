@@ -30,22 +30,11 @@
 
         <div class="flex m-10 space-x-10">
             <div class=" bg-slate-100 rounded-2xl flex-1">
-                <div class="h-96 p-5">
-                    <canvas id="myPieChart"></canvas>
-                </div>
-                <div>
-                    <script src="{{ asset('js/charts/pieChart.js') }}"></script> 
-                </div>
+                <PieChart_Ejecucion></PieChart_Ejecucion>
             </div>
-            
 
             <div class="bg-slate-100 rounded-2xl flex-1">
-                <div class="w-full h-96 flex p-5">
-                    <canvas id="myLineChart"></canvas>
-                </div>
-                <div>
-                    <script src="{{ asset('js/charts/linearChart.js')}}"></script>
-                </div>
+                <LineChart_Ejecucion></LineChart_Ejecucion>
             </div>
         </div>
 
