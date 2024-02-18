@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import { DefineComponent, defineComponent } from 'vue';
+    import { defineComponent } from 'vue';
     import { PieChart } from 'vue-chart-3';
     import { Chart, registerables } from 'chart.js';
 
@@ -15,7 +15,7 @@
         setup()
         {
             const testData = {
-                labels: ['INICIADA', 'NO INICIADA', 'TERMINADA', 'CANCELADA', 'ATRASADA'],
+                labels: ['EN EJECUCIÓN', 'TERMINADA', 'CANCELADA', 'REPROGRAMADA', 'NO INICIADA'],
                 datasets:[{
                     data: [25, 30, 20, 15, 10 ],
                     backgroundColor: ['#1A2151', '#233185', '#233185', '#263ECF', '#2E51E2'],

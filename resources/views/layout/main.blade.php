@@ -18,17 +18,17 @@
     <header>
         <div class="header">
             @yield('header')
-            <div class="flex w-full h-28 bg-[#0a2140]">
+            <div class="flex w-full h-28 bg-[#0A2140]">
                 <div class="flex-initial">
-                    <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="">
+                    <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="Logo-SMEC">
                 </div>
                 <div class="flex-1 self-center">
-                    <h1 class="text-3xl font-bold text-center text-white">@yield('encabezado')</h1>
+                    <h1 class="text-3xl font-bold text-center text-gray-300">@yield('encabezado')</h1>
                 </div>
                 
                 <div class="flex mr-10">
-                    <button class="flex items-center text-x1 font-medium text-white hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <div>CASTILLO MORALES, JESÚS CRISTÓBAL ANTONIO</div>
+                    <button class="flex items-center text-x1 font-medium text-gray-300 hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <div>CASTILLO MORALES, JESÚS CRISTÓBAL</div>
                         <div class="ml-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -36,27 +36,26 @@
                         </div>
                     </button>
                 </div>
-                          
             </div>
         </div>
     </header>
     
     <div>
         @yield('nav')
-        <ul class="w-full h-16 bg-[#0a2140] flex space-x-10 items-center text-center justify-center">
+        <ul class="w-full h-16 bg-[#0A2140] flex space-x-10 items-center text-center justify-center ">
             <li>
-                <a href="{{route('pm_listado.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                    LISTADO DE PARADAS MAYORES
+                <a href="{{route('pm_listado.index')}}" class="text-gray-300 font-bold hover:text-orange-700 hover:textborder-orange-300 focus:outline-none focus:text-orange-700 focus:border-organge-300 transition duration-350 ease-in-out ">
+                    Listado 
                 </a>
             </li>
             <li>
-                <a href="{{route('pm_planificacion.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                    PLANIFICACIÓN
+                <a href="{{route('pm_planificacion.index')}}" class=" text-gray-300 font-bold hover:text-orange-700 hover:textborder-orange-300 focus:outline-none focus:text-orange-700 focus:border-organge-300 transition duration-350 ease-in-out">
+                    Planificación
                 </a>
             </li>
             <li>
-                <a href="{{route('pm_ejecucion.index')}}" class=" text-white font-bold hover:text-gray-700 hover:textborder-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                    EJECUCIÓN
+                <a href="{{route('pm_ejecucion.index')}}" class=" text-gray-300 font-bold hover:text-orange-700 hover:textborder-orange-300 focus:outline-none focus:text-orange-700 focus:border-organge-300 transition duration-350 ease-in-out">
+                    Ejecución
                 </a>
             </li>
         </ul>
@@ -67,7 +66,7 @@
     </div>
         
     <footer>
-        <div class="w-full h-24 text-center p-10 text-sm bg-slate-900 text-white ">
+        <div class="w-full h-24 text-center p-10 text-sm bg-[#0A2140] text-gray-300 ">
             @yield('footer')
             <p>Paradas Mayores &copy; 2024 - {{date('Y')}} </p>
         </div>

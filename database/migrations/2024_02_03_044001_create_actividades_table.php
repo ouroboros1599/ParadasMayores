@@ -18,6 +18,7 @@ class CreateActividadesTable extends Migration
             $table->string('nombreActividad')->nullable();
             $table->tinyInteger('critica')->nullable();
             $table->string('estadoActividad')->nullable();
+            $table->string('comentario')->nullable();
             $table->timestamps();
 
             $table->integer('paradaMayor_id')->nullable();

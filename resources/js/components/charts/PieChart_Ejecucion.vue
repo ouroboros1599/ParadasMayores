@@ -16,7 +16,7 @@
         {
             const testData =
             {
-                labels: ['INICIADA', 'NO INICIADA', 'TERMINADA', 'CANCELADA', 'ATRASADA'],
+                labels: ['EN EJECUCIÓN', 'TERMINADA', 'CANCELADA', 'REPROGRAMADA', 'NO INICIADA'],
                 datasets:[
                     {
                         data: [25, 30, 20, 15, 10 ],

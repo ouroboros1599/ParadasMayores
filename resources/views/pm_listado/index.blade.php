@@ -2,7 +2,7 @@
 @section('tituloPagina', 'PM | Listado')
 
 @section('contenido')
-    @section('encabezado', 'LISTADO DE PARADAS MAYORES')
+    @section('encabezado', 'Paradas Mayores')
     
     <listado_component></listado_component>
 
