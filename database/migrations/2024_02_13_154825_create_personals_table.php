@@ -16,6 +16,7 @@ class CreatePersonalsTable extends Migration
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
             $table->string('nombrePersonal')->nullable();
+            $table->string('servicioContratado')->nullable();
             $table->timestamps();
         });
     }
