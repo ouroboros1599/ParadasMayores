@@ -3,11 +3,13 @@ import axios from "axios";
 
 
 import ExampleComponent from "./components/ExampleComponent.vue";
+
 //----------------------------------------------------------------------------------\\
 /*CHARTS*/
 import PieChartEjecucion from "./components/charts/PieChart_Ejecucion.vue";
 import LineChartEjecucion from "./components/charts/LineChart_Ejecucion.vue";
 import PieChartListado from "./components/charts/PieChart_Listado.vue";
+import BarChartPlanificacion from "./components/charts/BarChart_Planificacion.vue";
 
 //----------------------------------------------------------------------------------\\
 /*INDEXES*/ 
@@ -31,6 +33,7 @@ app.component("example-componente", ExampleComponent);
 app.component("PieChart_Ejecucion", PieChartEjecucion);
 app.component("LineChart_Ejecucion", LineChartEjecucion);
 app.component("PieChart_Listado", PieChartListado);
+app.component("BarChart_Planificacion", BarChartPlanificacion);
 
 //----------------------------------------------------------------------------------\\
 /*INDEXES*/

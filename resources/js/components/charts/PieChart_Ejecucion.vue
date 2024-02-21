@@ -20,8 +20,8 @@
                 datasets:[
                     {
                         data: [25, 30, 20, 15, 10 ],
-                        backgroundColor: ['#1A2151', '#233185', '#233185', '#263ECF', '#2E51E2'],
-                        hoverBackgroundColor: ['#1A2151', '#233185', '#233185', '#263ECF', '#2E51E2'],
+                        backgroundColor: ['#0A2140FF', '#0A2140CC', '#0A214099', '#0A214066', '#0A214033'],
+                        hoverBackgroundColor: ['#F57C00FF', '#F57C00CC', '#F57C0099', '#F57C0066', '#F57C0033'],
                     },
                 ],
             };

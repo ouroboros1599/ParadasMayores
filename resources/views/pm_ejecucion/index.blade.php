@@ -2,7 +2,7 @@
 @section('tituloPagina', 'PM | Ejecución')
 
 @section('contenido')
-    @section('encabezado', 'EJECUCIÓN DE PARADAS MAYORES')
+    @section('encabezado', 'Paradas Mayores')
     
     <ejecucion_component></ejecucion_component>
 

@@ -22,8 +22,8 @@
             <div>
                 <div class="flex-1">
                     <ul class="m-10 space-x-10">
-                            <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Guardar</button>
-                            <button class="bg-blue-800 hover:bg-blue-600 rounded-2xl p-3 text-white font-bold">Importar</button>
+                            <button class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold">Guardar</button>
+                            <button class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold">Importar</button>
                     </ul>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                             class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
                             placeholder="Buscar">
                         <button type="submit"
-                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-800 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
+                            class="text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
                     </div>
                 </form>
             </div>
@@ -52,8 +52,8 @@
         <div class="m-10 flex">
             <div class="flex-1">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
-                        <thead class="text-xs text-white uppercase bg-[#233385] dark:text-white text-center">
+                    <table class="w-full text-sm text-left rtl:text-right text-blue-100 ">
+                        <thead class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white">
                             <tr>
                                 <th scope="col" class="px-3 py-3">
                                     Actividades
@@ -87,10 +87,10 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                        <tbody class="text-center text-black">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 1
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 1
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -111,9 +111,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 2
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 2
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -134,9 +134,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 3
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 3
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -157,9 +157,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 4
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 4
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -180,9 +180,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 5
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 5
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -203,9 +203,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 6
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 6
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -226,9 +226,9 @@
                                 <td class="px-3 py-4">10/02/2024 10:0
                                 </td>
                             </tr>
-                            <tr class="bg-[#2f55e1] border-b border-blue-400 ">
+                            <tr class="text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">Actividad 7
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 7
                                 </th>
                                 <td class="px-3 py-4">CR-1
                                 </td>
@@ -258,5 +258,7 @@
 </template>
 
 <script>
-    export default{};
+import BarChart_Planificacion from '../../charts/BarChart_Planificacion.vue';
+
+    export default{ components: { BarChart_Planificacion } };
 </script>

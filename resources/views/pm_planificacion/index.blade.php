@@ -3,7 +3,7 @@
 @section('tituloPagina', 'PM | Planificación')
 
 @section('contenido')
-    @section('encabezado', 'PLANIFICACIÓN DE PARADAS MAYORES')    
+    @section('encabezado', 'Paradas Mayores')    
         
     <planificacion_component></planificacion_component>
 @endsection

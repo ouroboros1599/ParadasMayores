@@ -20,7 +20,9 @@
             @yield('header')
             <div class="flex w-full h-28 bg-[#0A2140]">
                 <div class="flex-initial">
-                    <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="Logo-SMEC">
+                    <a href="{{route('pm_listado.index')}}">
+                        <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="Logo-SMEC">
+                    </a>
                 </div>
                 <div class="flex-1 self-center">
                     <h1 class="text-3xl font-bold text-center text-gray-300">@yield('encabezado')</h1>
@@ -44,7 +46,7 @@
         @yield('nav')
         <ul class="w-full h-16 bg-[#0A2140] flex space-x-10 items-center text-center justify-center ">
             <li>
-                <a href="{{route('pm_listado.index')}}" class="text-gray-300 font-bold hover:text-orange-700 hover:textborder-orange-300 focus:outline-none focus:text-orange-700 focus:border-organge-300 transition duration-350 ease-in-out ">
+                <a href="{{route('pm_listado.index')}}" class="text-gray-300 font-bold hover:text-orange-700 hover:textborder-orange-300 focus:outline-none focus:text-orange-700 focus:border-organge-300 transition duration-350 ease-in-out">
                     Listado 
                 </a>
             </li>
