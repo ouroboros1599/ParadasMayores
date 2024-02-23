@@ -3,6 +3,7 @@ import axios from "axios";
 
 
 import ExampleComponent from "./components/ExampleComponent.vue";
+import ComentarioComponent from "./components/Comentario.vue";
 
 //----------------------------------------------------------------------------------\\
 /*CHARTS*/
@@ -27,7 +28,7 @@ const app = createApp({});
 //----------------------------------------------------------------------------------\\
 /*TESTING*/
 app.component("example-componente", ExampleComponent);
-
+app.component("Comentario_Ejecucion", ComentarioComponent);
 //----------------------------------------------------------------------------------\\
 /*CHARTS*/
 app.component("PieChart_Ejecucion", PieChartEjecucion);

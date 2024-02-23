@@ -52,10 +52,16 @@
                                     Actividades
                                 </th>
                                 <th scope="col" class="px-3 py-3">
+                                    Tareas
+                                </th>
+                                <th scope="col" class="px-3 py-3">
                                     Actividad Critica
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Encargado
+                                </th>
+                                <th scope="col" class="px-3 py-3">
+                                    Equipo
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Estado Actividad
@@ -88,9 +94,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 1
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -106,7 +119,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -114,9 +129,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 2
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -132,7 +154,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -140,9 +164,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 3
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -158,7 +189,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -166,9 +199,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 4
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -184,7 +224,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -192,9 +234,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 5
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -210,7 +259,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -218,9 +269,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 6
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -236,7 +294,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>
@@ -244,9 +304,16 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap">Actividad 7
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">-
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">Chancadora
                                 </td>
                                 <td class="px-3 py-4">Iniciada
                                 </td>
@@ -262,7 +329,9 @@
                                 </td>
                                 <td class="px-3 py-4">-
                                 </td>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">
+                                    <!-- <button class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold">Añadir comentario</button> -->
+                                    <Comentario_Ejecucion></Comentario_Ejecucion>
                                 </td>
                                 
                             </tr>

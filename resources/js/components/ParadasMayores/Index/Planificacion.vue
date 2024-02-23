@@ -18,6 +18,14 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-1">
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
+                    <div class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
+                        style="width: 80%">
+                        % Servicios Disponibles
+                    </div>
+                </div>
+            </div>
 
             <div>
                 <div class="flex-1">
@@ -59,6 +67,9 @@
                                     Actividades
                                 </th>
                                 <th scope="col" class="px-3 py-3">
+                                    Tareas
+                                </th>
+                                <th scope="col" class="px-3 py-3">
                                     Campo de Revisión
                                 </th>
                                 <th scope="col" class="px-3 py-3">
@@ -66,6 +77,9 @@
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Actividad Critica
+                                </th>
+                                <th scope="col" class="px-3 py-3">
+                                    Servicio Contratado
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Encargado
@@ -92,11 +106,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 1
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -115,11 +136,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 2
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -138,11 +166,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 3
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -161,11 +196,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 4
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -184,11 +226,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 5
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -207,11 +256,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 6
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
@@ -230,11 +286,18 @@
                                 <th scope="row"
                                     class="px-3 py-4 font-medium whitespace-nowrap ">Actividad 7
                                 </th>
+                                <td class="px-3 py-4">
+                                    <li class="list-none">tarea 1</li>
+                                    <li class="list-none">tarea 2</li>
+                                    <li class="list-none">tarea 3</li>
+                                </td>
                                 <td class="px-3 py-4">CR-1
                                 </td>
                                 <td class="px-3 py-4">OT-1
                                 </td>
                                 <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
                                 </td>
                                 <td class="px-3 py-4">Jesús Castillo
                                 </td>
