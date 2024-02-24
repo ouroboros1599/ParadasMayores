@@ -17,7 +17,7 @@ class CreateParadaMayorsTable extends Migration
             $table->id();
             $table->tinyInteger('activo')->nullable();
             $table->string('nombreParada')->nullable();
-            $table->string('sectorParada')->nullable();
+            $table->string('estadoParada')->nullable();
             $table->dateTime('inicioPlanificado')->nullable();
             $table->dateTime('finPlanificado')->nullable();
             $table->timestamps();

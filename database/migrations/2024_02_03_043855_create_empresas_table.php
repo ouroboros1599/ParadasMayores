@@ -16,6 +16,7 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->string('nombreEmpresa')->nullable();
+            $table->string('divisionEmpresa')->nullable();
             $table->timestamps();
         });
     }

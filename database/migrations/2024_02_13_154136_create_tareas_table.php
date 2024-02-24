@@ -19,9 +19,6 @@ class CreateTareasTable extends Migration
             $table->string('nombreTarea')->nullable();
             $table->integer('cantidadPersonalRequerida')->nullable();
             $table->integer('cantidadMaterialRequerida')->nullable();
-            $table->string('estadoTarea')->nullable();
-            $table->dateTime('inicioReal')->nullable();
-            $table->dateTime('finReal')->nullable();
             $table->timestamps();
         });
     }
