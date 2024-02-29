@@ -5,5 +5,4 @@
     @section('encabezado', 'Paradas Mayores')
     
     <listado_component></listado_component>
-
 @endsection

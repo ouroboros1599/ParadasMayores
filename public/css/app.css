@@ -505,6 +505,9 @@ video {
 .mr-10 {
   margin-right: 2.5rem;
 }
+.mt-10 {
+  margin-top: 2.5rem;
+}
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -576,6 +579,9 @@ video {
 }
 .list-none {
   list-style-type: none;
+}
+.flex-col {
+  flex-direction: column;
 }
 .items-center {
   align-items: center;

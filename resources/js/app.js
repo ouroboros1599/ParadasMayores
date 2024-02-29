@@ -21,7 +21,7 @@ import IndexEjecucionComponent from "./components/ParadasMayores/Index/Ejecucion
 //----------------------------------------------------------------------------------\\
 /*CREATE*/
 import CreatePlanificacionComponent from "./components/ParadasMayores/Create/Planificacion.vue";
-
+import CreateListadoComponent from "./components/ParadasMayores/Create/Listado.vue";
 //----------------------------------------------------------------------------------\\
 
 const app = createApp({});
@@ -47,5 +47,6 @@ app.component("ejecucion_component", IndexEjecucionComponent);
 //----------------------------------------------------------------------------------\\
 /*CREATE*/
 app.component("CreatePlanificacion", CreatePlanificacionComponent);
+app.component("createListado", CreateListadoComponent);
 //----------------------------------------------------------------------------------\\
 app.mount("#app");

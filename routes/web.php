@@ -45,10 +45,10 @@ Route::apiResource('material', MaterialController::class);
 //ParadaMayor
 Route::apiResource('paradaMayor', ParadaMayorController::class);
 //Personal
-Route::apiResource('Personal', PersonalController::class);
+Route::apiResource('personal', PersonalController::class);
 //RolUsuario
 Route::apiResource('rolUsuario', RolUsuarioController::class);
 //Tarea
-Route::apiResource('Tarea', TareaController::class);
+Route::apiResource('tarea', TareaController::class);
 //Usuario
-Route::apiResource('Usuario', UsuarioController::class);
+Route::apiResource('usuario', UsuarioController::class);

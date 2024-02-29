@@ -18,12 +18,15 @@ class PM_ListadoController extends Controller
 
     public function create()
     {
-        
+        return view('pm_listado.create');
     }
 
     public function store(Request $request)
     {
         
+
+
+        return redirect()->route('pm_listado.index')->with('succes', 'Planificación creada con exito');
     }
 
     public function show($id)
