@@ -72,11 +72,13 @@ class PM_PlanificacionController extends Controller
         //                                                 'responsablesData',
         //                                                 'materialesData',
         //                                                 'talentohumanoData',)); 
+        return view('pm_planificacion.create');
     }
 
     public function store(Request $request)
     {
         
+        return redirect()->route('pm_planificacion.index')->with('succes', 'Planificación creada con exito');
     }
 
     public function show($id)

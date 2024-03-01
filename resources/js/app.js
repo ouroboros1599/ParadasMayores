@@ -46,7 +46,7 @@ app.component("ejecucion_component", IndexEjecucionComponent);
 
 //----------------------------------------------------------------------------------\\
 /*CREATE*/
-app.component("CreatePlanificacion", CreatePlanificacionComponent);
-app.component("createListado", CreateListadoComponent);
+app.component("create_planificacion", CreatePlanificacionComponent);
+app.component("create_listado", CreateListadoComponent);
 //----------------------------------------------------------------------------------\\
 app.mount("#app");

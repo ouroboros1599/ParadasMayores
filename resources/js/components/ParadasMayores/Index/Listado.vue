@@ -31,10 +31,10 @@
                                     INICIO PROGRAMADO
                                 </th>
                                 <th scope="col" class="px-3 py-3">
-                                    INICIO REAL
+                                    FIN PROGRAMADO
                                 </th>
                                 <th scope="col" class="px-3 py-3">
-                                    FIN PROGRAMADO
+                                    INICIO REAL
                                 </th>   
                                 <th scope="col" class="px-3 py-3">
                                     FIN REAL
@@ -44,177 +44,177 @@
                         <tbody class="text-center text-black">
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 1
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 2 
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 1
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 2 
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 1
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 2 
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 1
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>
                             <tr class=" text-center border-b border-[#0A214033]">
                                 <th scope="row"
-                                    class="px-3 py-4 font-medium whitespace-nowrap ">Empresa 2 
+                                    class="px-3 py-4 font-medium whitespace-nowrap ">CODELCO
                                 </th>
-                                <td class="px-3 py-4">-
+                                <td class="px-3 py-4">EL TENIENTE
                                 </td>
-                                <td class="px-3 py-4">PM_MANT_Planta
+                                <td class="px-3 py-4">ESPESADOR R-5
                                 </td>
-                                <td class="px-3 py-4">Jesús Castillo
+                                <td class="px-3 py-4">LUIS HERRERA
                                 </td>
-                                <td class="px-3 py-4">Iniciada
-                                </td>
-                                <td class="px-3 py-4">10/02/2024 09:30
+                                <td class="px-3 py-4">PROGRAMADA
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 09:30
                                 </td>
                                 <td class="px-3 py-4">10/02/2024 10:30
                                 </td>
-                                <td class="px-3 py-4">10/02/2024 10:30
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
+                                </td>
+                                <td class="px-3 py-4">DD/MM/AAAA HH:MM
                                 </td>
                                 
                             </tr>

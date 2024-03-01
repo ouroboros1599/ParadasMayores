@@ -18914,101 +18914,139 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_1 = {
+  "class": "m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
+};
+var _hoisted_2 = {
+  "class": "py-2"
+};
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "empresa"
 }, "Empresa:", -1 /* HOISTED */);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_4 = {
+  "class": "py-2"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "division"
 }, "División:", -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_6 = {
+  "class": "py-2"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "nombre_parada"
 }, "Nombre Parada:", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_8 = {
+  "class": "py-2"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "encargado"
 }, "Encargado:", -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_10 = {
+  "class": "py-2"
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "estado"
 }, "Estado:", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_12 = {
+  "class": "py-2"
+};
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "inicio_programado"
 }, "Inicio Programado:", -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "inicio_real"
-}, "Inicio Real:", -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "fin_programado"
+var _hoisted_14 = {
+  "class": "py-2"
+};
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Fin_Programado"
 }, "Fin Programado:", -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_16 = {
+  "class": "py-2"
+};
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Inicio_Real"
+}, "Inicio Real:", -1 /* HOISTED */);
+var _hoisted_18 = {
+  "class": "py-2"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "fin_real"
 }, "Fin Real:", -1 /* HOISTED */);
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit"
-}, "Guardar", -1 /* HOISTED */);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-center py-2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  onclick: "location.href='pm_listado/index'",
+  "class": "text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
+}, "Guardar")], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" recordar añadir el campo required a cada input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return _ctx.empresa = $event;
     }),
     type: "text",
-    id: "empresa",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.empresa]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Empresa",
+    id: "empresa"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.empresa]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.division = $event;
     }),
     type: "text",
-    id: "division",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.division]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "División",
+    id: "division"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.division]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return _ctx.nombreParada = $event;
     }),
     type: "text",
-    id: "nombre_parada",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.nombreParada]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Nombre Parada",
+    id: "nombre_parada"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.nombreParada]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return _ctx.encargado = $event;
     }),
     type: "text",
-    id: "encargado",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.encargado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: " Encargado",
+    id: "encargado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.encargado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return _ctx.estado = $event;
     }),
     type: "text",
-    id: "estado",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.estado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Estado",
+    id: "estado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.estado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return _ctx.inicioProgramado = $event;
     }),
     type: "datetime-local",
-    id: "inicio_programado",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.inicioProgramado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "inicio_programado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.inicioProgramado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.inicioReal = $event;
     }),
     type: "datetime-local",
-    id: "inicio_real",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.inicioReal]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "Fin_Programado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.inicioReal]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return _ctx.finProgramado = $event;
     }),
     type: "datetime-local",
-    id: "fin_programado",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finProgramado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "Inicio_Real"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finProgramado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return _ctx.finReal = $event;
     }),
     type: "datetime-local",
-    id: "fin_real",
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finReal]])]), _hoisted_10]);
+    id: "fin_real"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finReal]])]), _hoisted_20])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -19023,8 +19061,180 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
+};
+var _hoisted_2 = {
+  "class": "py-2"
+};
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Actividad"
+}, "Actividad:", -1 /* HOISTED */);
+var _hoisted_4 = {
+  "class": "py-2"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Tareas"
+}, "Tareas:", -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "py-2"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Campo_Revisión"
+}, "Nombre Parada:", -1 /* HOISTED */);
+var _hoisted_8 = {
+  "class": "py-2"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Orden_Trabajo"
+}, "Orden de Trabajo:", -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "py-2"
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Critica"
+}, "Critica:", -1 /* HOISTED */);
+var _hoisted_12 = {
+  "class": "py-2"
+};
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Servicio_Contratado"
+}, "Servicio Contratado:", -1 /* HOISTED */);
+var _hoisted_14 = {
+  "class": "py-2"
+};
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Encargado"
+}, "Encargado:", -1 /* HOISTED */);
+var _hoisted_16 = {
+  "class": "py-2"
+};
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Materiales"
+}, "Materiales :", -1 /* HOISTED */);
+var _hoisted_18 = {
+  "class": "py-2"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Ubicacion_Materiales"
+}, "Ubicación de Material :", -1 /* HOISTED */);
+var _hoisted_20 = {
+  "class": "py-2"
+};
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Material_Disponible"
+}, "Material Disponible :", -1 /* HOISTED */);
+var _hoisted_22 = {
+  "class": "py-2"
+};
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Inicio_Programado"
+}, "Inicio Programado :", -1 /* HOISTED */);
+var _hoisted_24 = {
+  "class": "py-2"
+};
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "Fin_Programado"
+}, "Fin_Programado :", -1 /* HOISTED */);
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-center py-2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  onclick: "location.href='pm_planificacion'",
+  "class": "text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
+}, "Guardar")], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return null;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.Actividad = $event;
+    }),
+    type: "text",
+    placeholder: "Actividad",
+    id: "Actividad"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Actividad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.Tareas = $event;
+    }),
+    type: "text",
+    placeholder: "Tareas",
+    id: "Tareas"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Tareas]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.Campo_Revisión = $event;
+    }),
+    type: "text",
+    placeholder: "Nombre Parada",
+    id: "Campo_Revisión"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Campo_Revisión]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.Orden_Trabajo = $event;
+    }),
+    type: "text",
+    placeholder: " Orden_Trabajo",
+    id: "Orden_Trabajo"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Orden_Trabajo]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.Critica = $event;
+    }),
+    type: "checkbox",
+    placeholder: "Critica",
+    id: "Critica"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.Critica]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.Servicio_Contratado = $event;
+    }),
+    type: "text",
+    id: "Servicio_Contratado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Servicio_Contratado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.Encargado = $event;
+    }),
+    type: "text",
+    id: "Encargado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Encargado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return _ctx.Materiales = $event;
+    }),
+    type: "text",
+    id: "Materiales"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Materiales]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+      return _ctx.Ubicacion_Materiales = $event;
+    }),
+    type: "text",
+    id: "Ubicacion_Materiales"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Ubicacion_Materiales]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return _ctx.Material_Disponible = $event;
+    }),
+    type: "text",
+    id: "Material_Disponible"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Material_Disponible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+      return _ctx.Inicio_Programado = $event;
+    }),
+    type: "datetime-local",
+    id: "Inicio_Programado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Inicio_Programado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+      return _ctx.Fin_Programado = $event;
+    }),
+    type: "datetime-local",
+    id: "Fin_Programado"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.Fin_Programado]])]), _hoisted_26])]);
 }
 
 /***/ }),
@@ -19515,10 +19725,10 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, " INICIO PROGRAMADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, " INICIO REAL "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " FIN PROGRAMADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, " FIN PROGRAMADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " INICIO REAL "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
 }, " FIN REAL ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", {
@@ -19528,170 +19738,170 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 1 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 2 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 1 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 2 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 1 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 2 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 1 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-center border-b border-[#0A214033]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap"
-}, "Empresa 2 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "CODELCO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "EL TENIENTE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "PM_MANT_Planta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "ESPESADOR R-5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "LUIS HERRERA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+}, "PROGRAMADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 09:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
 }, "10/02/2024 10:30 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:30 ")])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+}, "DD/MM/AAAA HH:MM "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "px-3 py-4"
+}, "DD/MM/AAAA HH:MM ")])])])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex-col ml-10 basis-1/4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "default-search",
@@ -19748,8 +19958,78 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "w-full h-full"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-12 justify-center items-center\"><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % OT Liberadas </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Materiales Disponibles </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Servicios Disponibles </div></div></div><div><div class=\"flex-1\"><ul class=\"m-10 space-x-10\"><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\">Guardar</button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\">Importar</button></ul></div></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\">Buscar</button></div></form></div></div><div class=\"m-10 flex\"><div class=\"flex-1\"><div class=\"relative overflow-x-auto shadow-md sm:rounded-lg\"><table class=\"w-full text-sm text-left rtl:text-right text-blue-100\"><thead class=\"text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white\"><tr><th scope=\"col\" class=\"px-3 py-3\"> Actividades </th><th scope=\"col\" class=\"px-3 py-3\"> Tareas </th><th scope=\"col\" class=\"px-3 py-3\"> Campo de Revisión </th><th scope=\"col\" class=\"px-3 py-3\"> Orden Trabajo </th><th scope=\"col\" class=\"px-3 py-3\"> Actividad Critica </th><th scope=\"col\" class=\"px-3 py-3\"> Servicio Contratado </th><th scope=\"col\" class=\"px-3 py-3\"> Encargado </th><th scope=\"col\" class=\"px-3 py-3\"> Materiales </th><th scope=\"col\" class=\"px-3 py-3\"> Ubicacion de Material </th><th scope=\"col\" class=\"px-3 py-3\"> Materiales Disponibles </th><th scope=\"col\" class=\"px-3 py-3\"> Inicio Programado </th><th scope=\"col\" class=\"px-3 py-3\"> Fin Programado </th></tr></thead><tbody class=\"text-center text-black\"><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 1 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 2 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 3 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 4 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 5 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 6 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap\">Actividad 7 </th><td class=\"px-3 py-4\"><li class=\"list-none\">tarea 1</li><li class=\"list-none\">tarea 2</li><li class=\"list-none\">tarea 3</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:0 </td></tr></tbody></table></div></div></div>", 2);
-var _hoisted_4 = [_hoisted_2];
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "m-10 flex space-x-12 justify-center items-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "w-full bg-gray-200 rounded-full dark:bg-gray-300"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full",
+  style: {
+    "width": "80%"
+  }
+}, " % OT Liberadas ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "w-full bg-gray-200 rounded-full dark:bg-gray-300"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full",
+  style: {
+    "width": "80%"
+  }
+}, " % Materiales Disponibles ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "w-full bg-gray-200 rounded-full dark:bg-gray-300"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full",
+  style: {
+    "width": "80%"
+  }
+}, " % Servicios Disponibles ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+  "class": "m-10 space-x-10"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  onclick: "location.href='pm_planificacion/create'",
+  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+}, "Añadir actividad"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+}, "Guardar"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+}, "Importar")])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "default-search",
+  "class": "mb-2 text-sm font-medium text-gray-900 sr-only"
+}, "Buscar"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "relative"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  "class": "w-4 h-4 text-gray-500",
+  "aria-hidden": "true",
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 20 20"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  stroke: "currentColor",
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "search",
+  id: "default-search",
+  "class": "block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500",
+  placeholder: "Buscar"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+}, "Buscar")])])])], -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex\"><div class=\"flex-1\"><div class=\"relative overflow-x-auto shadow-md sm:rounded-lg\"><table class=\"w-full text-sm text-left rtl:text-right text-blue-100\"><thead class=\"text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white\"><tr><th scope=\"col\" class=\"px-3 py-3\"> Actividades </th><th scope=\"col\" class=\"px-3 py-3\"> Tareas </th><th scope=\"col\" class=\"px-3 py-3\"> Campo de Revisión </th><th scope=\"col\" class=\"px-3 py-3\"> Orden Trabajo </th><th scope=\"col\" class=\"px-3 py-3\"> Actividad Critica </th><th scope=\"col\" class=\"px-3 py-3\"> Servicio Contratado </th><th scope=\"col\" class=\"px-3 py-3\"> Encargado </th><th scope=\"col\" class=\"px-3 py-3\"> Materiales </th><th scope=\"col\" class=\"px-3 py-3\"> Ubicación de Material </th><th scope=\"col\" class=\"px-3 py-3\"> Materiales Disponibles </th><th scope=\"col\" class=\"px-3 py-3\"> Inicio Programado </th><th scope=\"col\" class=\"px-3 py-3\"> Fin Programado </th></tr></thead><tbody class=\"text-center text-black\"><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap text-left\">Actividades preliminares </th><td class=\"px-3 py-4 text-left\"><li class=\"list-none\">Instalación de barreras duras para operaciones de limpieza espesador R5</li><li class=\"list-none\">Instalación de faena</li><li class=\"list-none\">Instalación de generadores, baños quimicos, torres de iluminación</li><li class=\"list-none\">Traslado de drive</li><li class=\"list-none\">Retiro reductor primero drive</li><li class=\"list-none\">Traslado de rastras</li><li class=\"list-none\">Instalación de blades</li><li class=\"list-none\">Inspección reductor primario</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:00 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap text-left\">Cambio de Sistema Motriz y MTTO Sistema de Levante </th><td class=\"px-3 py-4 text-left\"><li class=\"list-none\">Desconexionado fuerza y control drive existente</li><li class=\"list-none\">Ingreso y armado de alzaprima megashor</li><li class=\"list-none\">Armado de andamios para desconexionado eléctrico y refuerzo de caseta</li><li class=\"list-none\">Modificacion de andamios para retiro de techo de caseta</li><li class=\"list-none\">Retiro de techo de caseta</li><li class=\"list-none\">Retiro de tableros, CCM y componentes</li><li class=\"list-none\">Armado y Modificación de andamios para refuerzo de megaestructura y caseta</li><li class=\"list-none\">Refuerzo de megaestructura y caseta</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:00 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap text-left\">Cambio de Estructura Sumergida </th><td class=\"px-3 py-4 text-left\"><li class=\"list-none\">Dimensionado de rastras para posterior traslado a patio de rises</li><li class=\"list-none\">Armado de andamios para desconexión jaula - drive</li><li class=\"list-none\">Afinar conjunto jaula - rastras Durmientas, cilindros hidraulicos</li><li class=\"list-none\">Instalación de blades</li><li class=\"list-none\">Desmontaje y retiro de tastras largas</li><li class=\"list-none\">Retiro de andamios</li><li class=\"list-none\">Desmontaje y retiro de scrappers</li><li class=\"list-none\">Desmontaje y retiro ded jaula saliente</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:00 </td></tr><tr class=\"text-center border-b border-[#0A214033]\"><th scope=\"row\" class=\"px-3 py-4 font-medium whitespace-nowrap text-left\">Mantenimiento de Sistema de Alimentación </th><td class=\"px-3 py-4 text-left\"><li class=\"list-none\">Cambio de canaleta de alimentación</li><li class=\"list-none\">Inspección y reparación de revestimiento cajón de alimentación</li><li class=\"list-none\">Armado de andamios para trabajos en sistema de alimentación</li><li class=\"list-none\">Cambio de cañeria 24&quot; de alimentación</li><li class=\"list-none\">Cambio de manga válvula 24&quot; de alimentación</li><li class=\"list-none\">Reparación y montaje de dropbox y jet descarga</li><li class=\"list-none\">Reparación de feedwell</li></td><td class=\"px-3 py-4\">CR-1 </td><td class=\"px-3 py-4\">OT-1 </td><td class=\"px-3 py-4\">- </td><td class=\"px-3 py-4\">No aplica </td><td class=\"px-3 py-4\">Jesús Castillo </td><td class=\"px-3 py-4\">1 Foco </td><td class=\"px-3 py-4\">Bodega </td><td class=\"px-3 py-4\">1 </td><td class=\"px-3 py-4\">10/02/2024 09:30 </td><td class=\"px-3 py-4\">10/02/2024 10:00 </td></tr></tbody></table></div></div></div>", 1);
+var _hoisted_4 = [_hoisted_2, _hoisted_3];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_4));
 }
@@ -19906,8 +20186,8 @@ app.component("ejecucion_component", _components_ParadasMayores_Index_Ejecucion_
 
 //----------------------------------------------------------------------------------\\
 /*CREATE*/
-app.component("CreatePlanificacion", _components_ParadasMayores_Create_Planificacion_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
-app.component("createListado", _components_ParadasMayores_Create_Listado_vue__WEBPACK_IMPORTED_MODULE_12__["default"]);
+app.component("create_planificacion", _components_ParadasMayores_Create_Planificacion_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
+app.component("create_listado", _components_ParadasMayores_Create_Listado_vue__WEBPACK_IMPORTED_MODULE_12__["default"]);
 //----------------------------------------------------------------------------------\\
 app.mount("#app");
 

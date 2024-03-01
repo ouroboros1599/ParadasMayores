@@ -3,5 +3,5 @@
 
 @section('contenido')
     @section('encabezado', 'Paradas Mayores')
-    <createListado></createListado>
+    <create_listado></create_listado>
 @endsection

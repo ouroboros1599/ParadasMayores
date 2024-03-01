@@ -4,6 +4,5 @@
 
 @section('contenido')
     @section('encabezado', 'PLANIFICACIÓN DE PARADAS MAYORES')    
-        
-    <CreatePlanificacion></CreatePlanificacion>
+    <create_planificacion></create_planificacion>
 @endsection
