@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PM_EjecucionController;
 use App\Http\Controllers\PM_ListadoController;
 use App\Http\Controllers\PM_PlanificacionController;
-//Rutas hacia controladores API de cada clase 
+// Rutas hacia controladores API de cada clase 
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\MaterialController;
@@ -35,20 +35,20 @@ Route::get('/', function () {
 Route::resource('pm_planificacion', PM_PlanificacionController::class);
 Route::resource('pm_ejecucion', PM_EjecucionController::class);
 Route::resource('pm_listado', PM_ListadoController::class);
-//Enturtamiento clases API
-//Actividad
-Route::apiResource('actividad', ActividadController::class);
-//Empresa
-Route::apiResource('empresa', EmpresaController::class);
-//Material
-Route::apiResource('material', MaterialController::class);
-//ParadaMayor
-Route::apiResource('paradaMayor', ParadaMayorController::class);
-//Personal
-Route::apiResource('personal', PersonalController::class);
-//RolUsuario
-Route::apiResource('rolUsuario', RolUsuarioController::class);
-//Tarea
-Route::apiResource('tarea', TareaController::class);
-//Usuario
-Route::apiResource('usuario', UsuarioController::class);
+// //Enturtamiento clases API
+// //Actividad
+// Route::apiResource('actividad', ActividadController::class);
+// //Empresa
+// Route::apiResource('empresa', EmpresaController::class);
+// //Material
+// Route::apiResource('material', MaterialController::class);
+// //ParadaMayor
+// Route::apiResource('paradaMayor', ParadaMayorController::class);
+// //Personal
+// Route::apiResource('personal', PersonalController::class);
+// //RolUsuario
+// Route::apiResource('rolUsuario', RolUsuarioController::class);
+// //Tarea
+// Route::apiResource('tarea', TareaController::class);
+// //Usuario
+// Route::apiResource('usuario', UsuarioController::class);

@@ -60,14 +60,14 @@
 
         <div class="m-10 flex">
             <div class="flex-1">
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-blue-100">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll">
+                    <table class="w-full text-sm text-left rtl:text-right text-blue-100  table-auto">
                         <thead class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white">
                             <tr>
                                 <th scope="col" class="px-3 py-3">
                                     Actividades
                                 </th>
-                                <th scope="col" class="px-3 py-3">
+                                <th scope="col" class="px-3 py-3 w-full">
                                     Tareas
                                 </th>
                                 <th scope="col" class="px-3 py-3">
@@ -242,7 +242,67 @@
                                 <td class="px-3 py-4">10/02/2024 10:00
                                 </td>
                             </tr>
-                            
+                            <tr class="text-center border-b border-[#0A214033]">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium whitespace-nowrap text-left ">Mantenimiento de Sistema de Descarga
+                                </th>
+                                <td class="px-3 py-4 text-left">
+                                    <li class="list-none">Cambio manga valvula pinch descarga</li>
+                                    <li class="list-none">Cambio de lineas de descarga</li>
+                                    <li class="list-none">Cambio de válvulas de bola 6" - 8"</li>
+                                    <li class="list-none">Cambio de válvulas pinch 6" - 8"</li>
+                                    <li class="list-none">Limpieza y desatollo de conos</li>
+                                    <li class="list-none">Cambio de piping en mal estado</li>
+                                </td>
+                                <td class="px-3 py-4">CR-1
+                                </td>
+                                <td class="px-3 py-4">OT-1
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">1 Foco
+                                </td>
+                                <td class="px-3 py-4">Bodega
+                                </td>
+                                <td class="px-3 py-4">1
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                            </tr>
+                            <tr class="text-center border-b border-[#0A214033]">
+                                <th scope="row"
+                                    class="px-3 py-4 font-medium whitespace-nowrap text-left ">Mantenimiento de Sistema de Recuperación de Agua
+                                </th>
+                                <td class="px-3 py-4 text-left">
+                                    <li class="list-none">Fabricación y montaje de peinetas</li>
+                                </td>
+                                <td class="px-3 py-4">CR-1
+                                </td>
+                                <td class="px-3 py-4">OT-1
+                                </td>
+                                <td class="px-3 py-4">-
+                                </td>
+                                <td class="px-3 py-4">No aplica
+                                </td>
+                                <td class="px-3 py-4">Jesús Castillo
+                                </td>
+                                <td class="px-3 py-4">1 Foco
+                                </td>
+                                <td class="px-3 py-4">Bodega
+                                </td>
+                                <td class="px-3 py-4">1
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 09:30
+                                </td>
+                                <td class="px-3 py-4">10/02/2024 10:00
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

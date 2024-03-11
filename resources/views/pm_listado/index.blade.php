@@ -5,4 +5,8 @@
     @section('encabezado', 'Paradas Mayores')
     
     <listado_component></listado_component>
+
+    {{-- @php
+        print_r($listadoParada);   
+    @endphp --}}
 @endsection

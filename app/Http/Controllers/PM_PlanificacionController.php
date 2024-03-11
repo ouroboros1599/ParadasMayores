@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Promise\Utils as PromiseUtils;
 use Illuminate\Http\Request;
-//importar otras clases a las cuales se les va a hacer peticiones GET - POST
 use App\Models\Actividad;
 use App\Models\Tarea;
 use App\Models\Material;
@@ -16,88 +13,86 @@ class PM_PlanificacionController extends Controller
 {
     public function index()
     {
-        return view('pm_planificacion.index');
-        // $url = 'http://localhost:8000/web/';
-        // $axios = new \GuzzleHttp\Client(['uri'=>$url]);
-        
-        // $promises = [
-        //     'empresa'=>$axios->getAsync('empresa'),
-        //     'actividad'=>$axios->getAsync('actividad'),
-        //     'responsable'=>$axios->getAsync('responsable'),
-        //     'material'=>$axios->getAsync('material'),
-        //     'talentoHumano'=>$axios->getAsync('talentohumano'),
-        // ];
+        $actividades  = Actividad::all();
+        $tareas = Tarea::all();
+        $materiales = Material::all();
+        $personals = Personal::all();
 
-        // $results = PromiseUtils::all($promises)->wait();
-
-        // $empresaData = $results['empresa']->getBody()->getContents();
-        // $actividadData = $results['actividad']->getBody()->getContents();
-        // $responsableData = $results['responsable']->getBody()->getContents();
-        // $materialData = $results['material']->getBody()->getContents();
-        // $talentohumanoData = $results['talentohumano']->getBody()->getContents();
-
-        // cache()->put('empresaData', $empresaData, 3600);
-        // cache()->put('actividadData', $actividadData ,3600);
-        // cache()->put('responsableData', $responsableData ,3600);
-        // cache()->put('materialData', $materialData ,3600);
-        // cache()->put('talentohumanoData', $talentohumanoData ,3600);
-
-        // return view('pm_planificacion.index', compact('empresaData',
-        //                                               'actividadData',
-        //                                               'responsableData',
-        //                                               'materialData',
-        //                                               'talentohumanoData'));
+        return view('pm_planificacion.index', compact('actividades','tareas','materiales','personals'));
     }
 
     public function create()
     {
-        // $url  = 'http://localhost:8000/web/';
-        // $axios = new Client(['uri' =>$url]);
-
-        // $promises = [
-        //     'planificaciones'=>$axios->getAsync('planificaciones'),
-        //     'responsable'=>$axios->getAsync('responsables'),
-        //     'materiales'=>$axios->getAsync('materiales'),
-        //     'talentohumano'=>$axios->getAsync('talentohumano'),
-        // ];
-
-        // $results = PromiseUtils::all($promises)->wait();
-
-        // $planificacionesData = $results['planificaciones']->getBody()->getContents();
-        // $responsablesData = $results['responsables']->getBody()->getContents();
-        // $materialesData = $results['materiales']->getBody()->getContents();
-        // $talentohumanoData = $results['talentohumano']->getBody()->getContents();
-
-        // return view('pm_planificacion.create', compact('planificacionesData',
-        //                                                 'responsablesData',
-        //                                                 'materialesData',
-        //                                                 'talentohumanoData',)); 
         return view('pm_planificacion.create');
     }
 
     public function store(Request $request)
     {
-        
-        return redirect()->route('pm_planificacion.index')->with('succes', 'Planificación creada con exito');
+        $request->validate([
+            //validaciones
+        ]);
+
+        Actividad::create($request->input('actividad'));
+        Tarea::create($request->input('tarea'));
+        Material::create($request->input('material'));
+        Personal::create($request->input('personal'));
+
+        return redirect()->route('pm_planificacion.index')->with('success', 'Planificación creada con exito');
     }
 
     public function show($id)
     {
-        
+        $actividad = Actividad::findOrFail($id);
+        $tarea = Tarea::findOrFail($id);
+        $material = Material::findOrFail($id);
+        $personal = Personal::findOrFail($id);
+
+        return view('pm_planificacion.show', compact('actividad','tarea','material','personal'));
     }
 
     public function edit($id)
     {
+        $actividad = Actividad::findOrFail($id);
+        $tarea = Tarea::findOrFail($id);
+        $material = Material::findOrFail($id);
+        $personal = Personal::findOrFail($id);
         
+
+        return view('pm_planificacion.edit', compact('actividad','tarea','material','personal'));
     }
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            //validaciones
+        ]);
+
+        $actividad = Actividad::findOrFail($id);
+        $tarea = Tarea::findOrFail($id);
+        $material = Material::findOrFail($id);
+        $personal = Personal::findOrFail($id);
+
+        $actividad->update($request->input('actividad'));
+        $tarea->update($request->input('tarea'));
+        $material->update($request->input('material'));
+        $personal->update($request->input('personal'));
+
+
+        return redirect()->route('pm_planificacion.index')->with('success', 'Planificación actualizada con exito');
     }
 
     public function destroy($id)
     {
-        
+        $actividad = Actividad::findOrFail($id);
+        $tarea = Tarea::findOrFail($id);
+        $material = Material::findOrFail($id);
+        $personal = Personal::findOrFail($id);
+
+        $actividad->delete();
+        $tarea->delete();
+        $material->delete();
+        $personal->delete();
+
+        return redirect()->route('pm_planificacion.index')->with('success', 'Planificación eliminada con exito!');
     }
 }

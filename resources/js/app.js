@@ -22,8 +22,19 @@ import IndexEjecucionComponent from "./components/ParadasMayores/Index/Ejecucion
 /*CREATE*/
 import CreatePlanificacionComponent from "./components/ParadasMayores/Create/Planificacion.vue";
 import CreateListadoComponent from "./components/ParadasMayores/Create/Listado.vue";
+import CreateEjecucionComponent from"./components/ParadasMayores/Create/Ejecucion.vue";
 //----------------------------------------------------------------------------------\\
+/*EDIT*/
+import EditPlanificacionComponent from "./components/ParadasMayores/Edit/Planificacion.vue";
+import EditListadoComponent from "./components/ParadasMayores/Edit/Listado.vue";
+import EditEjecucionComponent from "./components/ParadasMayores/Edit/Ejecucion.vue";
+//----------------------------------------------------------------------------------\\
+/*DELETE*/
+import DeletePlanificacionComponent from "./components/ParadasMayores/Delete/Planificacion.vue";
+import DeleteListadoComponent from "./components/ParadasMayores/Delete/Listado.vue";
+import DeleteEjecucionComponent from "./components/ParadasMayores/Delete/Ejecucion.vue";
 
+//----------------------------------------------------------------------------------\\
 const app = createApp({});
 
 //----------------------------------------------------------------------------------\\
@@ -48,5 +59,18 @@ app.component("ejecucion_component", IndexEjecucionComponent);
 /*CREATE*/
 app.component("create_planificacion", CreatePlanificacionComponent);
 app.component("create_listado", CreateListadoComponent);
+app.component("create_ejecucion", CreateEjecucionComponent);
 //----------------------------------------------------------------------------------\\
+/*EDIT*/
+app.component("edit_planificacion", EditPlanificacionComponent);
+app.component("edit_listado", EditListadoComponent);
+app.component("edit_ejecucion", EditEjecucionComponent);
+//----------------------------------------------------------------------------------\\
+/*DELETE*/
+app.component("delete_planificacion", DeletePlanificacionComponent);
+app.component("delete_listado", DeleteListadoComponent);
+app.component("delete_ejecucion", DeleteEjecucionComponent);
+
+//----------------------------------------------------------------------------------\\
+
 app.mount("#app");

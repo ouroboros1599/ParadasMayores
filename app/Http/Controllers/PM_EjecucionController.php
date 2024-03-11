@@ -13,7 +13,7 @@ class PM_EjecucionController extends Controller
 
     public function create()
     {
-        
+        return view('pm_ejecucion.create');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class PM_EjecucionController extends Controller
 
     public function edit($id)
     {
-        
+        return view('pm_ejecucion.edit');
     }
 
     public function update(Request $request, $id)
