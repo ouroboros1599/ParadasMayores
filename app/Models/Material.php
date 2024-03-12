@@ -10,7 +10,7 @@ class Material extends Model
     protected $guarded = [];
 
     //relación con clase tarea
-    public function Tareas()
+    public function tareas()
     {
         return $this->belongsToMany(Tarea::class);
     }

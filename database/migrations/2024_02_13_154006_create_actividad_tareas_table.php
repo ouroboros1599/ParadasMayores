@@ -13,7 +13,7 @@ class CreateActividadTareasTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividad_tareas', function (Blueprint $table) {
+        Schema::create('actividad_tarea', function (Blueprint $table) {
             $table->integer('actividad_id')->nullable();
             $table->integer('tarea_id');
         });
@@ -26,6 +26,6 @@ class CreateActividadTareasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividad_tareas');
+        Schema::dropIfExists('actividad_tarea');
     }
 }

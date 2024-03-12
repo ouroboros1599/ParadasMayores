@@ -10,17 +10,17 @@ class Tarea extends Model
     protected $guarded = [];
 
     //relación con clase actividad
-    public function Actividads()
+    public function actividads()
     {
         return $this->belongsToMany(Actividad::class);
     } 
     //relación con clase personal
-    public function Personals()
+    public function personals()
     {
         return $this->belongToMany(Personal::class);
     }
     //relación con clase material
-    public function Materials()
+    public function materials()
     {
         return $this->belongsToMany(Material::class);
     }

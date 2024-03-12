@@ -10,7 +10,7 @@ class RolUsuario extends Model
     protected $guarded = [];
 
     //relación con clase usuario
-    public function Usuario()
+    public function usuario()
     {
         return $this->hasMany(Usuario::class);
     }

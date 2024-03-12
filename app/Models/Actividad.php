@@ -10,12 +10,12 @@ class Actividad extends Model
     protected $guarded = [];
 
     //relación con clase paradaMayor
-    public function ParadaMayor()
+    public function paradaMayor()
     {
         return $this->belongsTo(ParadaMayor::class);
     }
     //realción con clase tarea
-    public function Tareas()
+    public function tarea()
     {
         return $this->belongsToMany(Tarea::class);
     }

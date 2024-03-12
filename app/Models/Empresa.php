@@ -10,7 +10,7 @@ class Empresa extends Model
     protected $guarded = [];
 
     //relacion con clase paradaMayor
-    public function ParadaMayor()
+    public function paradaMayor()
     {
         return $this->hasMany(ParadaMayor::class);
     }

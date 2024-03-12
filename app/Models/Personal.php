@@ -9,7 +9,7 @@ class Personal extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    public function Tareas()
+    public function tareas()
     {
         return $this->belongToMany(Tarea::class);
     }

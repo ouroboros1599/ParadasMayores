@@ -23,7 +23,7 @@ class CreateActividadesTable extends Migration
             $table->string('comentario')->nullable();
             $table->timestamps();
 
-            $table->integer('paradaMayor_id')->nullable();
+            $table->integer('parada_mayor_id')->nullable();
         });
     }
 

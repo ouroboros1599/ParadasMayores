@@ -10,12 +10,12 @@ class Usuario extends Model
     protected $guarded = [];
 
     //relación con clase paradaMayor
-    public function ParadaMayor()
+    public function paradaMayor()
     {
         return $this->hasMany(ParadaMayor::class);
     }
     //relación con clase rolUsuario
-    public function RolUsuario()
+    public function rolUsuario()
     {
         return $this->belongsTo(RolUsuario::class);
     }

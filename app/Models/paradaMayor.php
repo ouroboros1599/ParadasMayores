@@ -7,20 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class ParadaMayor extends Model
 {
     public $timestamps = false;
+    protected $primarykey = 'id';
     protected $guarded = [];
 
     //relación con clase empresa
-    public function Empresa()
+    public function empresa()
     {
         return $this->belongsTo(Empresa::class);
     }
     //relación con clase usuario
-    public function Usuario()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }
     //relación con clase actividad
-    public function Actividad()
+    public function actividad()
     {
         return $this->hasMany(Actividad::class);
     }

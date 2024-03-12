@@ -7,58 +7,40 @@
     </div>
 
     <div class="m-10 flex ">
+        
         <div class="basis-3/4">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll">
             <table class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto">
                 <thead class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white">
-                <tr>
-                    <th scope="col" class="px-3 py-3">
-                    EMPRESA
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    DIVISIÓN
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    NOMBRE PARADA
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    ENCARGADO
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    ESTADO
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    INICIO PROGRAMADO
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    FIN PROGRAMADO
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    INICIO REAL
-                    </th>   
-                    <th scope="col" class="px-3 py-3">
-                    FIN REAL
-                    </th>
-                    <th scope="col" class="px-3 py-3">
-                    OPCIONES
-                    </th>     
-                </tr>
+                  <tr>
+                <th scope="col" class="px-3 py-3">EMPRESA</th>
+                <th scope="col" class="px-3 py-3">DIVISIÓN</th>
+                <th scope="col" class="px-3 py-3">NOMBRE PARADA</th>
+                <th scope="col" class="px-3 py-3">ENCARGADO</th>
+                <th scope="col" class="px-3 py-3">ESTADO</th>
+                <th scope="col" class="px-3 py-3">INICIO PROGRAMADO</th>
+                <th scope="col" class="px-3 py-3">FIN PROGRAMADO</th>
+                <th scope="col" class="px-3 py-3">INICIO REAL</th>
+                <th scope="col" class="px-3 py-3">FIN REAL</th>
+                <th scope="col" class="px-3 py-3">OPCIONES</th>
+              </tr>
                 </thead>
                 <tbody class="text-center text-black">
-                <tr v-for="(item, index) in listaParadas" :key="index" class=" text-center border-b border-[#0A214033]">
-                    <td>{{ item.empresa }}</td>
-                    <td>{{ item.division }}</td>
-                    <td>{{ item.parada }}</td>
-                    <td>{{ item.encargado }}</td>
-                    <td>{{ item.estado }}</td>
-                    <td>{{ item.inicioP }}</td>
-                    <td>{{ item.finP }}</td>
-                    <td>{{ item.inicioR }}</td>
-                    <td>{{ item.finR }}</td>
-                    <td>
-                    <!-- Aquí puedes agregar botones u opciones de edición, eliminación, etc. -->
+                  <tr v-for="(item, index) in paradasmayores" :key="index" class="text-center border-b border-[#0A214033]">
+                    <td class="font-semibold">{{ item.empresa.nombreEmpresa }}</td>
+                    <td>{{ item.empresa.divisionEmpresa }}</td>
+                    <td>{{ item.nombreParada }}</td>
+                    <td>{{ item.encargadoParada }}</td>
+                    <td>{{ item.estadoParada }}</td>
+                    <td>{{ item.inicioPlanificado }}</td>
+                    <td>{{ item.finPlanificado }}</td>
+                    <td>{{ item.inicioReal }}</td>
+                    <td>{{ item.finReal }}</td>
+                    <td class="px-3 py-3">
+                      <button @click="editarParada(item.id)" class="text-white bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 mr-2">Editar</button>
+                      <button @click="eliminarParada(item.id)" class="text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2">Eliminar</button>
                     </td>
-                </tr>
+              </tr>
                 </tbody>
             </table>
             </div>
@@ -85,7 +67,7 @@
             </div>
           </form>
           <div class="flex justify-center mt-10">
-            <button onclick="location.href='pm_listado/create'" class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2">
+            <button @click="crearParada" class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2">
               Añadir
             </button>
           </div>
@@ -100,7 +82,7 @@
   export default {
     data() {
       return {
-        listaParadas: []
+        paradasmayores: []
       };
     },
     created() {
@@ -108,15 +90,29 @@
     },
     methods: {
       fetchParadas() {
-        axios.get('/endpoint_para_obtener_paradas')
+        axios.get('/pm_listado')
           .then(response => {
-            this.listaParadas = response.data;
+            this.paradasmayores = response.data;
           })
           .catch(error => {
             console.error('Error al recuperar los datos de las paradas:', error);
           });
+      },
+      editarParada(id){
+        window.location.href = "/pm_listado/" + id + '/edit';
+      },
+      eliminarParada(){
+        window.location.href = "/pm_listado/" + id + 'delete';
+      },
+
+      crearParada(){
+        window.location.href = '/pm_listado/create'
       }
-    }
+    },
+
+    props: [
+      "paradasmayores",
+    ]
   };
   </script>
   
