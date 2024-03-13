@@ -8,7 +8,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="icon" href="{{ asset('img/smec-color-icon.png')}}" type="image/png">
+    <link rel="icon" href="{{ asset('/img/smec-color-icon.png')}}" type="image/png">
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- Titulo de la pagina -->

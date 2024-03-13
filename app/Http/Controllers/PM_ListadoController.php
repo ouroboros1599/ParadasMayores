@@ -29,7 +29,7 @@ class PM_ListadoController extends Controller
             //validaciones
         ]);
 
-        Log::info($request);
+        // Log::info($request);
 
         $empresa = new Empresa;
         $empresa->nombreEmpresa = $request->nombreEmpresa;
@@ -50,7 +50,7 @@ class PM_ListadoController extends Controller
     {
         $paradaMayor = ParadaMayor::with('empresa')->findOrFail($id);
 
-        return view('pm_listado.show', compact('paradaMayor'));
+        return $paradaMayor;
     }
 
     public function edit($id)
@@ -65,16 +65,13 @@ class PM_ListadoController extends Controller
         $request->validate([
             //validaciones
         ]);
-
-        $paradaMayor = ParadaMayor::findOrFail($id);
-
-        $empresaId = $paradaMayor->empresa_id;
-        $empresa = Empresa::findOrFail($empresaId);
+        $empresa = Empresa::findOrFail($id);
         $empresa->update([
             'nombreEmpresa' => $request->nombreEmpresa,
             'divisionEmpresa' => $request->divisionEmpresa,
         ]);
 
+        $paradaMayor = ParadaMayor::findOrFail($id);
         $paradaMayor->update([
             'nombreParada' => $request->nombreParada,
             'estadoParada' => $request->estadoParada,
@@ -82,32 +79,18 @@ class PM_ListadoController extends Controller
             'inicioPlanificado' => $request->inicioPlanificado,
             'finPlanificado' => $request->finPlanificado,
         ]);
-        // $empresa = Empresa::findOrFail($id);
-        // $empresa->update([
-        //     'nombreEmpresa' => $request->nombreEmpresa,
-        //     'divisionEmpresa' => $request->divisionEmpresa,
-        // ]);
-
-        // $paradaMayor = ParadaMayor::findOrFail($id);
-        // $paradaMayor->update([
-        //     'nombreParada' => $request->nombreParada,
-        //     'estadoParada' => $request->estadoParada,
-        //     'encargadoParada' => $request->encargadoParada,
-        //     'inicioPlanificado' => $request->inicioPlanificado,
-        //     'finPlanificado' => $request->finPlanificado,
-        // ]);
 
         return redirect()->route('pm_listado.index')->with('success', 'Registros actualizados exitosamente!');
     }
 
     public function destroy($id)
     {
-        $actividad = Actividad::findOrFail($id);
-        $empresa = Empresa::findOrFail($id);
         $paradaMayor = ParadaMayor::findOrFail($id);
 
-        $actividad->delete();
-        $empresa->delete();
+        if($paradaMayor->empresa) {
+            $paradaMayor->empresa->delete();
+        }
+
         $paradaMayor->delete();
 
         return redirect()->route('pm_listado.index')->with('success', 'Registros eliminados exitosamente!');

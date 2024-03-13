@@ -14,7 +14,7 @@ class CreatePersonalTareasTable extends Migration
     public function up()
     {
         Schema::dropIfExists('actividad_talento_humano');
-        Schema::create('personal_tareas', function (Blueprint $table) {
+        Schema::create('personal_tarea', function (Blueprint $table) {
             $table->integer('personal_id')->nullable();
             $table->integer('tarea_id')->nullable();
         });
@@ -32,6 +32,6 @@ class CreatePersonalTareasTable extends Migration
             $table->integer('talento_humano_id')->nullable();
         });
 
-        Schema::dropIfExists('personal_tareas');
+        Schema::dropIfExists('personal_tarea');
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class ParadaMayor extends Model
 {
     public $timestamps = false;
-    protected $primarykey = 'id';
     protected $guarded = [];
 
     //relación con clase empresa

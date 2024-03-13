@@ -1,11 +1,16 @@
 <template>
     <!-- recordar añadir el campo required a cada input -->
-    <div class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold">
+    <div
+        class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
+    >
         <div class="col-auto">
             <div class="py-2">
                 <label for="nombreEmpresa">Empresa:</label>
-                <select v-model="nombreEmpresa" class="border border-gray-300 rounded-sm px-3 py-2 w-full">
-                    <option value="SELECCIONAR">seleccionar una opción</option>
+                <select
+                    v-model="nombreEmpresa"
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                >
+                    <option value="SELECCIONAR" disabled>seleccionar una opción</option>
                     <option value="AGUASANDINAS">AGUAS ANDINAS</option>
                     <option value="ALBEMARLE">ALBEMARLE</option>
                     <option value="AMSA">AMSA</option>
@@ -21,98 +26,137 @@
             </div>
             <div class="py-2">
                 <label for="divisionEmpresa">División:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="divisionEmpresa" type="text" placeholder="División">
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="divisionEmpresa"
+                    type="text"
+                    placeholder="División"
+                />
             </div>
-            <div class="py-2"> 
+            <div class="py-2">
                 <label for="nombreParada">Nombre Parada:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="nombreParada" type="text" placeholder="Nombre Parada">
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="nombreParada"
+                    type="text"
+                    placeholder="Nombre Parada"
+                />
             </div>
             <div class="py-2">
                 <label for="encargadoParada">Encargado:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="encargadoParada" type="text" placeholder="Encargado">
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="encargadoParada"
+                    type="text"
+                    placeholder="Encargado"
+                />
             </div>
             <div class="py-2">
                 <label for="estadoParada">Estado:</label>
-                <select v-model="estadoParada" class="border border-gray-300 rounded-sm px-3 py-2 w-full">
-                    <option value="SELECCIONAR">seleccionar una opción</option>
+                <select
+                    v-model="estadoParada"
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                >
+                    <option value="SELECCIONAR" disabled>seleccionar una opción</option>
                     <option value="EJECUCION">EN EJECUCIÓN</option>
                     <option value="TERMINADA">TERMINADA</option>
                     <option value="CANCELADA">CANCELADA</option>
                     <option value="REPROGRAMADA">REPROGRAMADA</option>
                     <option value="NOINICIADA">NO INICIADA</option>
                     <option value="PROGRAMADA">PROGRAMADA</option>
-            </select>
+                </select>
             </div>
             <div class="py-2">
                 <label for="inicioPlanificado">Inicio Programado:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="inicioPlanificado" type="datetime-local">
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="inicioPlanificado"
+                    type="datetime-local"
+                />
             </div>
             <div class="py-2">
                 <label for="finPlanificado">Fin Programado:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="finPlanificado" type="datetime-local">
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="finPlanificado"
+                    type="datetime-local"
+                />
             </div>
-            
+
             <div class="flex justify-center py-2">
-                <button @click="submitForm" type="submit" class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2">Guardar</button>
+                <button
+                    @click="submitForm"
+                    class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
+                >
+                    Guardar
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import axios from 'axios';
+import axios from "axios";
 
-    export default {
+export default {
     data() {
         return {
-        nombreEmpresa: 'SELECCIONAR',
-        divisionEmpresa: '',
-        nombreParada: '',
-        encargadoParada: '',
-        estadoParada: 'SELECCIONAR',
-        inicioPlanificado: '',
-        finPlanificado: ''
+            nombreEmpresa: "SELECCIONAR",
+            divisionEmpresa: "",
+            nombreParada: "",
+            encargadoParada: "",
+            estadoParada: "SELECCIONAR",
+            inicioPlanificado: "",
+            finPlanificado: "",
         };
     },
-    created() {
+    mounted() {
         this.fetchDatosRegistro();
     },
     methods: {
         fetchDatosRegistro() {
-        axios.get('/pm_listado/{id}/edit')
-            .then(response => {
-            const datos = response.data;
-            this.nombreEmpresa = datos.nombreEmpresa;
-            this.divisionEmpresa = datos.divisionEmpresa;
-            this.nombreParada = datos.nombreParada;
-            this.encargadoParada = datos.encargadoParada;
-            this.estadoParada = datos.estadoParada;
-            this.inicioPlanificado = datos.inicioPlanificado;
-            this.finPlanificado = datos.finPlanificado;
-            })
-            .catch(error => {
-            console.error('Error al obtener los datos del registro:', error);
-        });
-    },
-    submitForm() {
-        axios.put('/pm_listado/{id}', {
-            nombreEmpresa: this.nombreEmpresa,
-            divisionEmpresa: this.divisionEmpresa,
-            nombreParada: this.nombreParada,
-            encargadoParada: this.encargadoParada,
-            estadoParada: this.estadoParada,
-            inicioPlanificado: this.inicioPlanificado,
-            finPlanificado: this.finPlanificado
-        })
-        .then(response => {
-            console.log(response.data);
-            window.location.href = '/pm_listado';
-        })
-        .catch(error => {
-            console.error(error);
-        });
-        }
+            axios
+                .get("/pm_listado/" + this.paradamayor.id)
+                .then((response) => {
+                    console.log(response);
+                    const datos = response.data;
+                    this.nombreEmpresa = datos.empresa.nombreEmpresa;
+                    this.divisionEmpresa = datos.empresa.divisionEmpresa;
+                    this.nombreParada = datos.nombreParada;
+                    this.encargadoParada = datos.encargadoParada;
+                    this.estadoParada = datos.estadoParada;
+                    this.inicioPlanificado = datos.inicioPlanificado;
+                    this.finPlanificado = datos.finPlanificado;
+                })
+                .catch((error) => {
+                    console.error(
+                        "Error al obtener los datos del registro:",
+                        error
+                    );
+                });
         },
-        
-    };
+        submitForm() {
+            axios
+                .put("/pm_listado/" + this.paradamayor.id, {
+                    nombreEmpresa: this.nombreEmpresa,
+                    divisionEmpresa: this.divisionEmpresa,
+                    nombreParada: this.nombreParada,
+                    encargadoParada: this.encargadoParada,
+                    estadoParada: this.estadoParada,
+                    inicioPlanificado: this.inicioPlanificado,
+                    finPlanificado: this.finPlanificado,
+                })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    window.location.href = "/pm_listado/";
+                });
+        },
+    },
+    props: ["paradamayor"],
+};
 </script>

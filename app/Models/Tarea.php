@@ -17,7 +17,7 @@ class Tarea extends Model
     //relación con clase personal
     public function personals()
     {
-        return $this->belongToMany(Personal::class);
+        return $this->belongsToMany(Personal::class);
     }
     //relación con clase material
     public function materials()

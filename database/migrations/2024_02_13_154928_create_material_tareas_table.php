@@ -14,7 +14,7 @@ class CreateMaterialTareasTable extends Migration
     public function up()
     {
         Schema::dropIfExists('material_actividad');
-        Schema::create('material_tareas', function (Blueprint $table) {
+        Schema::create('material_tarea', function (Blueprint $table) {
             $table->integer('tarea_id')->nullable();
             $table->integer('material_id')->nullable();
         });
@@ -33,6 +33,6 @@ class CreateMaterialTareasTable extends Migration
             $table->timestamps();
         });
         
-        Schema::dropIfExists('material_tareas');
+        Schema::dropIfExists('material_tarea');
     }
 }

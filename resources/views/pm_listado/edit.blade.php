@@ -3,5 +3,7 @@
 
 @section('contenido')
     @section('encabezado', 'Paradas Mayores')
-    <edit_listado></edit_listado>
+    <div>
+        <edit_listado :paradamayor="{{ $paradaMayor }}"></edit_listado>
+    </div>
 @endsection

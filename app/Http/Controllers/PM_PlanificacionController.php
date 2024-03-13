@@ -7,18 +7,17 @@ use App\Models\Actividad;
 use App\Models\Tarea;
 use App\Models\Material;
 use App\Models\Personal;
+use App\Models\ParadaMayor;
+use Illuminate\Support\Facades\Log;
 
 
 class PM_PlanificacionController extends Controller
 {
     public function index()
     {
-        $actividades  = Actividad::all();
-        $tareas = Tarea::all();
-        $materiales = Material::all();
-        $personals = Personal::all();
-
-        return view('pm_planificacion.index', compact('actividades','tareas','materiales','personals'));
+        $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
+        Log::info($tareas);
+        return view('pm_planificacion.index', compact('tareas'));
     }
 
     public function create()
@@ -29,25 +28,54 @@ class PM_PlanificacionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            //validaciones
+            // Aquí deberías incluir tus reglas de validación
         ]);
 
-        Actividad::create($request->input('actividad'));
-        Tarea::create($request->input('tarea'));
-        Material::create($request->input('material'));
-        Personal::create($request->input('personal'));
+        Log::info($request);
+        
+        // Crear la actividad
+        $actividad = new Actividad;
+        $actividad->nombreActividad = $request->nombreActividad;
+        $actividad->critica = $request->critica;
+        $actividad->inicioPlan = $request->inicioPlan;
+        $actividad->finPlan = $request->finPlan;
+        $actividad->save();
 
-        return redirect()->route('pm_planificacion.index')->with('success', 'Planificación creada con exito');
+        // Crear la tareas
+        $tarea = new Tarea;
+        $tarea->nombreTarea = $request->nombreTarea;
+        $tarea->ordenTrabajo = $request->ordenTrabajo;
+        $tarea->campoRevision = $request->campoRevision;
+        $tarea->cantidadMaterialRequerida = $request->cantidadMaterialRequerida;
+        $tarea->save();
+
+        // Crear el material
+        $material = new Material;
+        $material->nombreMaterial = $request->nombreMaterial;
+        $material->ubicacion = $request->ubicacion;
+        $material->save();
+
+        // Crear el personal
+        $personal = new Personal;
+        $personal->nombrePersonal = $request->nombrePersonal;
+        $personal->servicioContratado = $request->servicioContratado;
+        $personal->save();
+
+        // Obtener la ParadaMayor asociada
+        $paradaMayor = ParadaMayor::findOrFail($request->paradaMayorId);
+
+        // Asociar la actividad, tarea, material y personal a la ParadaMayor
+        $paradaMayor->actividades()->save($actividad);
+        $actividad->tarea()->associate($tarea);
+        $actividad->material()->associate($material);
+        $actividad->personal()->associate($personal);
     }
 
     public function show($id)
     {
-        $actividad = Actividad::findOrFail($id);
-        $tarea = Tarea::findOrFail($id);
-        $material = Material::findOrFail($id);
-        $personal = Personal::findOrFail($id);
+        $tareas = Tarea::with('actividad', 'material', 'personal')->findOrFail($id);
 
-        return view('pm_planificacion.show', compact('actividad','tarea','material','personal'));
+        return $tareas;
     }
 
     public function edit($id)
@@ -56,9 +84,9 @@ class PM_PlanificacionController extends Controller
         $tarea = Tarea::findOrFail($id);
         $material = Material::findOrFail($id);
         $personal = Personal::findOrFail($id);
-        
 
-        return view('pm_planificacion.edit', compact('actividad','tarea','material','personal'));
+
+        return view('pm_planificacion.edit', compact('actividad', 'tarea', 'material', 'personal'));
     }
 
     public function update(Request $request, $id)
