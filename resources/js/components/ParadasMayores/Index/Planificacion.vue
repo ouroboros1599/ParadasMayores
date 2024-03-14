@@ -198,6 +198,6 @@ export default {
         },
     },
 
-    props: ["tareas"],
+    props: ["tareas","actividads", "materiales", "personals"],
 };
 </script>

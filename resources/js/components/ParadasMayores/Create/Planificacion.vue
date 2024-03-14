@@ -170,6 +170,7 @@ export default {
             this.MayuscDataConvert();
             axios
                 .post("/pm_planificacion", {
+                    paradaMayorId: this.paradaMayorId,
                     nombreActividad: this.nombreActividad,
                     nombreTarea: this.nombreTarea,
                     campoRevision: this.campoRevision,

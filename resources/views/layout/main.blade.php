@@ -21,7 +21,7 @@
             <div class="flex w-full h-28 bg-[#0A2140]">
                 <div class="flex-initial">
                     <a href="{{route('pm_listado.index')}}">
-                        <img class="h-20 mt-5 ml-5" src="./img/smec-logo-blanco.png" alt="Logo-SMEC">
+                        <img class="h-20 mt-5 ml-5" src="/img/smec-logo-blanco.png" alt="Logo-SMEC">
                     </a>
                 </div>
                 <div class="flex-1 self-center">

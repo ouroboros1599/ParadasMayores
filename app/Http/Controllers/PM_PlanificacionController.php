@@ -32,8 +32,9 @@ class PM_PlanificacionController extends Controller
         ]);
 
         Log::info($request);
-        
-        // Crear la actividad
+
+        $paradaMayor = ParadaMayor::find($request->paradaMayorId);
+
         $actividad = new Actividad;
         $actividad->nombreActividad = $request->nombreActividad;
         $actividad->critica = $request->critica;
@@ -41,34 +42,29 @@ class PM_PlanificacionController extends Controller
         $actividad->finPlan = $request->finPlan;
         $actividad->save();
 
-        // Crear la tareas
-        $tarea = new Tarea;
+        $tarea = new Tarea();
         $tarea->nombreTarea = $request->nombreTarea;
         $tarea->ordenTrabajo = $request->ordenTrabajo;
         $tarea->campoRevision = $request->campoRevision;
         $tarea->cantidadMaterialRequerida = $request->cantidadMaterialRequerida;
         $tarea->save();
 
-        // Crear el material
-        $material = new Material;
+        $material = new Material();
         $material->nombreMaterial = $request->nombreMaterial;
         $material->ubicacion = $request->ubicacion;
         $material->save();
 
-        // Crear el personal
-        $personal = new Personal;
+        $personal = new Personal();
         $personal->nombrePersonal = $request->nombrePersonal;
         $personal->servicioContratado = $request->servicioContratado;
         $personal->save();
 
-        // Obtener la ParadaMayor asociada
-        $paradaMayor = ParadaMayor::findOrFail($request->paradaMayorId);
-
-        // Asociar la actividad, tarea, material y personal a la ParadaMayor
         $paradaMayor->actividades()->save($actividad);
         $actividad->tarea()->associate($tarea);
         $actividad->material()->associate($material);
         $actividad->personal()->associate($personal);
+
+        return ("exito");
     }
 
     public function show($id)

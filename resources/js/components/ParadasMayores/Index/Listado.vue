@@ -62,7 +62,7 @@
                                         @click="planificarParada(item.id)"
                                         class="text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
                                     >
-                                        Ver datos
+                                        Detalle
                                     </button>
 
                                     <button

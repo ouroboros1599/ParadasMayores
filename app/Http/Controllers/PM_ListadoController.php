@@ -93,6 +93,6 @@ class PM_ListadoController extends Controller
 
         $paradaMayor->delete();
 
-        return redirect()->route('pm_listado.index')->with('success', 'Registros eliminados exitosamente!');
+        
     }
 }

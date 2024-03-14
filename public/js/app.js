@@ -18565,6 +18565,7 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       this.MayuscDataConvert();
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("/pm_planificacion", {
+        paradaMayorId: this.paradaMayorId,
         nombreActividad: this.nombreActividad,
         nombreTarea: this.nombreTarea,
         campoRevision: this.campoRevision,
@@ -18779,7 +18780,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  props: ["tareas"]
+  props: ["tareas", "actividads", "materiales", "personals"]
 });
 
 /***/ }),
@@ -20455,7 +20456,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.planificarParada(item.id);
       },
       "class": "text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
-    }, " Ver datos ", 8 /* PROPS */, _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, " Detalle ", 8 /* PROPS */, _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.editarParada(item.id);
       },
