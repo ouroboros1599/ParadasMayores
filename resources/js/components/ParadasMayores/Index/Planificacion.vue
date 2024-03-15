@@ -1,5 +1,8 @@
 <template>
     <div class="w-full h-full">
+        <div>
+            {{ parada_mayor }}
+        </div>
         <div class="m-10 flex space-x-12 justify-center items-center">
             <div class="flex-1">
                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
@@ -35,12 +38,12 @@
             <div>
                 <div class="flex-1">
                     <ul class="m-10 space-x-10">
-                        <button
-                            onclick="location.href='pm_planificacion/create'"
+                        <a
+                            :href="`/pm_planificacion/create/?parada_mayor=${this.paradamayor.id}`"
                             class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                         >
                             Añadir actividad
-                        </button>
+                        </a>
                         <button
                             class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                         >
@@ -171,6 +174,7 @@
             </div>
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -179,11 +183,11 @@ import axios from "axios";
 export default {
     data() {
         return {
-            tareas: [],
+            // tareas: [],
         };
     },
     mounted() {
-        this.fetchTareas();
+        // this.fetchTareas();
     },
     methods: {
         fetchTareas() {
@@ -198,6 +202,6 @@ export default {
         },
     },
 
-    props: ["tareas","actividads", "materiales", "personals"],
+    props: ["tareas", "paradamayor"],
 };
 </script>

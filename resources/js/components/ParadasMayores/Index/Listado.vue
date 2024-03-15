@@ -58,12 +58,12 @@
                                 <td>{{ item.inicioReal }}</td>
                                 <td>{{ item.finReal }}</td>
                                 <td class="px-3 py-3">
-                                    <button
-                                        @click="planificarParada(item.id)"
+                                    <a
+                                        :href="`/pm_planificacion/${ item.id }`"
                                         class="text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
                                     >
                                         Detalle
-                                    </button>
+                                    </a>
 
                                     <button
                                         @click="editarParada(item.id)"

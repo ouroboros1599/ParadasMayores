@@ -15,14 +15,18 @@ class PM_PlanificacionController extends Controller
 {
     public function index()
     {
-        $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
-        Log::info($tareas);
-        return view('pm_planificacion.index', compact('tareas'));
+        // $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
+        // Log::info($tareas);
+        // return view('pm_planificacion.index', compact('tareas'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('pm_planificacion.create');
+        $pm = ParadaMayor::find($request->parada_mayor);
+
+        return view('pm_planificacion.create',[
+            'parada_mayor' => $pm->id
+        ]);
     }
 
     public function store(Request $request)
@@ -70,9 +74,16 @@ class PM_PlanificacionController extends Controller
 
     public function show($id)
     {
-        $tareas = Tarea::with('actividad', 'material', 'personal')->findOrFail($id);
-
-        return $tareas;
+        // $tareas = Tarea::with('actividad', 'material', 'personal')->findOrFail($id);
+        // return $tareas;
+        $parada_mayor = ParadaMayor::find($id);
+        Log::info($parada_mayor);
+        // $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
+        // Log::info($parada_mayor->actividad->tarea);
+        return view('pm_planificacion.index', [
+            'parada_mayor' => $parada_mayor,
+            'tareas' => '',
+        ]);
     }
 
     public function edit($id)

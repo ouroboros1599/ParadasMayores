@@ -5,5 +5,7 @@
 @section('contenido')
     @section('encabezado', 'Paradas Mayores')    
         
-    <planificacion_component :tareas="{{ $tareas }}" ></planificacion_component>
+    <div>
+        <planificacion_component :paradamayor="{{ $parada_mayor }}" :tareas="{{ $tareas }}" ></planificacion_component>
+    </div>
 @endsection

@@ -5,8 +5,7 @@
         <div class="col-auto">
             <input
                 type="hidden"
-                v-model="paradaMayorId"
-                value="{{ $paradaMayor->id }}"
+                :value="parada_mayor"
             />
             <div class="py-2">
                 <label for="nombreActividad">Actividad:</label>
@@ -164,7 +163,7 @@ export default {
             this.MayuscDataConvert();
             axios
                 .post("/pm_planificacion", {
-                    paradaMayorId: this.paradaMayorId,
+                    paradaMayorId: this.parada_mayor,
                     nombreActividad: this.nombreActividad,
                     nombreTarea: this.nombreTarea,
                     campoRevision: this.campoRevision,
@@ -186,5 +185,8 @@ export default {
                 });
         },
     },
+    props:[
+        'parada_mayor'
+    ]
 };
 </script>
