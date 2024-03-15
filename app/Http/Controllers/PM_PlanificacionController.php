@@ -33,7 +33,7 @@ class PM_PlanificacionController extends Controller
 
         Log::info($request);
 
-        $paradaMayor = ParadaMayor::find($request->paradaMayorId);
+        $paradaMayor = ParadaMayor::findOrFail($request->paradaMayorId);
 
         $actividad = new Actividad;
         $actividad->nombreActividad = $request->nombreActividad;
@@ -59,12 +59,13 @@ class PM_PlanificacionController extends Controller
         $personal->servicioContratado = $request->servicioContratado;
         $personal->save();
 
-        $paradaMayor->actividades()->save($actividad);
+        // Asociar las entidades creadas con la actividad
         $actividad->tarea()->associate($tarea);
         $actividad->material()->associate($material);
         $actividad->personal()->associate($personal);
 
-        return ("exito");
+        // Asociar la actividad con la parada mayor
+        $paradaMayor->actividades()->save($actividad);
     }
 
     public function show($id)

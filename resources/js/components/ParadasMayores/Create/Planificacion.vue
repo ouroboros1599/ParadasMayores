@@ -2,8 +2,12 @@
     <div
         class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
     >
-        <form>
-            <input type="hidden" name="paradaMayorId" value="{{ $paradaMayor->id }}">
+        <div class="col-auto">
+            <input
+                type="hidden"
+                v-model="paradaMayorId"
+                value="{{ $paradaMayor->id }}"
+            />
             <div class="py-2">
                 <label for="nombreActividad">Actividad:</label>
                 <input
@@ -11,7 +15,6 @@
                     v-model="nombreActividad"
                     type="text"
                     placeholder="Actividad"
-                    id="nombreActividad"
                 />
             </div>
             <div class="py-2">
@@ -21,7 +24,6 @@
                     v-model="nombreTarea"
                     type="text"
                     placeholder="Tarea"
-                    id="nombreTarea"
                 />
             </div>
             <div class="py-2">
@@ -31,7 +33,6 @@
                     v-model="campoRevision"
                     type="text"
                     placeholder="CR-1"
-                    id="campoRevision"
                 />
             </div>
             <div class="py-2">
@@ -41,7 +42,6 @@
                     v-model="ordenTrabajo"
                     type="text"
                     placeholder="OT-1"
-                    id="ordenTrabajo"
                 />
             </div>
             <div class="py-2">
@@ -51,7 +51,6 @@
                     v-model="critica"
                     type="checkbox"
                     placeholder="Critica"
-                    id="critica"
                 />
             </div>
             <div class="py-2">
@@ -61,7 +60,6 @@
                     v-model="servicioContratado"
                     type="text"
                     placeholder="Servicio Contratado"
-                    id="servicioContratado"
                 />
             </div>
             <div class="py-2">
@@ -71,7 +69,6 @@
                     v-model="nombrePersonal"
                     type="text"
                     placeholder="Encargado"
-                    id="nombrePersonal"
                 />
             </div>
             <div class="py-2">
@@ -81,17 +78,17 @@
                     v-model="nombreMaterial"
                     type="text"
                     placeholder="Material"
-                    id="nombreMaterial"
                 />
             </div>
             <div class="py-2">
-                <label for="cantidadMaterialRequerida">Cantidad material requerido:</label>
+                <label for="cantidadMaterialRequerida"
+                    >Cantidad material requerido:</label
+                >
                 <input
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="cantidadMaterialRequerida"
                     type="text"
                     placeholder="Cantidad material requerido"
-                    id="cantidadMaterialRequerida"
                 />
             </div>
             <div class="py-2">
@@ -101,7 +98,6 @@
                     v-model="ubicacion"
                     type="text"
                     placeholder="Ubicación del material"
-                    id="ubicacion"
                 />
             </div>
             <div class="py-2">
@@ -110,7 +106,6 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="inicioPlan"
                     type="datetime-local"
-                    id="inicioPlan"
                 />
             </div>
             <div class="py-2">
@@ -119,18 +114,17 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="finPlan"
                     type="datetime-local"
-                    id="finPlan"
                 />
             </div>
             <div class="flex justify-center py-2">
                 <button
-                    @click="submitForm"
+                    @click.prevent="submitForm"
                     class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
                 >
                     Guardar
                 </button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -139,6 +133,7 @@ import axios from "axios";
 export default {
     data() {
         return {
+            paradaMayorId: "",
             nombreActividad: "",
             nombreTarea: "",
             campoRevision: "",
@@ -150,8 +145,7 @@ export default {
             ubicacion: "",
             cantidadMaterialRequerida: "",
             inicioPlan: "",
-            finPlan:"",
-
+            finPlan: "",
         };
     },
     methods: {
@@ -186,7 +180,6 @@ export default {
                 })
                 .then((response) => {
                     console.log(response.data);
-                    
                 })
                 .catch((error) => {
                     console.error(error);
