@@ -3,10 +3,7 @@
         class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
     >
         <div class="col-auto">
-            <input
-                type="hidden"
-                :value="parada_mayor"
-            />
+            <input type="hidden" :value="parada_mayor" />
             <div class="py-2">
                 <label for="nombreActividad">Actividad:</label>
                 <input
@@ -162,7 +159,7 @@ export default {
             event.preventDefault();
             this.MayuscDataConvert();
             axios
-                .post("/pm_planificacion", {
+                .post("/pm_planificacion/", {
                     paradaMayorId: this.parada_mayor,
                     nombreActividad: this.nombreActividad,
                     nombreTarea: this.nombreTarea,
@@ -179,14 +176,13 @@ export default {
                 })
                 .then((response) => {
                     console.log(response.data);
+                    window.location.href = "/pm_planificacion/" + this.parada_mayor;
                 })
                 .catch((error) => {
                     console.error(error);
                 });
         },
     },
-    props:[
-        'parada_mayor'
-    ]
+    props: ["parada_mayor"],
 };
 </script>

@@ -15,7 +15,7 @@ class Actividad extends Model
         return $this->belongsTo(ParadaMayor::class);
     }
     //realción con clase tarea
-    public function tarea()
+    public function tareas()
     {
         return $this->belongsToMany(Tarea::class);
     }

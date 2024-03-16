@@ -480,6 +480,9 @@ video {
 .col-auto {
   grid-column: auto;
 }
+.row-auto {
+  grid-row: auto;
+}
 .m-10 {
   margin: 2.5rem;
 }
@@ -777,6 +780,9 @@ video {
 }
 .ps-3 {
   padding-inline-start: 0.75rem;
+}
+.pl-5 {
+  padding-left: 1.25rem;
 }
 .text-left {
   text-align: left;

@@ -24,8 +24,8 @@ class PM_PlanificacionController extends Controller
     {
         $pm = ParadaMayor::find($request->parada_mayor);
 
-        return view('pm_planificacion.create',[
-            'parada_mayor' => $pm->id
+        return view('pm_planificacion.create', [
+            'parada_mayor' => $pm->id,
         ]);
     }
 
@@ -63,13 +63,15 @@ class PM_PlanificacionController extends Controller
         $personal->servicioContratado = $request->servicioContratado;
         $personal->save();
 
-        // Asociar las entidades creadas con la actividad
-        $actividad->tarea()->associate($tarea);
-        $actividad->material()->associate($material);
-        $actividad->personal()->associate($personal);
+        // Asociar las entidades creadas con la actividad utilizando attach para relaciones muchos a muchos
+        $actividad->tareas()->attach($tarea->id);
+        $tarea->materials()->attach($material->id);
+        $tarea->personals()->attach($personal->id);
 
         // Asociar la actividad con la parada mayor
-        $paradaMayor->actividades()->save($actividad);
+        $paradaMayor->actividads()->save($actividad);
+
+        return 'exito';
     }
 
     public function show($id)
@@ -80,21 +82,29 @@ class PM_PlanificacionController extends Controller
         Log::info($parada_mayor);
         // $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
         // Log::info($parada_mayor->actividad->tarea);
+        $pm = $parada_mayor->actividads()->with('tareas.personals', 'tareas.materials')->get();
+        Log::info($pm);
         return view('pm_planificacion.index', [
             'parada_mayor' => $parada_mayor,
-            'tareas' => '',
+            'actividads' => $pm,
         ]);
     }
 
     public function edit($id)
     {
-        $actividad = Actividad::findOrFail($id);
-        $tarea = Tarea::findOrFail($id);
-        $material = Material::findOrFail($id);
-        $personal = Personal::findOrFail($id);
+        Log::info($id);
+        // $actividad = Actividad::findOrFail($id);
+        // $tarea = Tarea::findOrFail($id);
+        // $material = Material::findOrFail($id);
+        // $personal = Personal::findOrFail($id);
 
+        $parada_mayor = ParadaMayor::find($id);
+        $pm = $parada_mayor->actividads()->with('tareas.personals', 'tareas.materials')->get();
 
-        return view('pm_planificacion.edit', compact('actividad', 'tarea', 'material', 'personal'));
+        return view('pm_planificacion.edit', [
+            'parada_mayor' => $parada_mayor,
+            'actividads' => $pm,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -124,10 +134,18 @@ class PM_PlanificacionController extends Controller
         $material = Material::findOrFail($id);
         $personal = Personal::findOrFail($id);
 
+        if ($actividad->tarea) {
+            foreach ($actividad->tareas as $tarea) {
+                foreach ($tarea->materials as $material) {
+                    $material->delete();
+                }
+                foreach ($tarea->personals as $personal) {
+                    $personal->delete();
+                }
+                $tarea->delete();
+            }
+        };
         $actividad->delete();
-        $tarea->delete();
-        $material->delete();
-        $personal->delete();
 
         return redirect()->route('pm_planificacion.index')->with('success', 'Planificación eliminada con exito!');
     }

@@ -20,7 +20,7 @@ class ParadaMayor extends Model
         return $this->belongsTo(Usuario::class);
     }
     //relación con clase actividad
-    public function actividad()
+    public function actividads()
     {
         return $this->hasMany(Actividad::class);
     }

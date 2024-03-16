@@ -88,7 +88,7 @@
                     @click="submitForm"
                     class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
                 >
-                    Guardar
+                    Actualizar
                 </button>
             </div>
         </div>

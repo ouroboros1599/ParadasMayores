@@ -6,6 +6,6 @@
     @section('encabezado', 'Paradas Mayores')    
         
     <div>
-        <planificacion_component :paradamayor="{{ $parada_mayor }}" :tareas="{{ $tareas }}" ></planificacion_component>
+        <planificacion_component :paradamayor="{{ $parada_mayor }}" :actividads="{{ $actividads }}" ></planificacion_component>
     </div>
 @endsection

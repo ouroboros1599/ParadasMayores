@@ -3,7 +3,7 @@
         <div>
             {{ parada_mayor }}
         </div>
-        <div class="m-10 flex space-x-12 justify-center items-center">
+        <div class="m-10 flex space-x-12 justify-center tareas-center">
             <div class="flex-1">
                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
                     <div
@@ -44,11 +44,6 @@
                         >
                             Añadir actividad
                         </a>
-                        <button
-                            class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-                        >
-                            Guardar
-                        </button>
                         <button
                             class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                         >
@@ -140,33 +135,69 @@
                                     Ubicación de Material
                                 </th>
                                 <th scope="col" class="px-3 py-3">
-                                    Materiales Disponibles
-                                </th>
-                                <th scope="col" class="px-3 py-3">
                                     Inicio Programado
                                 </th>
                                 <th scope="col" class="px-3 py-3">
                                     Fin Programado
                                 </th>
+                                <th scope="col" class="px-3 py-3">Opciones</th>
                             </tr>
                         </thead>
                         <tbody class="text-center text-black">
                             <tr
-                                v-for="(item, index) in tareas"
-                                :key="index"
+                                v-for="actividad in actividads"
+                                :key="actividad.id"
                                 class="text-center border-b border-[#0A214033]"
                             >
-                                <td>{{ item.actividad.nombreActividad }}</td>
-                                <td>{{ item.nombreTarea }}</td>
-                                <td>{{ item.campoRevision }}</td>
-                                <td>{{ item.ordenTrabajo }}</td>
-                                <td>{{ item.actividad.critica }}</td>
-                                <td>{{ item.personal.servicioContratado }}</td>
-                                <td>{{ item.personal.nombrePersonal }}</td>
-                                <td>{{ item.material.nombreMaterial }}</td>
-                                <td>{{ item.material.ubicacion }}</td>
-                                <td>{{ item.actividad.inicioPlan }}</td>
-                                <td>{{ item.actividad.finPlan }}</td>
+                                <td>{{ actividad.nombreActividad }}</td>
+                                <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
+                                <td>
+                                    {{ actividad.tareas[0]?.campoRevision }}
+                                </td>
+                                <td>{{ actividad.tareas[0]?.ordenTrabajo }}</td>
+                                <td>{{ actividad.critica }}</td>
+                                <td>
+                                    {{
+                                        actividad.tareas[0]?.personals[0]
+                                            .servicioContratado
+                                    }}
+                                </td>
+                                <td>
+                                    {{
+                                        actividad.tareas[0]?.personals[0]
+                                            .nombrePersonal
+                                    }}
+                                </td>
+                                <td>
+                                    {{
+                                        actividad.tareas[0]?.materials[0]
+                                            .nombreMaterial
+                                    }}
+                                </td>
+                                <td>
+                                    {{
+                                        actividad.tareas[0]?.materials[0]
+                                            .ubicacion
+                                    }}
+                                </td>
+                                <td>{{ actividad.inicioPlan }}</td>
+                                <td>{{ actividad.finPlan }}</td>
+                                <td>
+                                    <button
+                                        @click="editarParada(actividad.id)"
+                                        class="text-white bg-[#297DE0] hover:bg-[#297DE0CC] rounded-lg px-4 py-2 mx-2"
+                                    >
+                                        Editar
+                                    </button>
+                                    <button
+                                        @click="
+                                            confirmarEliminacion(actividad.id)
+                                        "
+                                        class="text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2 mx-2"
+                                    >
+                                        Eliminar
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -174,7 +205,6 @@
             </div>
         </div>
     </div>
-    
 </template>
 
 <script>
@@ -200,8 +230,33 @@ export default {
                     console.error("Error al recuperar los datos", error);
                 });
         },
+        // Método para confirmar la eliminación del registro
+        confirmarEliminacion(id) {
+            if (
+                window.confirm(
+                    "¿Estás seguro de que deseas eliminar este registro?"
+                )
+            ) {
+                this.eliminarRegistro(id);
+                window.location.reload();
+            }
+        },
+        // Método para enviar la solicitud de eliminación al servidor
+        eliminarRegistro(id) {
+            axios
+                .delete("/pm_planificacion/" + id)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        },
+        editarParada(id) {
+            window.location.href = "/pm_planificacion/" + id + "/edit";
+        },
     },
 
-    props: ["tareas", "paradamayor"],
+    props: ["actividads", "paradamayor"],
 };
 </script>

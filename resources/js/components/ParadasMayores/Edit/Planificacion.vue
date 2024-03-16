@@ -1,61 +1,182 @@
 <template>
-    <div class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold">
-        <form>
+    <div
+        class="m-10 flex basis-3/4 w-full text-sm text-left justify-center font-semibold"
+    >
+        <div class="col-auto">
+            <input type="hidden" :value="parada_mayor" />
             <div class="py-2">
-                <label for="Actividad">Actividad:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Actividad" type="text" placeholder="Actividad" id="Actividad" >
+                <label for="nombreActividad">Actividad:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="nombreActividad"
+                    type="text"
+                    placeholder="Actividad"
+                />
             </div>
             <div class="py-2">
-                <label for="Tareas">Tareas:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Tareas" type="text" placeholder="Tareas" id="Tareas" >
-            </div>
-            <div class="py-2"> 
-                <label for="Campo_Revisión">Nombre Parada:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Campo_Revisión" type="text" placeholder="Nombre Parada" id="Campo_Revisión" >
-            </div>
-            <div class="py-2">
-                <label for="Orden_Trabajo">Orden de Trabajo:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Orden_Trabajo" type="text" placeholder=" Orden_Trabajo" id="Orden_Trabajo" >
+                <label for="nombreTarea">Tareas:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="nombreTarea"
+                    type="text"
+                    placeholder="Tarea"
+                />
             </div>
             <div class="py-2">
-                <label for="Critica">Critica:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Critica" type="checkbox" placeholder="Critica" id="Critica" >
+                <label for="campoRevision">Campo Revisión:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="campoRevision"
+                    type="text"
+                    placeholder="CR-1"
+                />
             </div>
             <div class="py-2">
-                <label for="Servicio_Contratado">Servicio Contratado:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Servicio_Contratado" type="text" id="Servicio_Contratado" >
+                <label for="ordenTrabajo">Orden de Trabajo:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="ordenTrabajo"
+                    type="text"
+                    placeholder="OT-1"
+                />
             </div>
             <div class="py-2">
-                <label for="Encargado">Encargado:</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Encargado" type="text" id="Encargado" >
+                <label for="critica">Critica:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="critica"
+                    type="checkbox"
+                    placeholder="Critica"
+                />
             </div>
             <div class="py-2">
-                <label for="Materiales">Materiales :</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Materiales" type="text" id="Materiales" >
+                <label for="servicioContratado">Servicio Contratado:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="servicioContratado"
+                    type="text"
+                    placeholder="Servicio Contratado"
+                />
             </div>
             <div class="py-2">
-                <label for="Ubicacion_Materiales">Ubicación de Material :</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Ubicacion_Materiales" type="text" id="Ubicacion_Materiales" >
+                <label for="nombrePersonal">Encargado:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="nombrePersonal"
+                    type="text"
+                    placeholder="Encargado"
+                />
             </div>
             <div class="py-2">
-                <label for="Material_Disponible">Material Disponible :</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Material_Disponible" type="text" id="Material_Disponible" >
+                <label for="nombreMaterial">Material :</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="nombreMaterial"
+                    type="text"
+                    placeholder="Material"
+                />
             </div>
             <div class="py-2">
-                <label for="Inicio_Programado">Inicio Programado :</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Inicio_Programado" type="datetime-local" id="Inicio_Programado" >
+                <label for="cantidadMaterialRequerida"
+                    >Cantidad material requerido:</label
+                >
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="cantidadMaterialRequerida"
+                    type="text"
+                    placeholder="Cantidad material requerido"
+                />
             </div>
             <div class="py-2">
-                <label for="Fin_Programado">Fin_Programado :</label>
-                <input class="border border-gray-300 rounded-sm px-3 py-2 w-full" v-model="Fin_Programado" type="datetime-local" id="Fin_Programado" >
+                <label for="ubicacion">Ubicación del Material :</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="ubicacion"
+                    type="text"
+                    placeholder="Ubicación del material"
+                />
+            </div>
+            <div class="py-2">
+                <label for="inicioPlan">Inicio Programado :</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="inicioPlan"
+                    type="datetime-local"
+                />
+            </div>
+            <div class="py-2">
+                <label for="finPlan">Final Programado :</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="finPlan"
+                    type="datetime-local"
+                />
             </div>
             <div class="flex justify-center py-2">
-                <button onclick="location.href='pm_planificacion'" class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2">Actualizar</button>
+                <button
+                    @click.prevent="submitForm"
+                    class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
+                >
+                    Guardar
+                </button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
 <script>
-    export default{};
+import axios from "axios";
+export default {
+    data() {
+        return {
+            paradaMayorId: "",
+            nombreActividad: "",
+            nombreTarea: "",
+            campoRevision: "",
+            ordenTrabajo: "",
+            critica: "",
+            servicioContratado: "",
+            nombrePersonal: "",
+            nombreMaterial: "",
+            ubicacion: "",
+            cantidadMaterialRequerida: "",
+            inicioPlan: "",
+            finPlan: "",
+        };
+    },
+    mounted() {
+        this.fetchDatosRegistro();
+    },
+    methods: {
+        fetchDatosRegistro() {
+            axios
+                .get("/pm_planificacion/" + this.actividad[0].id)
+                .then((response) => {
+                    console.log(response);
+                    const datos = response.data;
+                    this.nombreActividad = datos.nombreActividad;
+                    this.nombreTarea = datos.tareas.nombreTarea;
+                    this.campoRevision = datos.tareas.campoRevision;
+                    this.ordenTrabajo = datos.tareas.ordenTrabajo;
+                    this.critica = datos.critica;
+                    this.servicioContratado =
+                        datos.tareas.personals.servicioContratado;
+                    this.nombrePersonal = datos.tareas.personals.nombrePersonal;
+                    this.nombreMaterial = datos.tareas.materials.nombreMaterial;
+                    this.ubicacion = datos.tareas.materials.ubicacion;
+                    this.cantidadMaterialRequerida =
+                        datos.tareas.cantidadMaterialRequerida;
+                    this.inicioPlan = datos.inicioPlan;
+                    this.finPlan = datos.finPlan;
+                })
+                .catch((error) => {
+                    console.error(
+                        "error al obtener los datos del registro.",
+                        error
+                    );
+                });
+        },
+    },
+    props: ["actividad"],
+};
 </script>
