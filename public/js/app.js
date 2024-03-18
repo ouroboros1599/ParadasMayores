@@ -20597,34 +20597,18 @@ var _hoisted_1 = {
   "class": "w-full h-full"
 };
 var _hoisted_2 = {
-  "class": "m-10 flex space-x-12 justify-center tareas-center"
+  "class": "row-auto flex m-10"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % OT Liberadas </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Materiales Disponibles </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Servicios Disponibles </div></div></div>", 3);
-var _hoisted_6 = {
-  "class": "flex-1"
+var _hoisted_3 = {
+  "class": "basis-3/4"
 };
-var _hoisted_7 = {
-  "class": "space-x-10"
-};
-var _hoisted_8 = ["href"];
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  disabled: "",
-  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-}, " Importar ", -1 /* HOISTED */);
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div>", 1);
-var _hoisted_11 = {
-  "class": "m-10 flex"
-};
-var _hoisted_12 = {
-  "class": "flex-1"
-};
-var _hoisted_13 = {
+var _hoisted_4 = {
   "class": "relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
 };
-var _hoisted_14 = {
+var _hoisted_5 = {
   "class": "w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
   "class": "text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
@@ -20666,16 +20650,32 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   scope: "col",
   "class": "px-3 py-3"
 }, "Opciones")])], -1 /* HOISTED */);
-var _hoisted_16 = {
+var _hoisted_7 = {
   "class": "text-center text-black"
 };
-var _hoisted_17 = ["onClick"];
-var _hoisted_18 = ["onClick"];
+var _hoisted_8 = ["onClick"];
+var _hoisted_9 = ["onClick"];
+var _hoisted_10 = {
+  "class": "basis-1/4 pl-5"
+};
+var _hoisted_11 = {
+  "class": "col-auto"
+};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form>", 1);
+var _hoisted_13 = {
+  "class": "flex-1 mt-10"
+};
+var _hoisted_14 = {
+  "class": "space-x-10 justify-center text-center"
+};
+var _hoisted_15 = ["href"];
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  disabled: "",
+  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+}, " Importar excel ", -1 /* HOISTED */);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-12 justify-center tareas-center\"><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % OT Liberadas </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Materiales Disponibles </div></div></div><div class=\"flex-1\"><div class=\"w-full bg-gray-200 rounded-full dark:bg-gray-300\"><div class=\"bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full\" style=\"width:80%;\"> % Servicios Disponibles </div></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "/pm_planificacion/create/?parada_mayor=".concat(this.paradamayor.id),
-    "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-  }, " Agregar actividad ", 8 /* PROPS */, _hoisted_8), _hoisted_9])])]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.actividads, function (actividad) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.actividads, function (actividad) {
     var _actividad$tareas$, _actividad$tareas$2, _actividad$tareas$3, _actividad$tareas$4, _actividad$tareas$5, _actividad$tareas$6, _actividad$tareas$7;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: actividad.id,
@@ -20685,13 +20685,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.editarParada(actividad.id);
       },
       "class": "text-white bg-[#297DE0] hover:bg-[#297DE0CC] rounded-lg px-4 py-2 mx-2"
-    }, " Editar ", 8 /* PROPS */, _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, " Editar ", 8 /* PROPS */, _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.confirmarEliminacion(actividad.id);
       },
       "class": "text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2 mx-2"
-    }, " Eliminar ", 8 /* PROPS */, _hoisted_18)])]);
-  }), 128 /* KEYED_FRAGMENT */))])])])])])]);
+    }, " Eliminar ", 8 /* PROPS */, _hoisted_9)])]);
+  }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: "/pm_planificacion/create/?parada_mayor=".concat(this.paradamayor.id),
+    "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+  }, " Agregar actividad ", 8 /* PROPS */, _hoisted_15), _hoisted_16])]), _hoisted_17])])])]);
 }
 
 /***/ }),
