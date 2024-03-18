@@ -18425,7 +18425,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getActividades: function getActividades() {
       var _this = this;
-      axios.get('test').then(function (response) {
+      axios.get("test").then(function (response) {
         _this.test = response.data;
       });
     }
@@ -18545,6 +18545,7 @@ __webpack_require__.r(__webpack_exports__);
       servicioContratado: "",
       nombrePersonal: "",
       nombreMaterial: "",
+      equipo: "",
       ubicacion: "",
       cantidadMaterialRequerida: "",
       inicioPlan: "",
@@ -18560,6 +18561,7 @@ __webpack_require__.r(__webpack_exports__);
       this.servicioContratado = this.servicioContratado.toUpperCase();
       this.nombrePersonal = this.nombrePersonal.toUpperCase();
       this.nombreMaterial = this.nombreMaterial.toUpperCase();
+      this.equipo = this.equipo.toUpperCase();
       this.ubicacion = this.ubicacion.toUpperCase();
     },
     submitForm: function submitForm(event) {
@@ -18576,6 +18578,7 @@ __webpack_require__.r(__webpack_exports__);
         servicioContratado: this.servicioContratado,
         nombrePersonal: this.nombrePersonal,
         nombreMaterial: this.nombreMaterial,
+        equipo: this.equipo,
         ubicacion: this.ubicacion,
         cantidadMaterialRequerida: this.cantidadMaterialRequerida,
         inicioPlan: this.inicioPlan,
@@ -18609,11 +18612,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      nombreEmpresa: "SELECCIONAR",
+      nombreEmpresa: "",
       divisionEmpresa: "",
       nombreParada: "",
       encargadoParada: "",
-      estadoParada: "SELECCIONAR",
+      estadoParada: "",
       inicioPlanificado: "",
       finPlanificado: ""
     };
@@ -18677,7 +18680,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      paradaMayorId: "",
+      // // // // paradaMayorId: "",
       nombreActividad: "",
       nombreTarea: "",
       campoRevision: "",
@@ -18698,7 +18701,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     fetchDatosRegistro: function fetchDatosRegistro() {
       var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/pm_planificacion/" + this.actividad[0].id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/pm_planificacion/" + this.actividads.id).then(function (response) {
         console.log(response);
         var datos = response.data;
         _this.nombreActividad = datos.nombreActividad;
@@ -18716,9 +18719,34 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.error("error al obtener los datos del registro.", error);
       });
+    },
+    submitForm: function submitForm() {
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/pm_planificacion/" + this.actividad.id, {
+        paradaMayorId: this.parada_mayor,
+        nombreActividad: this.nombreActividad,
+        nombreTarea: this.nombreTarea,
+        campoRevision: this.campoRevision,
+        ordenTrabajo: this.ordenTrabajo,
+        critica: this.critica,
+        servicioContratado: this.servicioContratado,
+        nombrePersonal: this.nombrePersonal,
+        nombreMaterial: this.nombreMaterial,
+        equipo: this.equipo,
+        ubicacion: this.ubicacion,
+        cantidadMaterialRequerida: this.cantidadMaterialRequerida,
+        inicioPlan: this.inicioPlan,
+        finPlan: this.finPlan
+      }).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.error(error);
+      })["finally"](function () {
+        window.location.href = "/pm_planificacion/" + _this2.actividad.id;
+      });
     }
   },
-  props: ["actividad"]
+  props: ["actividads"]
 });
 
 /***/ }),
@@ -18844,6 +18872,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
       })["catch"](function (error) {
         console.error(error);
+      })["finally"](function () {
+        window.location.href = "/pm_planificacion/" + id + "/edit";
       });
     },
     editarParada: function editarParada(id) {
@@ -18880,19 +18910,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart, _toConsumableArray(chart_js__WEBPACK_IMPORTED_MODULE_2__.registerables));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  name: 'BarraPlanificacion',
+  name: "BarraPlanificacion",
   components: {
     BarChart: vue_chart_3__WEBPACK_IMPORTED_MODULE_1__.BarChart
   },
   setup: function setup() {
     var testData = {
-      labels: ['% OT Liberadas', '% Materiales Disponibles', '% servicios contratados'],
+      labels: ["% OT Liberadas", "% Materiales Disponibles", "% servicios contratados"],
       datasets: [{
-        axis: 'y',
+        axis: "y",
         data: [90, 60, 85],
         fill: false,
-        backgroundColor: ['#0A2140FF', '#0A2140CC', '#0A214099'],
-        hoverBackgroundColor: ['#F57C00FF', '#F57C00CC', '#F57C0099']
+        backgroundColor: ["#0A2140FF", "#0A2140CC", "#0A214099"],
+        hoverBackgroundColor: ["#F57C00FF", "#F57C00CC", "#F57C0099"]
       }]
     };
     return {
@@ -18929,24 +18959,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart, _toConsumableArray(chart_js__WEBPACK_IMPORTED_MODULE_2__.registerables));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  name: 'Curva-S',
+  name: "Curva-S",
   components: {
     LineChart: vue_chart_3__WEBPACK_IMPORTED_MODULE_1__.LineChart
   },
   setup: function setup() {
     var testData = {
-      labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
       datasets: [{
-        label: 'PROGRAMADO',
-        borderColor: '#0019FF',
+        label: "PROGRAMADO",
+        borderColor: "#0019FF",
         data: [0, 10, 20, 30, 40, 50, 60, 100]
       }, {
-        label: 'REAL',
-        borderColor: '#FF0000',
+        label: "REAL",
+        borderColor: "#FF0000",
         data: [0, 5, 15, 35, 40, 45, 60, 100]
       }, {
-        label: 'PROYECTADO',
-        borderColor: '#FFA800',
+        label: "PROYECTADO",
+        borderColor: "#FFA800",
         data: [0, 15, 25, 35, 40, 55, 65, 100]
       }]
     };
@@ -18955,12 +18985,12 @@ chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMP
       maintainAspectRatio: false,
       scales: {
         x: {
-          type: 'linear',
-          position: 'bottom'
+          type: "linear",
+          position: "bottom"
         },
         y: {
-          type: 'linear',
-          position: 'left'
+          type: "linear",
+          position: "left"
         }
       }
     };
@@ -18998,17 +19028,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart, _toConsumableArray(chart_js__WEBPACK_IMPORTED_MODULE_2__.registerables));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  name: 'TortaEjecucion',
+  name: "TortaEjecucion",
   components: {
     PieChart: vue_chart_3__WEBPACK_IMPORTED_MODULE_1__.PieChart
   },
   setup: function setup() {
     var testData = {
-      labels: ['EN EJECUCIÓN', 'TERMINADA', 'CANCELADA', 'REPROGRAMADA', 'NO INICIADA'],
+      labels: ["EN EJECUCIÓN", "TERMINADA", "CANCELADA", "REPROGRAMADA", "NO INICIADA"],
       datasets: [{
         data: [25, 30, 20, 15, 10],
-        backgroundColor: ['#0A2140FF', '#0A2140CC', '#0A214099', '#0A214066', '#0A214033'],
-        hoverBackgroundColor: ['#F57C00FF', '#F57C00CC', '#F57C0099', '#F57C0066', '#F57C0033']
+        backgroundColor: ["#0A2140FF", "#0A2140CC", "#0A214099", "#0A214066", "#0A214033"],
+        hoverBackgroundColor: ["#F57C00FF", "#F57C00CC", "#F57C0099", "#F57C0066", "#F57C0033"]
       }]
     };
     return {
@@ -19063,7 +19093,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/api/paradaMayor');
+              return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/paradaMayor");
             case 3:
               response = _context.sent;
               data = response.data; // Contar cuántas paradas hay en cada estado
@@ -19072,7 +19102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               try {
                 for (_iterator.s(); !(_step = _iterator.n()).done;) {
                   item = _step.value;
-                  if (item.estadoParada && typeof item.estadoParada === 'string') {
+                  if (item.estadoParada && typeof item.estadoParada === "string") {
                     if (!countByState[item.estadoParada]) {
                       countByState[item.estadoParada] = 0;
                     }
@@ -19089,8 +19119,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 labels: Object.keys(countByState),
                 datasets: [{
                   data: Object.values(countByState),
-                  backgroundColor: ['#0A2140FF', '#0A2140CC', '#0A214099', '#0A214066', '#0A214033'],
-                  hoverBackgroundColor: ['#F57C00FF', '#F57C00CC', '#F57C0099', '#F57C0066', '#F57C0033']
+                  backgroundColor: ["#0A2140FF", "#0A2140CC", "#0A214099", "#0A214066", "#0A214033"],
+                  hoverBackgroundColor: ["#F57C00FF", "#F57C00CC", "#F57C0099", "#F57C0066", "#F57C0033"]
                 }]
               };
               _context.next = 14;
@@ -19098,7 +19128,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 11:
               _context.prev = 11;
               _context.t0 = _context["catch"](0);
-              console.error('Error al cargar los datos:', _context.t0);
+              console.error("Error al cargar los datos:", _context.t0);
             case 14:
             case "end":
               return _context.stop();
@@ -19171,7 +19201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.closeModal && $options.closeModal.apply($options, arguments);
     }),
     "class": "bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold"
-  }, "Guardar")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Guardar ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.closeModal && $options.closeModal.apply($options, arguments);
     }),
@@ -19266,7 +19296,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.closeModal && $options.closeModal.apply($options, arguments);
     }),
     "class": "bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold"
-  }, "Guardar")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Guardar ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.closeModal && $options.closeModal.apply($options, arguments);
     }),
@@ -19489,33 +19519,39 @@ var _hoisted_18 = {
   "class": "py-2"
 };
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "nombreMaterial"
-}, "Material :", -1 /* HOISTED */);
+  "for": "equipo"
+}, "Equipo:", -1 /* HOISTED */);
 var _hoisted_20 = {
   "class": "py-2"
 };
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "cantidadMaterialRequerida"
-}, "Cantidad material requerido:", -1 /* HOISTED */);
+  "for": "nombreMaterial"
+}, "Material :", -1 /* HOISTED */);
 var _hoisted_22 = {
   "class": "py-2"
 };
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "ubicacion"
-}, "Ubicación del Material :", -1 /* HOISTED */);
+  "for": "cantidadMaterialRequerida"
+}, "Cantidad material requerido:", -1 /* HOISTED */);
 var _hoisted_24 = {
   "class": "py-2"
 };
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "inicioPlan"
-}, "Inicio Programado :", -1 /* HOISTED */);
+  "for": "ubicacion"
+}, "Ubicación del Material :", -1 /* HOISTED */);
 var _hoisted_26 = {
   "class": "py-2"
 };
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "inicioPlan"
+}, "Inicio Programado :", -1 /* HOISTED */);
+var _hoisted_28 = {
+  "class": "py-2"
+};
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "finPlan"
 }, "Final Programado :", -1 /* HOISTED */);
-var _hoisted_28 = {
+var _hoisted_30 = {
   "class": "flex justify-center py-2"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19574,38 +19610,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombrePersonal]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $data.equipo = $event;
+    }),
+    type: "text",
+    placeholder: "Equipo"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.equipo]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $data.nombreMaterial = $event;
     }),
     type: "text",
     placeholder: "Material"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombreMaterial]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return $data.cantidadMaterialRequerida = $event;
-    }),
-    type: "text",
-    placeholder: "Cantidad material requerido"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.cantidadMaterialRequerida]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombreMaterial]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $data.cantidadMaterialRequerida = $event;
+    }),
+    type: "number",
+    placeholder: "Cantidad material requerido"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.cantidadMaterialRequerida]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.ubicacion = $event;
     }),
     type: "text",
     placeholder: "Ubicación del material"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.ubicacion]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.ubicacion]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
-    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $data.inicioPlan = $event;
     }),
     type: "datetime-local"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.inicioPlan]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.inicioPlan]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
-    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $data.finPlan = $event;
     }),
     type: "datetime-local"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.finPlan]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.finPlan]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.submitForm && $options.submitForm.apply($options, arguments);
     }, ["prevent"])),
     "class": "text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
@@ -19707,7 +19750,7 @@ var _hoisted_3 = {
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "nombreEmpresa"
 }, "Empresa:", -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"SELECCIONAR\" disabled>seleccionar una opción</option><option value=\"AGUASANDINAS\">AGUAS ANDINAS</option><option value=\"ALBEMARLE\">ALBEMARLE</option><option value=\"AMSA\">AMSA</option><option value=\"BHP\">BHP</option><option value=\"CMP\">CMP</option><option value=\"CODELCO\">CODELCO</option><option value=\"ENAP\">ENAP</option><option value=\"FIORDOAUSTRAL\">FIORDO AUSTRAL</option><option value=\"KINROSS\">KINROSS</option><option value=\"LOMASBAYAS\">LOMAS BAYAS</option><option value=\"TECK\">TECK</option>", 12);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"SELECCIONAR\" disabled> seleccionar una opción </option><option value=\"AGUASANDINAS\">AGUAS ANDINAS</option><option value=\"ALBEMARLE\">ALBEMARLE</option><option value=\"AMSA\">AMSA</option><option value=\"BHP\">BHP</option><option value=\"CMP\">CMP</option><option value=\"CODELCO\">CODELCO</option><option value=\"ENAP\">ENAP</option><option value=\"FIORDOAUSTRAL\">FIORDO AUSTRAL</option><option value=\"KINROSS\">KINROSS</option><option value=\"LOMASBAYAS\">LOMAS BAYAS</option><option value=\"TECK\">TECK</option>", 12);
 var _hoisted_17 = [_hoisted_5];
 var _hoisted_18 = {
   "class": "py-2"
@@ -19733,7 +19776,7 @@ var _hoisted_24 = {
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "estadoParada"
 }, "Estado:", -1 /* HOISTED */);
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"SELECCIONAR\" disabled>seleccionar una opción</option><option value=\"EJECUCION\">EN EJECUCIÓN</option><option value=\"TERMINADA\">TERMINADA</option><option value=\"CANCELADA\">CANCELADA</option><option value=\"REPROGRAMADA\">REPROGRAMADA</option><option value=\"NOINICIADA\">NO INICIADA</option><option value=\"PROGRAMADA\">PROGRAMADA</option>", 7);
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"SELECCIONAR\" disabled> seleccionar una opción </option><option value=\"EJECUCION\">EN EJECUCIÓN</option><option value=\"TERMINADA\">TERMINADA</option><option value=\"CANCELADA\">CANCELADA</option><option value=\"REPROGRAMADA\">REPROGRAMADA</option><option value=\"NOINICIADA\">NO INICIADA</option><option value=\"PROGRAMADA\">PROGRAMADA</option>", 7);
 var _hoisted_33 = [_hoisted_26];
 var _hoisted_34 = {
   "class": "py-2"
@@ -19761,22 +19804,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.divisionEmpresa = $event;
     }),
-    type: "text",
-    placeholder: "División"
+    type: "text"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.divisionEmpresa]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.nombreParada = $event;
     }),
-    type: "text",
-    placeholder: "Nombre Parada"
+    type: "text"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombreParada]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.encargadoParada = $event;
     }),
-    type: "text",
-    placeholder: "Encargado"
+    type: "text"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.encargadoParada]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.estadoParada = $event;
@@ -19987,10 +20027,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "datetime-local"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.finPlan]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return _ctx.submitForm && _ctx.submitForm.apply(_ctx, arguments);
+      return $options.submitForm && $options.submitForm.apply($options, arguments);
     }, ["prevent"])),
     "class": "text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
-  }, " Guardar ")])])]);
+  }, " Actualizar ")])])]);
 }
 
 /***/ }),
@@ -20011,7 +20051,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "w-full h-full"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-10\"><div class=\"flex-1 text-right space-x-10\"><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\">GUARDAR</button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\">EXPORTAR</button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\">HALLAZGOS</button></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-10\"><div class=\"flex-1 text-right space-x-10\"><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> GUARDAR </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> EXPORTAR </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> HALLAZGOS </button></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div></div>", 1);
 var _hoisted_3 = {
   "class": "flex m-10 space-x-10"
 };
@@ -20047,10 +20087,10 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, " Actividad Critica "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, " Encargado "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, "Encargado"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, " Equipo "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, "Equipo"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
 }, " Estado Actividad "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -20065,7 +20105,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, " Inicio Real "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, " Fin Real "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, "Fin Real"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
 }, " % Avance Planificado "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -20084,56 +20124,56 @@ var _hoisted_12 = {
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Actividades preliminares ", -1 /* HOISTED */);
+}, " Actividades preliminares ", -1 /* HOISTED */);
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Instalación de barreras duras para operaciones de limpieza espesador R5"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Instalación de barreras duras para operaciones de limpieza espesador R5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Instalación de faena"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Instalación de faena "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Instalación de generadores, baños quimicos, torres de iluminación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Instalación de generadores, baños quimicos, torres de iluminación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
 }, "Traslado de drive"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Retiro reductor primero drive"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Retiro reductor primero drive "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Traslado de rastras"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Traslado de rastras "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Instalación de blades"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Instalación de blades "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Inspección reductor primario")], -1 /* HOISTED */);
+}, " Inspección reductor primario ")], -1 /* HOISTED */);
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_25 = {
   "class": "px-3 py-4"
 };
@@ -20143,56 +20183,56 @@ var _hoisted_26 = {
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Cambio de Sistema Motriz y MTTO Sistema de Levante ", -1 /* HOISTED */);
+}, " Cambio de Sistema Motriz y MTTO Sistema de Levante ", -1 /* HOISTED */);
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Desconexionado fuerza y control drive existente"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Desconexionado fuerza y control drive existente "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Ingreso y armado de alzaprima megashor"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Ingreso y armado de alzaprima megashor "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Armado de andamios para desconexionado eléctrico y refuerzo de caseta"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Armado de andamios para desconexionado eléctrico y refuerzo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Modificacion de andamios para retiro de techo de caseta"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Modificacion de andamios para retiro de techo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Retiro de techo de caseta"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Retiro de techo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Retiro de tableros, CCM y componentes"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Retiro de tableros, CCM y componentes "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Armado y Modificación de andamios para refuerzo de megaestructura y caseta"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Armado y Modificación de andamios para refuerzo de megaestructura y caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Refuerzo de megaestructura y caseta")], -1 /* HOISTED */);
+}, " Refuerzo de megaestructura y caseta ")], -1 /* HOISTED */);
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_39 = {
   "class": "px-3 py-4"
 };
@@ -20202,56 +20242,56 @@ var _hoisted_40 = {
 var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Cambio de Estructura Sumergida ", -1 /* HOISTED */);
+}, " Cambio de Estructura Sumergida ", -1 /* HOISTED */);
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Dimensionado de rastras para posterior traslado a patio de rises"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Dimensionado de rastras para posterior traslado a patio de rises "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Armado de andamios para desconexión jaula - drive"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Armado de andamios para desconexión jaula - drive "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Afinar conjunto jaula - rastras Durmientas, cilindros hidraulicos"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Afinar conjunto jaula - rastras Durmientas, cilindros hidraulicos "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Instalación de blades"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Instalación de blades "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Desmontaje y retiro de tastras largas"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Desmontaje y retiro de tastras largas "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Retiro de andamios"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Retiro de andamios "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Desmontaje y retiro de scrappers"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Desmontaje y retiro de scrappers "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Desmontaje y retiro ded jaula saliente")], -1 /* HOISTED */);
+}, " Desmontaje y retiro ded jaula saliente ")], -1 /* HOISTED */);
 var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_53 = {
   "class": "px-3 py-4"
 };
@@ -20261,54 +20301,54 @@ var _hoisted_54 = {
 var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Mantenimiento de Sistema de Alimentación ", -1 /* HOISTED */);
+}, " Mantenimiento de Sistema de Alimentación ", -1 /* HOISTED */);
 var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de canaleta de alimentación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de canaleta de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Inspección y reparación de revestimiento cajón de alimentación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Inspección y reparación de revestimiento cajón de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Armado de andamios para trabajos en sistema de alimentación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Armado de andamios para trabajos en sistema de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de cañeria 24\" de alimentación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de cañeria 24\" de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de manga válvula 24\" de alimentación"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de manga válvula 24\" de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Reparación y montaje de dropbox y jet descarga"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Reparación y montaje de dropbox y jet descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Reparación de feedwell")], -1 /* HOISTED */);
+}, " Reparación de feedwell ")], -1 /* HOISTED */);
 var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_67 = {
   "class": "px-3 py-4"
 };
@@ -20318,52 +20358,52 @@ var _hoisted_68 = {
 var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Mantenimiento de Sistema de Descarga ", -1 /* HOISTED */);
+}, " Mantenimiento de Sistema de Descarga ", -1 /* HOISTED */);
 var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio manga valvula pinch descarga"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio manga valvula pinch descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de lineas de descarga"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de lineas de descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de válvulas de bola 6\" - 8\""), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de válvulas de bola 6\" - 8\" "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de válvulas pinch 6\" - 8\""), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Cambio de válvulas pinch 6\" - 8\" "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Limpieza y desatollo de conos"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+}, " Limpieza y desatollo de conos "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Cambio de piping en mal estado")], -1 /* HOISTED */);
+}, " Cambio de piping en mal estado ")], -1 /* HOISTED */);
 var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_81 = {
   "class": "px-3 py-4"
 };
@@ -20373,42 +20413,42 @@ var _hoisted_82 = {
 var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "row",
   "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, "Mantenimiento de Sistema de Recuperación de Agua ", -1 /* HOISTED */);
+}, " Mantenimiento de Sistema de Recuperación de Agua ", -1 /* HOISTED */);
 var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4 text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "list-none"
-}, "Fabricación y montaje de peinetas")], -1 /* HOISTED */);
+}, " Fabricación y montaje de peinetas ")], -1 /* HOISTED */);
 var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Jesús Castillo ", -1 /* HOISTED */);
+}, "Jesús Castillo", -1 /* HOISTED */);
 var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Chancadora ", -1 /* HOISTED */);
+}, "Chancadora", -1 /* HOISTED */);
 var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "Iniciada ", -1 /* HOISTED */);
+}, "Iniciada", -1 /* HOISTED */);
 var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 09:30 ", -1 /* HOISTED */);
+}, "10/02/2024 09:30", -1 /* HOISTED */);
 var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "10/02/2024 10:00 ", -1 /* HOISTED */);
+}, "10/02/2024 10:00", -1 /* HOISTED */);
 var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-4"
-}, "- ", -1 /* HOISTED */);
+}, "-", -1 /* HOISTED */);
 var _hoisted_95 = {
   "class": "px-3 py-4"
 };
@@ -20564,10 +20604,11 @@ var _hoisted_6 = {
   "class": "flex-1"
 };
 var _hoisted_7 = {
-  "class": "m-10 space-x-10"
+  "class": "space-x-10"
 };
 var _hoisted_8 = ["href"];
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  disabled: "",
   "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
 }, " Importar ", -1 /* HOISTED */);
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div>", 1);
@@ -20609,6 +20650,9 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "Encargado"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
+}, "Equipo"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col",
+  "class": "px-3 py-3"
 }, " Materiales "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
@@ -20628,15 +20672,15 @@ var _hoisted_16 = {
 var _hoisted_17 = ["onClick"];
 var _hoisted_18 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.parada_mayor), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "/pm_planificacion/create/?parada_mayor=".concat(this.paradamayor.id),
     "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-  }, " Añadir actividad ", 8 /* PROPS */, _hoisted_8), _hoisted_9])])]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.actividads, function (actividad) {
+  }, " Agregar actividad ", 8 /* PROPS */, _hoisted_8), _hoisted_9])])]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.actividads, function (actividad) {
     var _actividad$tareas$, _actividad$tareas$2, _actividad$tareas$3, _actividad$tareas$4, _actividad$tareas$5, _actividad$tareas$6, _actividad$tareas$7;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: actividad.id,
       "class": "text-center border-b border-[#0A214033]"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.nombreActividad), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$ = actividad.tareas[0]) === null || _actividad$tareas$ === void 0 ? void 0 : _actividad$tareas$.nombreTarea), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$2 = actividad.tareas[0]) === null || _actividad$tareas$2 === void 0 ? void 0 : _actividad$tareas$2.campoRevision), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$3 = actividad.tareas[0]) === null || _actividad$tareas$3 === void 0 ? void 0 : _actividad$tareas$3.ordenTrabajo), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.critica), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$4 = actividad.tareas[0]) === null || _actividad$tareas$4 === void 0 ? void 0 : _actividad$tareas$4.personals[0].servicioContratado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$5 = actividad.tareas[0]) === null || _actividad$tareas$5 === void 0 ? void 0 : _actividad$tareas$5.personals[0].nombrePersonal), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$6 = actividad.tareas[0]) === null || _actividad$tareas$6 === void 0 ? void 0 : _actividad$tareas$6.materials[0].nombreMaterial), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$7 = actividad.tareas[0]) === null || _actividad$tareas$7 === void 0 ? void 0 : _actividad$tareas$7.materials[0].ubicacion), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.nombreActividad), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$ = actividad.tareas[0]) === null || _actividad$tareas$ === void 0 ? void 0 : _actividad$tareas$.nombreTarea), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$2 = actividad.tareas[0]) === null || _actividad$tareas$2 === void 0 ? void 0 : _actividad$tareas$2.campoRevision), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$3 = actividad.tareas[0]) === null || _actividad$tareas$3 === void 0 ? void 0 : _actividad$tareas$3.ordenTrabajo), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.critica), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$4 = actividad.tareas[0]) === null || _actividad$tareas$4 === void 0 ? void 0 : _actividad$tareas$4.personals[0].servicioContratado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$5 = actividad.tareas[0]) === null || _actividad$tareas$5 === void 0 ? void 0 : _actividad$tareas$5.personals[0].nombrePersonal), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.equipo), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$6 = actividad.tareas[0]) === null || _actividad$tareas$6 === void 0 ? void 0 : _actividad$tareas$6.materials[0].nombreMaterial), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$7 = actividad.tareas[0]) === null || _actividad$tareas$7 === void 0 ? void 0 : _actividad$tareas$7.materials[0].ubicacion), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.editarParada(actividad.id);
       },

@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import axios from "axios";
 
-
 import ExampleComponent from "./components/ExampleComponent.vue";
 import ComentarioComponent from "./components/Comentario.vue";
 import HallazgoComponent from "./components/Hallazgos.vue";
@@ -14,7 +13,7 @@ import PieChartListado from "./components/charts/PieChart_Listado.vue";
 import BarChartPlanificacion from "./components/charts/BarChart_Planificacion.vue";
 
 //----------------------------------------------------------------------------------\\
-/*INDEXES*/ 
+/*INDEXES*/
 import IndexListadoComponent from "./components/ParadasMayores/Index/Listado.vue";
 import IndexPlanificacionComponent from "./components/ParadasMayores/Index/Planificacion.vue";
 import IndexEjecucionComponent from "./components/ParadasMayores/Index/Ejecucion.vue";
@@ -22,7 +21,7 @@ import IndexEjecucionComponent from "./components/ParadasMayores/Index/Ejecucion
 /*CREATE*/
 import CreatePlanificacionComponent from "./components/ParadasMayores/Create/Planificacion.vue";
 import CreateListadoComponent from "./components/ParadasMayores/Create/Listado.vue";
-import CreateEjecucionComponent from"./components/ParadasMayores/Create/Ejecucion.vue";
+import CreateEjecucionComponent from "./components/ParadasMayores/Create/Ejecucion.vue";
 //----------------------------------------------------------------------------------\\
 /*EDIT*/
 import EditPlanificacionComponent from "./components/ParadasMayores/Edit/Planificacion.vue";

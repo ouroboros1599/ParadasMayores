@@ -42,6 +42,7 @@ class PM_PlanificacionController extends Controller
         $actividad = new Actividad;
         $actividad->nombreActividad = $request->nombreActividad;
         $actividad->critica = $request->critica;
+        $actividad->equipo = $request->equipo;
         $actividad->inicioPlan = $request->inicioPlan;
         $actividad->finPlan = $request->finPlan;
         $actividad->save();
@@ -99,7 +100,7 @@ class PM_PlanificacionController extends Controller
         // $personal = Personal::findOrFail($id);
 
         $parada_mayor = ParadaMayor::find($id);
-        $pm = $parada_mayor->actividads()->with('tareas.personals', 'tareas.materials')->get();
+        $pm = $parada_mayor->actividads()->with('tareas', 'tareas.personals', 'tareas.materials')->get();
 
         return view('pm_planificacion.edit', [
             'parada_mayor' => $parada_mayor,

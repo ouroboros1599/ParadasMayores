@@ -32,7 +32,7 @@ class CreateMaterialTareasTable extends Migration
             $table->integer('materialRequerido')->nullable();
             $table->timestamps();
         });
-        
+
         Schema::dropIfExists('material_tarea');
     }
 }

@@ -13,7 +13,7 @@ class Tarea extends Model
     public function actividads()
     {
         return $this->belongsToMany(Actividad::class);
-    } 
+    }
     //relación con clase personal
     public function personals()
     {

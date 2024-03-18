@@ -117,7 +117,7 @@
                     @click.prevent="submitForm"
                     class="text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2"
                 >
-                    Guardar
+                    Actualizar
                 </button>
             </div>
         </div>
@@ -129,7 +129,7 @@ import axios from "axios";
 export default {
     data() {
         return {
-            paradaMayorId: "",
+            // // // // paradaMayorId: "",
             nombreActividad: "",
             nombreTarea: "",
             campoRevision: "",
@@ -150,7 +150,7 @@ export default {
     methods: {
         fetchDatosRegistro() {
             axios
-                .get("/pm_planificacion/" + this.actividad[0].id)
+                .get("/pm_planificacion/" + this.actividads.id)
                 .then((response) => {
                     console.log(response);
                     const datos = response.data;
@@ -176,7 +176,36 @@ export default {
                     );
                 });
         },
+        submitForm() {
+            axios
+                .put("/pm_planificacion/" + this.actividad.id, {
+                    paradaMayorId: this.parada_mayor,
+                    nombreActividad: this.nombreActividad,
+                    nombreTarea: this.nombreTarea,
+                    campoRevision: this.campoRevision,
+                    ordenTrabajo: this.ordenTrabajo,
+                    critica: this.critica,
+                    servicioContratado: this.servicioContratado,
+                    nombrePersonal: this.nombrePersonal,
+                    nombreMaterial: this.nombreMaterial,
+                    equipo: this.equipo,
+                    ubicacion: this.ubicacion,
+                    cantidadMaterialRequerida: this.cantidadMaterialRequerida,
+                    inicioPlan: this.inicioPlan,
+                    finPlan: this.finPlan,
+                })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    window.location.href =
+                        "/pm_planificacion/" + this.actividad.id;
+                });
+        },
     },
-    props: ["actividad"],
+    props: ["actividads"],
 };
 </script>

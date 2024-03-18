@@ -29,7 +29,7 @@ export default {
             ],
         };
 
-        return { testData };    
+        return { testData };
     },
 };
 </script>

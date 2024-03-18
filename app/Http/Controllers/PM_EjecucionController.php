@@ -18,12 +18,10 @@ class PM_EjecucionController extends Controller
 
     public function store(Request $request)
     {
-        
     }
 
     public function show($id)
     {
-        
     }
 
     public function edit($id)
@@ -33,11 +31,9 @@ class PM_EjecucionController extends Controller
 
     public function update(Request $request, $id)
     {
-        
     }
 
     public function destroy($id)
     {
-        
     }
 }

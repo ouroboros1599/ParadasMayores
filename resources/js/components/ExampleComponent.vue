@@ -6,21 +6,21 @@
 </template>
 
 <script>
-export default { 
-    data(){
+export default {
+    data() {
         return {
-            test:null
-        }
+            test: null,
+        };
     },
     methods: {
-        getActividades(){
-            axios.get('test').then((response)=>{
-                this.test = response.data
-            })
-        }
+        getActividades() {
+            axios.get("test").then((response) => {
+                this.test = response.data;
+            });
+        },
     },
-    mounted(){
+    mounted() {
         this.getActividades();
-    }
-    };
+    },
+};
 </script>

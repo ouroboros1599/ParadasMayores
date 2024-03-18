@@ -1,8 +1,5 @@
 <template>
     <div class="w-full h-full">
-        <div>
-            {{ parada_mayor }}
-        </div>
         <div class="m-10 flex space-x-12 justify-center tareas-center">
             <div class="flex-1">
                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-300">
@@ -37,14 +34,15 @@
 
             <div>
                 <div class="flex-1">
-                    <ul class="m-10 space-x-10">
+                    <ul class="space-x-10">
                         <a
                             :href="`/pm_planificacion/create/?parada_mayor=${this.paradamayor.id}`"
                             class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                         >
-                            Añadir actividad
+                            Agregar actividad
                         </a>
                         <button
+                            disabled
                             class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                         >
                             Importar
@@ -128,6 +126,7 @@
                                     Servicio Contratado
                                 </th>
                                 <th scope="col" class="px-3 py-3">Encargado</th>
+                                <th scope="col" class="px-3 py-3">Equipo</th>
                                 <th scope="col" class="px-3 py-3">
                                     Materiales
                                 </th>
@@ -167,6 +166,9 @@
                                         actividad.tareas[0]?.personals[0]
                                             .nombrePersonal
                                     }}
+                                </td>
+                                <td>
+                                    {{ actividad.equipo }}
                                 </td>
                                 <td>
                                     {{
@@ -250,6 +252,9 @@ export default {
                 })
                 .catch((error) => {
                     console.error(error);
+                })
+                .finally(() => {
+                    window.location.href = "/pm_planificacion/" + id + "/edit";
                 });
         },
         editarParada(id) {

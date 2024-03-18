@@ -18,6 +18,7 @@ class CreateActividadesTable extends Migration
             $table->string('nombreActividad')->nullable();
             $table->tinyInteger('critica')->nullable();
             $table->string('estadoActividad')->nullable();
+            $table->string('equipo')->nullable();
             $table->dateTime('inicioPlan')->nullable();
             $table->dateTime('finPlan')->nullable();
             $table->dateTime('inicioReal')->nullable();

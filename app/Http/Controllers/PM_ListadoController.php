@@ -14,7 +14,7 @@ class PM_ListadoController extends Controller
     {
         $paradasMayores = ParadaMayor::with('empresa')->get();
         Log::info($paradasMayores);
-        
+
         return view('pm_listado.index', compact('paradasMayores'));
     }
 
@@ -34,16 +34,16 @@ class PM_ListadoController extends Controller
         $empresa = new Empresa;
         $empresa->nombreEmpresa = $request->nombreEmpresa;
         $empresa->divisionEmpresa = $request->divisionEmpresa;
-        
+
         $empresa->save();
-        
-        $empresa->paradaMayor()->create( [
+
+        $empresa->paradaMayor()->create([
             'nombreParada' => $request->nombreParada,
             'estadoParada' => $request->estadoParada,
             'encargadoParada' => $request->encargadoParada,
             'inicioPlanificado' => $request->inicioPlanificado,
             'finPlanificado' => $request->finPlanificado,
-        ] );
+        ]);
     }
 
     public function show($id)
@@ -87,12 +87,10 @@ class PM_ListadoController extends Controller
     {
         $paradaMayor = ParadaMayor::findOrFail($id);
 
-        if($paradaMayor->empresa) {
+        if ($paradaMayor->empresa) {
             $paradaMayor->empresa->delete();
         }
 
         $paradaMayor->delete();
-
-        
     }
 }

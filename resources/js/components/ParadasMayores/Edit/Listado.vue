@@ -10,7 +10,9 @@
                     v-model="nombreEmpresa"
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                 >
-                    <option value="SELECCIONAR" disabled>seleccionar una opción</option>
+                    <option value="SELECCIONAR" disabled>
+                        seleccionar una opción
+                    </option>
                     <option value="AGUASANDINAS">AGUAS ANDINAS</option>
                     <option value="ALBEMARLE">ALBEMARLE</option>
                     <option value="AMSA">AMSA</option>
@@ -30,7 +32,6 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="divisionEmpresa"
                     type="text"
-                    placeholder="División"
                 />
             </div>
             <div class="py-2">
@@ -39,7 +40,6 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="nombreParada"
                     type="text"
-                    placeholder="Nombre Parada"
                 />
             </div>
             <div class="py-2">
@@ -48,7 +48,6 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="encargadoParada"
                     type="text"
-                    placeholder="Encargado"
                 />
             </div>
             <div class="py-2">
@@ -57,7 +56,9 @@
                     v-model="estadoParada"
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                 >
-                    <option value="SELECCIONAR" disabled>seleccionar una opción</option>
+                    <option value="SELECCIONAR" disabled>
+                        seleccionar una opción
+                    </option>
                     <option value="EJECUCION">EN EJECUCIÓN</option>
                     <option value="TERMINADA">TERMINADA</option>
                     <option value="CANCELADA">CANCELADA</option>
@@ -101,11 +102,11 @@ import axios from "axios";
 export default {
     data() {
         return {
-            nombreEmpresa: "SELECCIONAR",
+            nombreEmpresa: "",
             divisionEmpresa: "",
             nombreParada: "",
             encargadoParada: "",
-            estadoParada: "SELECCIONAR",
+            estadoParada: "",
             inicioPlanificado: "",
             finPlanificado: "",
         };

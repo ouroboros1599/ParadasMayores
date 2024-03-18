@@ -68,6 +68,15 @@
                 />
             </div>
             <div class="py-2">
+                <label for="equipo">Equipo:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="equipo"
+                    type="text"
+                    placeholder="Equipo"
+                />
+            </div>
+            <div class="py-2">
                 <label for="nombreMaterial">Material :</label>
                 <input
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
@@ -83,7 +92,7 @@
                 <input
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="cantidadMaterialRequerida"
-                    type="text"
+                    type="number"
                     placeholder="Cantidad material requerido"
                 />
             </div>
@@ -138,6 +147,7 @@ export default {
             servicioContratado: "",
             nombrePersonal: "",
             nombreMaterial: "",
+            equipo: "",
             ubicacion: "",
             cantidadMaterialRequerida: "",
             inicioPlan: "",
@@ -153,6 +163,7 @@ export default {
             this.servicioContratado = this.servicioContratado.toUpperCase();
             this.nombrePersonal = this.nombrePersonal.toUpperCase();
             this.nombreMaterial = this.nombreMaterial.toUpperCase();
+            this.equipo = this.equipo.toUpperCase();
             this.ubicacion = this.ubicacion.toUpperCase();
         },
         submitForm(event) {
@@ -169,6 +180,7 @@ export default {
                     servicioContratado: this.servicioContratado,
                     nombrePersonal: this.nombrePersonal,
                     nombreMaterial: this.nombreMaterial,
+                    equipo: this.equipo,
                     ubicacion: this.ubicacion,
                     cantidadMaterialRequerida: this.cantidadMaterialRequerida,
                     inicioPlan: this.inicioPlan,
@@ -176,7 +188,8 @@ export default {
                 })
                 .then((response) => {
                     console.log(response.data);
-                    window.location.href = "/pm_planificacion/" + this.parada_mayor;
+                    window.location.href =
+                        "/pm_planificacion/" + this.parada_mayor;
                 })
                 .catch((error) => {
                     console.error(error);

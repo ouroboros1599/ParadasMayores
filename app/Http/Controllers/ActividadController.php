@@ -12,13 +12,13 @@ class ActividadController extends Controller
         $actividades = Actividad::all();
         return response()->json($actividades, 200);
     }
-    
+
     public function store(Request $request)
     {
         $actividades = Actividad::create($request->all());
         return response()->json($actividades, 201);
     }
-    
+
     public function show($id)
     {
         $actividades = Actividad::findOrFail($id);
