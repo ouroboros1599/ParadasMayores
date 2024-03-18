@@ -49,12 +49,12 @@
                                 <td>{{ item.finPlanificado }}</td>
                                 <td>{{ item.inicioReal }}</td>
                                 <td>{{ item.finReal }}</td>
-                                <td class="px-3 py-3">
+                                <td class=" py-3">
                                     <a
                                         :href="`/pm_planificacion/${item.id}`"
                                         class="text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
                                     >
-                                        Detalle
+                                        Ver detalle
                                     </a>
 
                                     <button

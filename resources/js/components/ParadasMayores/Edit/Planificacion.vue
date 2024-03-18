@@ -68,6 +68,15 @@
                 />
             </div>
             <div class="py-2">
+                <label for="equipo">Equipo:</label>
+                <input
+                    class="border border-gray-300 rounded-sm px-3 py-2 w-full"
+                    v-model="equipo"
+                    type="text"
+                    placeholder="Equipo"
+                />
+            </div>
+            <div class="py-2">
                 <label for="nombreMaterial">Material :</label>
                 <input
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
@@ -137,6 +146,7 @@ export default {
             critica: "",
             servicioContratado: "",
             nombrePersonal: "",
+            equipo: "",
             nombreMaterial: "",
             ubicacion: "",
             cantidadMaterialRequerida: "",
@@ -150,7 +160,7 @@ export default {
     methods: {
         fetchDatosRegistro() {
             axios
-                .get("/pm_planificacion/" + this.actividads.id)
+                .get("/pm_planificacion/" + this.actividad.id)
                 .then((response) => {
                     console.log(response);
                     const datos = response.data;
@@ -162,6 +172,7 @@ export default {
                     this.servicioContratado =
                         datos.tareas.personals.servicioContratado;
                     this.nombrePersonal = datos.tareas.personals.nombrePersonal;
+                    this.equipo = datos.equipo;
                     this.nombreMaterial = datos.tareas.materials.nombreMaterial;
                     this.ubicacion = datos.tareas.materials.ubicacion;
                     this.cantidadMaterialRequerida =
@@ -206,6 +217,6 @@ export default {
                 });
         },
     },
-    props: ["actividads"],
+    props: ["actividad"],
 };
 </script>

@@ -3,5 +3,5 @@
 
 @section('contenido')
 @section('encabezado', 'Paradas Mayores')
-<edit_planificacion :actividads="{{ $actividads }}"></edit_planificacion>
+<edit_planificacion :actividad="{{ $actividad }}"></edit_planificacion>
 @endsection

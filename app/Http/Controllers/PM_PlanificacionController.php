@@ -94,18 +94,16 @@ class PM_PlanificacionController extends Controller
     public function edit($id)
     {
         Log::info($id);
-        // $actividad = Actividad::findOrFail($id);
-        // $tarea = Tarea::findOrFail($id);
-        // $material = Material::findOrFail($id);
-        // $personal = Personal::findOrFail($id);
+        // $parada_mayor = ParadaMayor::find($id);
+        // $pm = $parada_mayor->actividads()->with('tareas', 'tareas.personals', 'tareas.materials')->get();
+        // return view('pm_planificacion.edit', [
+        //     'parada_mayor' => $parada_mayor,
+        //     'actividads' => $pm,
+        // ]);
+        $actividad = Actividad::findOrFail($id);
+        $act = $actividad->tareas()->with('personals', 'materials')->findOrFail($id);
 
-        $parada_mayor = ParadaMayor::find($id);
-        $pm = $parada_mayor->actividads()->with('tareas', 'tareas.personals', 'tareas.materials')->get();
-
-        return view('pm_planificacion.edit', [
-            'parada_mayor' => $parada_mayor,
-            'actividads' => $pm,
-        ]);
+        return view('pm_planificacion.edit', compact('actividad'));
     }
 
     public function update(Request $request, $id)
@@ -115,15 +113,33 @@ class PM_PlanificacionController extends Controller
         ]);
 
         $actividad = Actividad::findOrFail($id);
+        $actividad->update([
+            'nombreActividad' => $request->nombreActividad,
+            'critica' => $request->critica,
+            'equipo' =>$request->equipo,
+            'inicioPlan' => $request->inicioPlan,
+            'finPlan' => $request->finPlan,
+        ]);
+
         $tarea = Tarea::findOrFail($id);
+        $tarea->update([
+            'nombreTarea' => $request->nombreTarea,
+            'campoRevision' => $request->campoRevision,
+            'ordenTrabajo' => $request->ordenTrabajo,
+            'cantidadMaterialRequerida' => $request->cantidadMaterialRequerida,
+        ]);
+
         $material = Material::findOrFail($id);
+        $material->update([
+            'nombreMaterial' => $request->nombreMaterial,
+            'ubicacion' => $request->ubicacion,
+        ]);
+
         $personal = Personal::findOrFail($id);
-
-        $actividad->update($request->input('actividad'));
-        $tarea->update($request->input('tarea'));
-        $material->update($request->input('material'));
-        $personal->update($request->input('personal'));
-
+        $personal->update([
+            'servicioContratado' => $request->servicioContratado,
+            'nombrePersonal' => $request->nombrePersonal,
+        ]);
 
         return redirect()->route('pm_planificacion.index')->with('success', 'Planificación actualizada con exito');
     }
