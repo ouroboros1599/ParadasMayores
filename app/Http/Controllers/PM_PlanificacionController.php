@@ -103,7 +103,9 @@ class PM_PlanificacionController extends Controller
         $actividad = Actividad::findOrFail($id);
         $act = $actividad->tareas()->with('personals', 'materials')->findOrFail($id);
 
-        return view('pm_planificacion.edit', compact('actividad'));
+        return view('pm_planificacion.edit', [
+            'actividad' => $act,
+        ]);
     }
 
     public function update(Request $request, $id)

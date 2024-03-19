@@ -158,6 +158,16 @@ export default {
         this.fetchDatosRegistro();
     },
     methods: {
+        mayuscDataConvert() {
+            this.nombreActividad = this.nombreActividad.toUpperCase();
+            this.nombreTarea = this.nombreTarea.toUpperCase();
+            this.campoRevision = this.campoRevision.toUpperCase();
+            this.ordenTrabajo = this.ordenTrabajo.toUpperCase();
+            this.servicioContratado = this.servicioContratado.toUpperCase();
+            this.nombrePersonal = this.nombrePersonal.toUpperCase();
+            this.nombreMaterial = this.nombreMaterial.toUpperCase();
+            this.ubicacion = this.ubicacion.toUpperCase();
+        },
         fetchDatosRegistro() {
             axios
                 .get("/pm_planificacion/" + this.actividad.id)
@@ -188,6 +198,7 @@ export default {
                 });
         },
         submitForm() {
+            this.mayuscDataConvert();
             axios
                 .put("/pm_planificacion/" + this.actividad.id, {
                     paradaMayorId: this.parada_mayor,

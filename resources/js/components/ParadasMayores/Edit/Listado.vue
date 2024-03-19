@@ -115,6 +115,12 @@ export default {
         this.fetchDatosRegistro();
     },
     methods: {
+        MayuscDataConvert(){
+            this.nombreEmpresa = this.nombreEmpresa.toUpperCase();
+            this.divisionEmpresa = this.divisionEmpresa.toUpperCase();
+            this.nombreParada = this.nombreParada.toUpperCase();
+            this.encargadoParada = this.encargadoParada.toUpperCase();
+        },
         fetchDatosRegistro() {
             axios
                 .get("/pm_listado/" + this.paradamayor.id)
@@ -137,6 +143,7 @@ export default {
                 });
         },
         submitForm() {
+            this.MayuscDataConvert();
             axios
                 .put("/pm_listado/" + this.paradamayor.id, {
                     nombreEmpresa: this.nombreEmpresa,

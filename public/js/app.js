@@ -18625,6 +18625,12 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchDatosRegistro();
   },
   methods: {
+    MayuscDataConvert: function MayuscDataConvert() {
+      this.nombreEmpresa = this.nombreEmpresa.toUpperCase();
+      this.divisionEmpresa = this.divisionEmpresa.toUpperCase();
+      this.nombreParada = this.nombreParada.toUpperCase();
+      this.encargadoParada = this.encargadoParada.toUpperCase();
+    },
     fetchDatosRegistro: function fetchDatosRegistro() {
       var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/pm_listado/" + this.paradamayor.id).then(function (response) {
@@ -18642,6 +18648,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     submitForm: function submitForm() {
+      this.MayuscDataConvert();
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/pm_listado/" + this.paradamayor.id, {
         nombreEmpresa: this.nombreEmpresa,
         divisionEmpresa: this.divisionEmpresa,
@@ -18700,6 +18707,16 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchDatosRegistro();
   },
   methods: {
+    mayuscDataConvert: function mayuscDataConvert() {
+      this.nombreActividad = this.nombreActividad.toUpperCase();
+      this.nombreTarea = this.nombreTarea.toUpperCase();
+      this.campoRevision = this.campoRevision.toUpperCase();
+      this.ordenTrabajo = this.ordenTrabajo.toUpperCase();
+      this.servicioContratado = this.servicioContratado.toUpperCase();
+      this.nombrePersonal = this.nombrePersonal.toUpperCase();
+      this.nombreMaterial = this.nombreMaterial.toUpperCase();
+      this.ubicacion = this.ubicacion.toUpperCase();
+    },
     fetchDatosRegistro: function fetchDatosRegistro() {
       var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/pm_planificacion/" + this.actividad.id).then(function (response) {
@@ -18724,6 +18741,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     submitForm: function submitForm() {
       var _this2 = this;
+      this.mayuscDataConvert();
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/pm_planificacion/" + this.actividad.id, {
         paradaMayorId: this.parada_mayor,
         nombreActividad: this.nombreActividad,
