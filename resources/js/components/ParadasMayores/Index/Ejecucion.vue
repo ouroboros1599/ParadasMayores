@@ -122,13 +122,13 @@
                         </thead>
                         <tbody class="text-center text-black">
                             <tr
-                                v-for="actividad in actividads"
+                                v-for="actividad in paradamayor.actividads"
                                 :key="actividad.id"
                                 class="text-center border-b border-[#0A214033]"
                             >
                                 <td>{{ actividad.nombreActividad }}</td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
-                                <td>{{ actividad.critica }}</td>
+                                <td>{{ actividad.critica ?? '--' }}</td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]
@@ -136,14 +136,14 @@
                                     }}
                                 </td>
                                 <td>{{ actividad.equipo }}</td>
-                                <td>{{ actividad.estadoActividad }}</td>
+                                <td>{{ actividad.estadoActividad ?? '--' }}</td>
                                 <td>{{ actividad.inicioPlan }}</td>
                                 <td>{{ actividad.finPlan }}</td>
-                                <td>{{ actividad.inicioReal }}</td>
-                                <td>{{ actividad.finReal }}</td>
-                                <td>{{ actividad.critica }}</td>
-                                <td>{{ actividad.critica }}</td>
-                                <td>{{ actividad.comentario }}</td>
+                                <td>{{ actividad.inicioReal ?? '--' }}</td>
+                                <td>{{ actividad.finReal ?? '--' }}</td>
+                                <td>{{ '--' }}</td>
+                                <td>{{ '--' }}</td>
+                                <td>{{ actividad.comentario ?? '--' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -172,9 +172,6 @@ export default {
                 });
         },
     },
-    props:[
-        "actividad",
-        "paradamayor"
-    ]
+    props: ["paradamayor"],
 };
 </script>

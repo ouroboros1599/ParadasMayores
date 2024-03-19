@@ -19,4 +19,9 @@ class Usuario extends Model
     {
         return $this->belongsTo(RolUsuario::class);
     }
+
+    public function paradaMayorActiva()
+    {
+        return $this->hasOne(ParadaMayor::class, 'id', 'parada_mayor_activa');
+    }
 }
