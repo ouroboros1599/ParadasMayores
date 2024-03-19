@@ -84,7 +84,7 @@ class PM_PlanificacionController extends Controller
         // $tareas = Tarea::with('actividads', 'materials', 'personals')->get();
         // Log::info($parada_mayor->actividad->tarea);
         $pm = $parada_mayor->actividads()->with('tareas.personals', 'tareas.materials')->get();
-        Log::info($pm);
+        // Log::info($pm);
         return view('pm_planificacion.index', [
             'parada_mayor' => $parada_mayor,
             'actividads' => $pm,
@@ -101,8 +101,8 @@ class PM_PlanificacionController extends Controller
         //     'actividads' => $pm,
         // ]);
         $actividad = Actividad::findOrFail($id);
-        $act = $actividad->tareas()->with('personals', 'materials')->findOrFail($id);
-
+        $act = $actividad->with('paradaMayor', 'tareas.personals', 'tareas.materials')->get();
+        Log::info($act);  
         return view('pm_planificacion.edit', [
             'actividad' => $act,
         ]);
@@ -143,7 +143,7 @@ class PM_PlanificacionController extends Controller
             'nombrePersonal' => $request->nombrePersonal,
         ]);
 
-        return redirect()->route('pm_planificacion.index')->with('success', 'Planificación actualizada con exito');
+        return "exito en la actualización de los datos";
     }
 
     public function destroy($id)

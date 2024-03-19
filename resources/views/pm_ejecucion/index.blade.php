@@ -3,7 +3,8 @@
 
 @section('contenido')
     @section('encabezado', 'Paradas Mayores')
-    
-    <ejecucion_component></ejecucion_component>
+    <div>
+        <ejecucion_component :paradamayor="{{ $parada_mayor }}" :actividads="{{ $actividads }}"></ejecucion_component>
+    </div>
 
 @endsection

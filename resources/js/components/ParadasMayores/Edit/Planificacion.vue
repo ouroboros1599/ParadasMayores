@@ -170,25 +170,25 @@ export default {
         },
         fetchDatosRegistro() {
             axios
-                .get("/pm_planificacion/" + this.actividad.id)
+                .get("/api/tarea/" + this.actividad[0].id )
                 .then((response) => {
                     console.log(response);
                     const datos = response.data;
-                    this.nombreActividad = datos.nombreActividad;
-                    this.nombreTarea = datos.tareas.nombreTarea;
-                    this.campoRevision = datos.tareas.campoRevision;
-                    this.ordenTrabajo = datos.tareas.ordenTrabajo;
-                    this.critica = datos.critica;
+                    this.nombreActividad = datos.actividads[0]?.nombreActividad;
+                    this.nombreTarea = datos.nombreTarea;
+                    this.campoRevision = datos.campoRevision;
+                    this.ordenTrabajo = datos.ordenTrabajo;
+                    this.critica = datos.actividads[0]?.critica;
                     this.servicioContratado =
-                        datos.tareas.personals.servicioContratado;
-                    this.nombrePersonal = datos.tareas.personals.nombrePersonal;
-                    this.equipo = datos.equipo;
-                    this.nombreMaterial = datos.tareas.materials.nombreMaterial;
-                    this.ubicacion = datos.tareas.materials.ubicacion;
+                        datos.personals[0]?.servicioContratado;
+                    this.nombrePersonal = datos.personals[0]?.nombrePersonal;
+                    this.equipo = datos.actividads[0]?.equipo;
+                    this.nombreMaterial = datos.materials[0]?.nombreMaterial;
+                    this.ubicacion = datos.materials[0]?.ubicacion;
                     this.cantidadMaterialRequerida =
-                        datos.tareas.cantidadMaterialRequerida;
-                    this.inicioPlan = datos.inicioPlan;
-                    this.finPlan = datos.finPlan;
+                        datos.cantidadMaterialRequerida;
+                    this.inicioPlan = datos.actividads[0]?.inicioPlan;
+                    this.finPlan = datos.actividads[0]?.finPlan;
                 })
                 .catch((error) => {
                     console.error(
@@ -200,7 +200,7 @@ export default {
         submitForm() {
             this.mayuscDataConvert();
             axios
-                .put("/pm_planificacion/" + this.actividad.id, {
+                .put("/pm_planificacion/" + this.actividad[0]?.id, {
                     paradaMayorId: this.parada_mayor,
                     nombreActividad: this.nombreActividad,
                     nombreTarea: this.nombreTarea,
@@ -218,13 +218,10 @@ export default {
                 })
                 .then((response) => {
                     console.log(response.data);
+                    window.location.href = "/pm_planificacion/" + this.actividad[0]?.parada_mayor.id;
                 })
                 .catch((error) => {
                     console.error(error);
-                })
-                .finally(() => {
-                    window.location.href =
-                        "/pm_planificacion/" + this.actividad.id;
                 });
         },
     },

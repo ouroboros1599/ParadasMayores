@@ -18719,30 +18719,32 @@ __webpack_require__.r(__webpack_exports__);
     },
     fetchDatosRegistro: function fetchDatosRegistro() {
       var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/pm_planificacion/" + this.actividad.id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/api/tarea/" + this.actividad[0].id).then(function (response) {
+        var _datos$actividads$, _datos$actividads$2, _datos$personals$, _datos$personals$2, _datos$actividads$3, _datos$materials$, _datos$materials$2, _datos$actividads$4, _datos$actividads$5;
         console.log(response);
         var datos = response.data;
-        _this.nombreActividad = datos.nombreActividad;
-        _this.nombreTarea = datos.tareas.nombreTarea;
-        _this.campoRevision = datos.tareas.campoRevision;
-        _this.ordenTrabajo = datos.tareas.ordenTrabajo;
-        _this.critica = datos.critica;
-        _this.servicioContratado = datos.tareas.personals.servicioContratado;
-        _this.nombrePersonal = datos.tareas.personals.nombrePersonal;
-        _this.equipo = datos.equipo;
-        _this.nombreMaterial = datos.tareas.materials.nombreMaterial;
-        _this.ubicacion = datos.tareas.materials.ubicacion;
-        _this.cantidadMaterialRequerida = datos.tareas.cantidadMaterialRequerida;
-        _this.inicioPlan = datos.inicioPlan;
-        _this.finPlan = datos.finPlan;
+        _this.nombreActividad = (_datos$actividads$ = datos.actividads[0]) === null || _datos$actividads$ === void 0 ? void 0 : _datos$actividads$.nombreActividad;
+        _this.nombreTarea = datos.nombreTarea;
+        _this.campoRevision = datos.campoRevision;
+        _this.ordenTrabajo = datos.ordenTrabajo;
+        _this.critica = (_datos$actividads$2 = datos.actividads[0]) === null || _datos$actividads$2 === void 0 ? void 0 : _datos$actividads$2.critica;
+        _this.servicioContratado = (_datos$personals$ = datos.personals[0]) === null || _datos$personals$ === void 0 ? void 0 : _datos$personals$.servicioContratado;
+        _this.nombrePersonal = (_datos$personals$2 = datos.personals[0]) === null || _datos$personals$2 === void 0 ? void 0 : _datos$personals$2.nombrePersonal;
+        _this.equipo = (_datos$actividads$3 = datos.actividads[0]) === null || _datos$actividads$3 === void 0 ? void 0 : _datos$actividads$3.equipo;
+        _this.nombreMaterial = (_datos$materials$ = datos.materials[0]) === null || _datos$materials$ === void 0 ? void 0 : _datos$materials$.nombreMaterial;
+        _this.ubicacion = (_datos$materials$2 = datos.materials[0]) === null || _datos$materials$2 === void 0 ? void 0 : _datos$materials$2.ubicacion;
+        _this.cantidadMaterialRequerida = datos.cantidadMaterialRequerida;
+        _this.inicioPlan = (_datos$actividads$4 = datos.actividads[0]) === null || _datos$actividads$4 === void 0 ? void 0 : _datos$actividads$4.inicioPlan;
+        _this.finPlan = (_datos$actividads$5 = datos.actividads[0]) === null || _datos$actividads$5 === void 0 ? void 0 : _datos$actividads$5.finPlan;
       })["catch"](function (error) {
         console.error("error al obtener los datos del registro.", error);
       });
     },
     submitForm: function submitForm() {
-      var _this2 = this;
+      var _this$actividad$,
+        _this2 = this;
       this.mayuscDataConvert();
-      axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/pm_planificacion/" + this.actividad.id, {
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/pm_planificacion/" + ((_this$actividad$ = this.actividad[0]) === null || _this$actividad$ === void 0 ? void 0 : _this$actividad$.id), {
         paradaMayorId: this.parada_mayor,
         nombreActividad: this.nombreActividad,
         nombreTarea: this.nombreTarea,
@@ -18758,11 +18760,11 @@ __webpack_require__.r(__webpack_exports__);
         inicioPlan: this.inicioPlan,
         finPlan: this.finPlan
       }).then(function (response) {
+        var _this2$actividad$;
         console.log(response.data);
+        window.location.href = "/pm_planificacion/" + ((_this2$actividad$ = _this2.actividad[0]) === null || _this2$actividad$ === void 0 ? void 0 : _this2$actividad$.parada_mayor.id);
       })["catch"](function (error) {
         console.error(error);
-      })["finally"](function () {
-        window.location.href = "/pm_planificacion/" + _this2.actividad.id;
       });
     }
   },
@@ -18782,7 +18784,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {},
+  methods: {
+    fetchTareas: function fetchTareas() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("pm_planificacion").then(function (response) {
+        _this.tareas = response.data;
+      })["catch"](function (error) {
+        console.error("error al recuperar los datos", error);
+      });
+    }
+  },
+  props: ["actividad", "paradamayor"]
+});
 
 /***/ }),
 
@@ -20084,7 +20104,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "w-full h-full"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-10\"><div class=\"flex-1 text-right space-x-10\"><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> GUARDAR </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> EXPORTAR </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> HALLAZGOS </button></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-10\"><div class=\"flex-1 text-right space-x-10\"><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> Guardar cambios </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> Exportar </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\"> Hallazgos </button></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div></div>", 1);
 var _hoisted_3 = {
   "class": "flex m-10 space-x-10"
 };
@@ -20151,345 +20171,16 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_11 = {
   "class": "text-center text-black"
 };
-var _hoisted_12 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Actividades preliminares ", -1 /* HOISTED */);
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Instalación de barreras duras para operaciones de limpieza espesador R5 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Instalación de faena "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Instalación de generadores, baños quimicos, torres de iluminación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, "Traslado de drive"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Retiro reductor primero drive "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Traslado de rastras "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Instalación de blades "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Inspección reductor primario ")], -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_25 = {
-  "class": "px-3 py-4"
-};
-var _hoisted_26 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Cambio de Sistema Motriz y MTTO Sistema de Levante ", -1 /* HOISTED */);
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Desconexionado fuerza y control drive existente "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Ingreso y armado de alzaprima megashor "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Armado de andamios para desconexionado eléctrico y refuerzo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Modificacion de andamios para retiro de techo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Retiro de techo de caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Retiro de tableros, CCM y componentes "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Armado y Modificación de andamios para refuerzo de megaestructura y caseta "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Refuerzo de megaestructura y caseta ")], -1 /* HOISTED */);
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_39 = {
-  "class": "px-3 py-4"
-};
-var _hoisted_40 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Cambio de Estructura Sumergida ", -1 /* HOISTED */);
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Dimensionado de rastras para posterior traslado a patio de rises "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Armado de andamios para desconexión jaula - drive "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Afinar conjunto jaula - rastras Durmientas, cilindros hidraulicos "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Instalación de blades "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Desmontaje y retiro de tastras largas "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Retiro de andamios "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Desmontaje y retiro de scrappers "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Desmontaje y retiro ded jaula saliente ")], -1 /* HOISTED */);
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_53 = {
-  "class": "px-3 py-4"
-};
-var _hoisted_54 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Mantenimiento de Sistema de Alimentación ", -1 /* HOISTED */);
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de canaleta de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Inspección y reparación de revestimiento cajón de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Armado de andamios para trabajos en sistema de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de cañeria 24\" de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de manga válvula 24\" de alimentación "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Reparación y montaje de dropbox y jet descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Reparación de feedwell ")], -1 /* HOISTED */);
-var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_67 = {
-  "class": "px-3 py-4"
-};
-var _hoisted_68 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Mantenimiento de Sistema de Descarga ", -1 /* HOISTED */);
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio manga valvula pinch descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de lineas de descarga "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de válvulas de bola 6\" - 8\" "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de válvulas pinch 6\" - 8\" "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Limpieza y desatollo de conos "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Cambio de piping en mal estado ")], -1 /* HOISTED */);
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_81 = {
-  "class": "px-3 py-4"
-};
-var _hoisted_82 = {
-  "class": "text-center border-b border-[#0A214033]"
-};
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
-  scope: "row",
-  "class": "px-3 py-4 font-medium whitespace-nowrap text-left"
-}, " Mantenimiento de Sistema de Recuperación de Agua ", -1 /* HOISTED */);
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4 text-left"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "list-none"
-}, " Fabricación y montaje de peinetas ")], -1 /* HOISTED */);
-var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Jesús Castillo", -1 /* HOISTED */);
-var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Chancadora", -1 /* HOISTED */);
-var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "Iniciada", -1 /* HOISTED */);
-var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 09:30", -1 /* HOISTED */);
-var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "10/02/2024 10:00", -1 /* HOISTED */);
-var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-  "class": "px-3 py-4"
-}, "-", -1 /* HOISTED */);
-var _hoisted_95 = {
-  "class": "px-3 py-4"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PieChart_Ejecucion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PieChart_Ejecucion");
   var _component_LineChart_Ejecucion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LineChart_Ejecucion");
-  var _component_Comentario_Ejecucion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Comentario_Ejecucion");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Ejecucion)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LineChart_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_12, [_hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_26, [_hoisted_27, _hoisted_28, _hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32, _hoisted_33, _hoisted_34, _hoisted_35, _hoisted_36, _hoisted_37, _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_40, [_hoisted_41, _hoisted_42, _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47, _hoisted_48, _hoisted_49, _hoisted_50, _hoisted_51, _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_54, [_hoisted_55, _hoisted_56, _hoisted_57, _hoisted_58, _hoisted_59, _hoisted_60, _hoisted_61, _hoisted_62, _hoisted_63, _hoisted_64, _hoisted_65, _hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_68, [_hoisted_69, _hoisted_70, _hoisted_71, _hoisted_72, _hoisted_73, _hoisted_74, _hoisted_75, _hoisted_76, _hoisted_77, _hoisted_78, _hoisted_79, _hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_81, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_82, [_hoisted_83, _hoisted_84, _hoisted_85, _hoisted_86, _hoisted_87, _hoisted_88, _hoisted_89, _hoisted_90, _hoisted_91, _hoisted_92, _hoisted_93, _hoisted_94, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_95, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold\">Añadir comentario</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Comentario_Ejecucion)])])])])])])])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Ejecucion)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LineChart_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.actividads, function (actividad) {
+    var _actividad$tareas$, _actividad$tareas$2;
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: actividad.id,
+      "class": "text-center border-b border-[#0A214033]"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.nombreActividad), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$ = actividad.tareas[0]) === null || _actividad$tareas$ === void 0 ? void 0 : _actividad$tareas$.nombreTarea), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.critica), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_actividad$tareas$2 = actividad.tareas[0]) === null || _actividad$tareas$2 === void 0 || (_actividad$tareas$2 = _actividad$tareas$2.personals[0]) === null || _actividad$tareas$2 === void 0 ? void 0 : _actividad$tareas$2.nombrePersonal), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.equipo), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.estadoActividad), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioReal), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finReal), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.critica), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.critica), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.comentario), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])])]);
 }
 
 /***/ }),
