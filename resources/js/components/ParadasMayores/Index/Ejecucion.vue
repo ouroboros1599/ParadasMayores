@@ -129,7 +129,15 @@
                             >
                                 <td>{{ actividad.nombreActividad }}</td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
-                                <td>{{ actividad.critica === 1? '✓' : actividad.critica === 0? 'X': ' '}}</td>
+                                <td>
+                                    {{
+                                        actividad.critica === 1
+                                            ? "✓"
+                                            : actividad.critica === 0
+                                            ? "X"
+                                            : " "
+                                    }}
+                                </td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]
@@ -173,18 +181,18 @@
                                 <td>{{ actividad.finPlan }}</td>
                                 <td>
                                     <input
-                                    @change="
+                                        @change="
                                             submitForm(
                                                 'inicioReal',
                                                 $event.target.value,
                                                 actividad.id
-                                                )
-                                                "
+                                            )
+                                        "
                                         class="border border-gray-300 rounded-sm px-3 py-2"
                                         type="datetime-local"
                                         required
-                                        />
-                                        <!-- {{ actividad.inicioReal ?? "--" }} -->
+                                    />
+                                    <!-- {{ actividad.inicioReal ?? "--" }} -->
                                 </td>
                                 <td>
                                     <input
@@ -205,7 +213,9 @@
                                 <td>{{ "--" }}</td>
                                 <td>{{ "--" }}</td>
                                 <td>
-                                    <comentario_Ejecucion></comentario_Ejecucion>
+                                    <div>
+                                        <ComentarioComponent :cat_comentario_base="actividad.categoriaComentario" :comentario_base="actividad.comentario" :actividad_id="actividad.id" />
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -218,6 +228,7 @@
 
 <script>
 import axios from "axios";
+import ComentarioComponent from "../../Comentario.vue";
 export default {
     data() {
         return {
@@ -250,5 +261,8 @@ export default {
         },
     },
     props: ["paradamayor"],
+    components: {
+        ComentarioComponent,
+    },
 };
 </script>

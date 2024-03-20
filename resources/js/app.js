@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import axios from "axios";
 
 import ExampleComponent from "./components/ExampleComponent.vue";
-import ComentarioComponent from "./components/Comentario.vue";
+// import ComentarioComponent from "./components/Comentario.vue";
 import HallazgoComponent from "./components/Hallazgos.vue";
 
 //----------------------------------------------------------------------------------\\
@@ -39,7 +39,7 @@ const app = createApp({});
 //----------------------------------------------------------------------------------\\
 /*TESTING*/
 app.component("example-componente", ExampleComponent);
-app.component("Comentario_Ejecucion", ComentarioComponent);
+// app.component("Comentario_Ejecucion", ComentarioComponent);
 app.component("Hallazgo_Ejecucion", HallazgoComponent);
 //----------------------------------------------------------------------------------\\
 /*CHARTS*/

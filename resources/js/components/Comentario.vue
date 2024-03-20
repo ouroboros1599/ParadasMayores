@@ -5,9 +5,10 @@
         <!-- Botón para abrir el modal -->
         <button
             @click="openModal"
-            class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold"
+            class=" hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold"
+            :class="comentario_base ? 'bg-zinc-500' : 'bg-[#00b0ab]'"
         >
-            Añadir comentario
+            {{ (comentario_base) ? 'Ver Comentario' : 'Añadir Comentario' }}
         </button>
 
         <!-- Modal -->
@@ -34,7 +35,7 @@
                         <select
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model="categoriaComentario"
-                            >
+                        >
                             <option value="SELECCIONAR" disabled>
                                 Seleccionar categoria
                             </option>
@@ -50,7 +51,7 @@
                     <!-- Textarea -->
                     <div class="mb-4">
                         <textarea
-                        class="w-full h-44 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class="w-full h-44 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model="comentario"
                             rows="4"
                             placeholder="Escribe aquí tu comentario..."
@@ -89,10 +90,14 @@ export default {
     data() {
         return {
             categoriaComentario: "SELECCIONAR",
+            comentario: "",
             showModal: false,
         };
     },
-    mounted() {},
+    mounted() {
+        (this.comentario = this.comentario_base),
+            (this.categoriaComentario = this.cat_comentario_base);
+    },
     methods: {
         openModal() {
             this.showModal = true;
@@ -100,9 +105,9 @@ export default {
         closeModal() {
             this.showModal = false;
         },
-        submitForm(key, value, act_id) {
+        submitForm() {
             axios
-                .put("/pm_ejecucion/", + this.actividad.id, {
+                .put("/pm_ejecucion/" + this.actividad_id, {
                     categoriaComentario: this.categoriaComentario,
                     comentario: this.comentario,
                 })
@@ -115,6 +120,6 @@ export default {
                 });
         },
     },
-    props:["paradamayor"]
+    props: ["actividad_id", "cat_comentario_base", "comentario_base"],
 };
 </script>
