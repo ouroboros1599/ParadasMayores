@@ -3,6 +3,7 @@
         <div class="m-10 flex space-x-10">
             <div class="flex-1 text-right space-x-10">
                 <button
+                    @click="submitForm"
                     class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                 >
                     Guardar cambios
@@ -65,7 +66,7 @@
 
         <div class="flex m-10 space-x-10">
             <div class="bg-slate-100 rounded-2xl flex-1">
-                <PieChart_Ejecucion></PieChart_Ejecucion>
+                <PieChart_Ejecucion ref="fetchData"></PieChart_Ejecucion>
             </div>
 
             <div class="bg-slate-100 rounded-2xl flex-1">
@@ -128,7 +129,7 @@
                             >
                                 <td>{{ actividad.nombreActividad }}</td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
-                                <td>{{ actividad.critica ?? '--' }}</td>
+                                <td>{{ actividad.critica ?? " " }}</td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]
@@ -136,14 +137,76 @@
                                     }}
                                 </td>
                                 <td>{{ actividad.equipo }}</td>
-                                <td>{{ actividad.estadoActividad ?? '--' }}</td>
+                                <td>
+                                    <select
+                                        @change="
+                                            submitForm(
+                                                'estadoActividad',
+                                                $event.target.value,
+                                                actividad.id
+                                            )
+                                        "
+                                        :value="actividad.estadoActividad"
+                                        class="border border-gray-300 rounded-sm px-3 py-2"
+                                    >
+                                        <option value="SELECCIONAR" disabled>
+                                            {{ actividad.estadoActividad }}
+                                        </option>
+                                        <option value="EJECUCION">
+                                            EN EJECUCIÓN
+                                        </option>
+                                        <option value="TERMINADA">
+                                            TERMINADA
+                                        </option>
+                                        <option value="CANCELADA">
+                                            CANCELADA
+                                        </option>
+                                        <option value="REPROGRAMADA">
+                                            REPROGRAMADA
+                                        </option>
+                                        <option value="PROGRAMADA">
+                                            PROGRAMADA
+                                        </option>
+                                    </select>
+                                </td>
                                 <td>{{ actividad.inicioPlan }}</td>
                                 <td>{{ actividad.finPlan }}</td>
-                                <td>{{ actividad.inicioReal ?? '--' }}</td>
-                                <td>{{ actividad.finReal ?? '--' }}</td>
-                                <td>{{ '--' }}</td>
-                                <td>{{ '--' }}</td>
-                                <td>{{ actividad.comentario ?? '--' }}</td>
+                                <td>
+                                    <input
+                                    @change="
+                                            submitForm(
+                                                'inicioReal',
+                                                $event.target.value,
+                                                actividad.id
+                                                )
+                                                "
+                                        class="border border-gray-300 rounded-sm px-3 py-2"
+                                        type="datetime-local"
+                                        required
+                                        />
+                                        <!-- {{ actividad.inicioReal ?? "--" }} -->
+                                </td>
+                                <td>
+                                    <input
+                                        @change="
+                                            submitForm(
+                                                'finReal',
+                                                $event.target.value,
+                                                actividad.id
+                                            )
+                                        "
+                                        class="border border-gray-300 rounded-sm px-3 py-2"
+                                        v-model="finReal"
+                                        type="datetime-local"
+                                        required
+                                    />
+                                    <!-- {{ actividad.finReal }} -->
+                                </td>
+                                <td>{{ "--" }}</td>
+                                <td>{{ "--" }}</td>
+                                <td>
+                                    <comentario_Ejecucion></comentario_Ejecucion>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -157,7 +220,9 @@
 import axios from "axios";
 export default {
     data() {
-        return {};
+        return {
+            estadoActividad: "SELECCIONAR",
+        };
     },
     mounted() {},
     methods: {
@@ -169,6 +234,18 @@ export default {
                 })
                 .catch((error) => {
                     console.error("error al recuperar los datos", error);
+                });
+        },
+        submitForm(key, value, act_id) {
+            axios
+                .put("/pm_ejecucion/" + act_id, {
+                    [key]: value,
+                })
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
                 });
         },
     },

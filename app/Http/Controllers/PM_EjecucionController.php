@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\Actividad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -45,6 +46,14 @@ class PM_EjecucionController extends Controller
     // Actualiza el recurso en BD (JSON)
     public function update(Request $request, $id)
     {
+        Log::info($request);
+        $actividad = Actividad::find($id);
+        
+        foreach($request->all() as $key => $value){
+            $actividad->$key = $value;
+        };
+        $actividad->save();
+        
     }
 
     // Destruye el recurso en BD (JSON)

@@ -98,12 +98,15 @@
             </div>
             <div class="py-2">
                 <label for="ubicacion">Ubicación del Material :</label>
-                <input
+                <select
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="ubicacion"
-                    type="text"
-                    placeholder="Ubicación del material"
-                />
+                >
+                    <option disabled value="SELECCIONAR">Seleccionar una opcion</option>
+                    <option value="BODEGA">BODEGA</option>
+                    <option value="FAENA">FAENA</option>
+                    <option value="NO_DISPONIBLE">NO DISPONIBLE</option>
+                </select>
             </div>
             <div class="py-2">
                 <label for="inicioPlan">Inicio Programado :</label>

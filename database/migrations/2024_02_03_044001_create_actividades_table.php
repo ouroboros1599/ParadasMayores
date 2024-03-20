@@ -23,6 +23,7 @@ class CreateActividadesTable extends Migration
             $table->dateTime('finPlan')->nullable();
             $table->dateTime('inicioReal')->nullable();
             $table->dateTime('finReal')->nullable();
+            $table->string('categoriaComentario')->nullable();
             $table->string('comentario')->nullable();
             $table->timestamps();
 

@@ -32,19 +32,38 @@
                     <!-- Select con opciones -->
                     <div class="mb-4">
                         <select
+                            @change="
+                                submitForm(
+                                    'categoriaComentario',
+                                    $event.target.value,
+                                    actividad.id
+                                )
+                            "
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         >
-                            <option selected="">Seleccionar categoria</option>
-                            <option value="opcion1">Categoria 1</option>
-                            <option value="opcion2">Categoria 2</option>
-                            <option value="opcion3">Categoria 3</option>
-                            <option value="opcion4">Categoria 4</option>
+                            <option value="SELECCIONAR" disabled>
+                                Seleccionar categoria
+                            </option>
+                            <option value="HERRAMIENTAS">HERRAMIENTAS</option>
+                            <option value="PERSONAL">PERSONAL</option>
+                            <option value="PIEZAS">
+                                PIEZAS DE MANTENIMIENTO
+                            </option>
+                            <option value="OTRO">OTRO</option>
                         </select>
                     </div>
 
                     <!-- Textarea -->
                     <div class="mb-4">
                         <textarea
+                            @change="
+                                submitForm(
+                                    'comentario',
+                                    $event.target.value,
+                                    actividad.id
+                                )
+                            "
+                            v-model="comentario"
                             class="w-full h-44 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             rows="4"
                             placeholder="Escribe aquí tu comentario..."
@@ -55,10 +74,10 @@
                     <div class="flex justify-center">
                         <div class="flex justify-start px-5">
                             <button
-                                @click="closeModal"
+                                @click="submitForm"
                                 class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-3 text-white font-bold"
                             >
-                                Guardar
+                                Guardar comentario
                             </button>
                         </div>
                         <div class="flex justify-end px-5">
@@ -77,12 +96,16 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
+            categoriaComentario: "SELECCIONAR",
             showModal: false,
         };
     },
+    mounted() {},
     methods: {
         openModal() {
             this.showModal = true;
@@ -90,6 +113,20 @@ export default {
         closeModal() {
             this.showModal = false;
         },
+        submitForm(key, value, act_id) {
+            axios
+                .put("/pm_ejecucion/", + act_id, {
+                    [key]: value,
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    this.closeModal();
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        },
     },
+    props:["paradamayor"]
 };
 </script>

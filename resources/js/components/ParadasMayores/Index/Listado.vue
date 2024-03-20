@@ -47,8 +47,8 @@
                                 <td>{{ item.estadoParada }}</td>
                                 <td>{{ item.inicioPlanificado }}</td>
                                 <td>{{ item.finPlanificado }}</td>
-                                <td>{{ item.inicioReal }}</td>
-                                <td>{{ item.finReal }}</td>
+                                <td>{{ item.inicioReal ?? "AAAA/MM/DD HH:MM" }}</td>
+                                <td>{{ item.finReal ?? "AAAA/MM/DD HH:MM" }}</td>
                                 <td class=" py-3">
                                     <a
                                         :href="`/pm_planificacion/${item.id}`"

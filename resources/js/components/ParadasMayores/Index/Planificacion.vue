@@ -174,42 +174,43 @@
                     <div
                         class="m-10 flex space-x-12 justify-center tareas-center"
                     >
-                        <div class="flex-1">
-                            <div
-                                class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                            >
+                        <BarChart_Planificacion></BarChart_Planificacion>
+                        <!-- <div class="flex-1">
                                 <div
-                                    class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                    style="width: 80%"
+                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
                                 >
-                                    % OT Liberadas
+                                    <div
+                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
+                                        style="width: 80%"
+                                    >
+                                        % OT Liberadas
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex-1">
-                            <div
-                                class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                            >
+                            <div class="flex-1">
                                 <div
-                                    class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                    style="width: 80%"
+                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
                                 >
-                                    % Materiales Disponibles
+                                    <div
+                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
+                                        style="width: 80%"
+                                    >
+                                        % Materiales Disponibles
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex-1">
-                            <div
-                                class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                            >
+                            <div class="flex-1">
                                 <div
-                                    class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                    style="width: 80%"
+                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
                                 >
-                                    % Servicios Disponibles
+                                    <div
+                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
+                                        style="width: 80%"
+                                    >
+                                        % Servicios Disponibles
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
                     </div>
                 </div>
             </div>
