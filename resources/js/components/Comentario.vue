@@ -32,15 +32,9 @@
                     <!-- Select con opciones -->
                     <div class="mb-4">
                         <select
-                            @change="
-                                submitForm(
-                                    'categoriaComentario',
-                                    $event.target.value,
-                                    actividad.id
-                                )
-                            "
                             class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        >
+                            v-model="categoriaComentario"
+                            >
                             <option value="SELECCIONAR" disabled>
                                 Seleccionar categoria
                             </option>
@@ -56,15 +50,8 @@
                     <!-- Textarea -->
                     <div class="mb-4">
                         <textarea
-                            @change="
-                                submitForm(
-                                    'comentario',
-                                    $event.target.value,
-                                    actividad.id
-                                )
-                            "
+                        class="w-full h-44 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model="comentario"
-                            class="w-full h-44 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             rows="4"
                             placeholder="Escribe aquí tu comentario..."
                         ></textarea>
@@ -115,8 +102,9 @@ export default {
         },
         submitForm(key, value, act_id) {
             axios
-                .put("/pm_ejecucion/", + act_id, {
-                    [key]: value,
+                .put("/pm_ejecucion/", + this.actividad.id, {
+                    categoriaComentario: this.categoriaComentario,
+                    comentario: this.comentario,
                 })
                 .then((response) => {
                     console.log(response.data);

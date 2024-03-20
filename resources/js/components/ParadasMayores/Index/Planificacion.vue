@@ -59,7 +59,7 @@
                                     {{ actividad.tareas[0]?.campoRevision }}
                                 </td>
                                 <td>{{ actividad.tareas[0]?.ordenTrabajo }}</td>
-                                <td>{{ actividad.critica }}</td>
+                                <td>{{ actividad.critica === 1? '✓' : actividad.critica === 0? 'X': ' ' }}</td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]

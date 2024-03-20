@@ -129,7 +129,7 @@
                             >
                                 <td>{{ actividad.nombreActividad }}</td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
-                                <td>{{ actividad.critica ?? " " }}</td>
+                                <td>{{ actividad.critica === 1? '✓' : actividad.critica === 0? 'X': ' '}}</td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]
