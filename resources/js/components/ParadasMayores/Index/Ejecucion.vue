@@ -214,7 +214,15 @@
                                 <td>{{ "--" }}</td>
                                 <td>
                                     <div>
-                                        <ComentarioComponent :cat_comentario_base="actividad.categoriaComentario" :comentario_base="actividad.comentario" :actividad_id="actividad.id" />
+                                        <ComentarioComponent
+                                            :cat_comentario_base="
+                                                actividad.categoriaComentario
+                                            "
+                                            :comentario_base="
+                                                actividad.comentario
+                                            "
+                                            :actividad_id="actividad.id"
+                                        />
                                     </div>
                                 </td>
                             </tr>

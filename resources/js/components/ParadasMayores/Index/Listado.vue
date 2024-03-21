@@ -2,77 +2,110 @@
     <div class="h-full w-full">
         <div class="row-auto flex m-10">
             <div class="basis-3/4">
-                <div
-                    class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
-                >
-                    <table
-                        class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
-                    >
-                        <thead
-                            class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
+                <div class="col-auto">
+                    <div></div>
+                    <div>
+                        <div
+                            class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
                         >
-                            <tr>
-                                <th scope="col" class="px-3 py-3">EMPRESA</th>
-                                <th scope="col" class="px-3 py-3">DIVISIÓN</th>
-                                <th scope="col" class="px-3 py-3">
-                                    NOMBRE PARADA
-                                </th>
-                                <th scope="col" class="px-3 py-3">ENCARGADO</th>
-                                <th scope="col" class="px-3 py-3">ESTADO</th>
-                                <th scope="col" class="px-3 py-3">
-                                    INICIO PROGRAMADO
-                                </th>
-                                <th scope="col" class="px-3 py-3">
-                                    FIN PROGRAMADO
-                                </th>
-                                <th scope="col" class="px-3 py-3">
-                                    INICIO REAL
-                                </th>
-                                <th scope="col" class="px-3 py-3">FIN REAL</th>
-                                <th scope="col" class="px-3 py-3">OPCIONES</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center text-black">
-                            <tr
-                                v-for="(item, index) in paradasmayores"
-                                :key="index"
-                                class="text-center border-b border-[#0A214033]"
+                            <table
+                                class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
                             >
-                                <td class="font-semibold">
-                                    {{ item.empresa.nombreEmpresa }}
-                                </td>
-                                <td>{{ item.empresa.divisionEmpresa }}</td>
-                                <td>{{ item.nombreParada }}</td>
-                                <td>{{ item.encargadoParada }}</td>
-                                <td>{{ item.estadoParada }}</td>
-                                <td>{{ item.inicioPlanificado }}</td>
-                                <td>{{ item.finPlanificado }}</td>
-                                <td>{{ item.inicioReal ?? "AAAA/MM/DD HH:MM" }}</td>
-                                <td>{{ item.finReal ?? "AAAA/MM/DD HH:MM" }}</td>
-                                <td class=" py-3">
-                                    <a
-                                        :href="`/pm_planificacion/${item.id}`"
-                                        class="text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
+                                <thead
+                                    class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
+                                >
+                                    <tr>
+                                        <th scope="col" class="px-3 py-3">
+                                            EMPRESA
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            DIVISIÓN
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            NOMBRE PARADA
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            ENCARGADO
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            ESTADO
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            INICIO PROGRAMADO
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            FIN PROGRAMADO
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            INICIO REAL
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            FIN REAL
+                                        </th>
+                                        <th scope="col" class="px-3 py-3">
+                                            OPCIONES
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center text-black">
+                                    <tr
+                                        v-for="(item, index) in paradasmayores"
+                                        :key="index"
+                                        class="text-center border-b border-[#0A214033]"
                                     >
-                                        Ver detalle
-                                    </a>
+                                        <td class="font-semibold">
+                                            {{ item.empresa.nombreEmpresa }}
+                                        </td>
+                                        <td>
+                                            {{ item.empresa.divisionEmpresa }}
+                                        </td>
+                                        <td>{{ item.nombreParada }}</td>
+                                        <td>{{ item.encargadoParada }}</td>
+                                        <td>{{ item.estadoParada }}</td>
+                                        <td>{{ item.inicioPlanificado }}</td>
+                                        <td>{{ item.finPlanificado }}</td>
+                                        <td>
+                                            {{
+                                                item.inicioReal ??
+                                                "AAAA/MM/DD HH:MM"
+                                            }}
+                                        </td>
+                                        <td>
+                                            {{
+                                                item.finReal ??
+                                                "AAAA/MM/DD HH:MM"
+                                            }}
+                                        </td>
+                                        <td class="py-3">
+                                            <a
+                                                :href="`/pm_planificacion/${item.id}`"
+                                                class="text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
+                                            >
+                                                Ver detalle
+                                            </a>
 
-                                    <button
-                                        @click="editarParada(item.id)"
-                                        class="text-white bg-[#297DE0] hover:bg-[#297DE0CC] rounded-lg px-4 py-2 mx-2"
-                                    >
-                                        Editar
-                                    </button>
-                                    <button
-                                        @click="confirmarEliminacion(item.id)"
-                                        class="text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2 mx-2"
-                                    >
-                                        Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                            <button
+                                                @click="editarParada(item.id)"
+                                                class="text-white bg-[#297DE0] hover:bg-[#297DE0CC] rounded-lg px-4 py-2 mx-2"
+                                            >
+                                                Editar
+                                            </button>
+                                            <button
+                                                @click="
+                                                    confirmarEliminacion(
+                                                        item.id
+                                                    )
+                                                "
+                                                class="text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2 mx-2"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="basis-1/4 pl-5">
