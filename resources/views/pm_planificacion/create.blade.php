@@ -3,6 +3,6 @@
 @section('tituloPagina', 'PM | Planificación')
 
 @section('contenido')
-@section('encabezado', 'PLANIFICACIÓN DE PARADAS MAYORES')
+@section('encabezado', 'CREAR ACTIVIDAD Y TAREAS DE PARADA MAYOR')
 <create_planificacion :parada_mayor="{{ $parada_mayor }}"></create_planificacion>
 @endsection

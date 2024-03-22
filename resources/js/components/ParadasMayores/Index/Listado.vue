@@ -3,10 +3,23 @@
         <div class="row-auto flex m-10">
             <div class="basis-3/4">
                 <div class="col-auto">
-                    <div></div>
+                    <div class="overflow-hidden">
+                        <div
+                            ref="carrusel"
+                            class="flex transition-transform duration-1000 ease-in-out h-28 m-5" 
+                        >
+                            <img
+                                v-for="(image, index) in images"
+                                :key="index"
+                                :src="image"
+                                alt="Carousel Image"
+                                class="w-1/5 flex-shrink-0 p-5"
+                            />
+                        </div>
+                    </div>
                     <div>
                         <div
-                            class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
+                            class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll mt-5"
                         >
                             <table
                                 class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
@@ -47,7 +60,7 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center text-black">
+                                <tbody class="text-center text-black ">
                                     <tr
                                         v-for="(item, index) in paradasmayores"
                                         :key="index"
@@ -180,10 +193,26 @@ export default {
     data() {
         return {
             paradasmayores: [],
+            images: [
+                "/img/amsa-logo.png",
+                "/img/anglo-american-logo.png",
+                "/img/bhp-logo.png",
+                "/img/cap-mineria-logo.png",
+                "/img/cmp-logo.png",
+                "/img/codelco_logo.png",
+                "/img/lomas-bayas-logo.png",
+                "/img/teck-logo.png",
+            ],
+            currentIndex: 0,
+            intervalId: null,
         };
     },
     mounted() {
         this.fetchParadas();
+        this.startAutoScroll();
+    },
+    beforeDestroy() {
+        this.stopAutoScroll();
     },
     methods: {
         fetchParadas() {
@@ -232,6 +261,27 @@ export default {
 
         planificarParada() {
             window.location.href = "/pm_planificacion/" + id;
+        },
+
+        startAutoScroll() {
+            this.intervalId = setInterval(() => {
+                const carruselWidth = this.$refs.carrusel.offsetWidth; // Ancho del carrusel
+                const itemWidth = carruselWidth / this.images.length; // Ancho de cada elemento en el carrusel
+                const moveAmount = this.currentIndex * -itemWidth; // Calcula el valor de desplazamiento
+
+                // Verifica si se llegó al final de las imágenes
+                if (this.currentIndex === this.images.length - 3) {
+                    this.currentIndex = 0; // Vuelve al inicio
+                } else {
+                    this.currentIndex++; // Avanza al siguiente elemento
+                }
+
+                this.$refs.carrusel.style.transform = `translateX(${moveAmount}px)`; // Aplica el desplazamiento
+            }, 1500);
+        },
+
+        stopAutoScroll() {
+            clearInterval(this.intervalId);
         },
     },
 

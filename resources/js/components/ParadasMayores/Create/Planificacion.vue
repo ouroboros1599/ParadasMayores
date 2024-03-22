@@ -15,12 +15,14 @@
             </div>
             <div class="py-2">
                 <label for="nombreTarea">Tareas:</label>
-                <input
+                <textarea
+                    cols="30"
+                    rows="3"
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="nombreTarea"
                     type="text"
                     placeholder="Tarea"
-                />
+                ></textarea>
             </div>
             <div class="py-2">
                 <label for="campoRevision">Campo Revisión:</label>
@@ -102,7 +104,9 @@
                     class="border border-gray-300 rounded-sm px-3 py-2 w-full"
                     v-model="ubicacion"
                 >
-                    <option disabled value="SELECCIONAR">Seleccionar una opcion</option>
+                    <option disabled value="SELECCIONAR">
+                        Seleccionar una opcion
+                    </option>
                     <option value="BODEGA">BODEGA</option>
                     <option value="FAENA">FAENA</option>
                     <option value="NO_DISPONIBLE">NO DISPONIBLE</option>

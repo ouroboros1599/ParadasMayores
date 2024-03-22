@@ -18860,11 +18860,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      paradasmayores: []
+      paradasmayores: [],
+      images: ["/img/amsa-logo.png", "/img/anglo-american-logo.png", "/img/bhp-logo.png", "/img/cap-mineria-logo.png", "/img/cmp-logo.png", "/img/codelco_logo.png", "/img/lomas-bayas-logo.png", "/img/teck-logo.png"],
+      currentIndex: 0,
+      intervalId: null
     };
   },
   mounted: function mounted() {
     this.fetchParadas();
+    this.startAutoScroll();
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.stopAutoScroll();
   },
   methods: {
     fetchParadas: function fetchParadas() {
@@ -18899,6 +18906,25 @@ __webpack_require__.r(__webpack_exports__);
     },
     planificarParada: function planificarParada() {
       window.location.href = "/pm_planificacion/" + id;
+    },
+    startAutoScroll: function startAutoScroll() {
+      var _this2 = this;
+      this.intervalId = setInterval(function () {
+        var carruselWidth = _this2.$refs.carrusel.offsetWidth; // Ancho del carrusel
+        var itemWidth = carruselWidth / _this2.images.length; // Ancho de cada elemento en el carrusel
+        var moveAmount = _this2.currentIndex * -itemWidth; // Calcula el valor de desplazamiento
+
+        // Verifica si se llegó al final de las imágenes
+        if (_this2.currentIndex === _this2.images.length - 3) {
+          _this2.currentIndex = 0; // Vuelve al inicio
+        } else {
+          _this2.currentIndex++; // Avanza al siguiente elemento
+        }
+        _this2.$refs.carrusel.style.transform = "translateX(".concat(moveAmount, "px)"); // Aplica el desplazamiento
+      }, 1500);
+    },
+    stopAutoScroll: function stopAutoScroll() {
+      clearInterval(this.intervalId);
     }
   },
   props: ["paradasmayores"]
@@ -19719,7 +19745,7 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disabled: "",
   value: "SELECCIONAR"
-}, "Seleccionar una opcion", -1 /* HOISTED */);
+}, " Seleccionar una opcion ", -1 /* HOISTED */);
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "BODEGA"
 }, "BODEGA", -1 /* HOISTED */);
@@ -19756,7 +19782,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     type: "text",
     placeholder: "Actividad"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombreActividad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombreActividad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    cols: "30",
+    rows: "3",
     "class": "border border-gray-300 rounded-sm px-3 py-2 w-full",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.nombreTarea = $event;
@@ -20265,42 +20293,48 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "w-full h-full"
 };
-var _hoisted_2 = {
-  "class": "m-10 flex space-x-10"
-};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"m-10 flex space-x-10\"><div class=\"flex-1 text-right space-x-10\"><!-- &lt;button\r\n                    @click=&quot;submitForm&quot;\r\n                    class=&quot;bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold&quot;\r\n                &gt;\r\n                    Guardar cambios\r\n                &lt;/button&gt; --><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\" disabled> Exportar </button><button class=\"bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold\" disabled> Hallazgos </button></div><div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div></div>", 1);
 var _hoisted_3 = {
-  "class": "flex-1 text-right space-x-10"
-};
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-}, " Exportar ", -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-}, " Hallazgos ", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex-1\"><form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form></div>", 1);
-var _hoisted_7 = {
   "class": "flex m-10 space-x-10"
 };
+var _hoisted_4 = {
+  "class": "bg-slate-100 rounded-2xl flex-1"
+};
+var _hoisted_5 = {
+  "class": "bg-slate-100 rounded-2xl flex-1"
+};
+var _hoisted_6 = {
+  "class": "rounded-2xl basis-1/4"
+};
+var _hoisted_7 = {
+  "class": "relative overflow-x-auto shadow-md sm:rounded-lg"
+};
 var _hoisted_8 = {
-  "class": "bg-slate-100 rounded-2xl flex-1"
-};
-var _hoisted_9 = {
-  "class": "bg-slate-100 rounded-2xl flex-1"
-};
-var _hoisted_10 = {
-  "class": "m-10 flex"
-};
-var _hoisted_11 = {
-  "class": "flex-1"
-};
-var _hoisted_12 = {
-  "class": "relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
-};
-var _hoisted_13 = {
   "class": "w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
 };
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
-  "class": "text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+  "class": "text-sm text-center font-semibold text-white uppercase bg-[#F57C00]"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col",
+  "class": "px-3 py-3"
+}, " Listado de equipos ")])], -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "text-center text-black"
+};
+var _hoisted_11 = {
+  "class": "m-10 flex"
+};
+var _hoisted_12 = {
+  "class": "flex-1"
+};
+var _hoisted_13 = {
+  "class": "relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
+};
+var _hoisted_14 = {
+  "class": "w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
+};
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+  "class": "text-xs text-center font-semibold text-white uppercase bg-[#F57C00]"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
@@ -20341,31 +20375,31 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   scope: "col",
   "class": "px-3 py-3"
 }, " Comentario ")])], -1 /* HOISTED */);
-var _hoisted_15 = {
+var _hoisted_16 = {
   "class": "text-center text-black"
 };
-var _hoisted_16 = ["onChange", "value"];
-var _hoisted_17 = {
+var _hoisted_17 = ["onChange", "value"];
+var _hoisted_18 = {
   value: "SELECCIONAR",
   disabled: ""
 };
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"EJECUCION\"> EN EJECUCIÓN </option><option value=\"TERMINADA\"> TERMINADA </option><option value=\"CANCELADA\"> CANCELADA </option><option value=\"REPROGRAMADA\"> REPROGRAMADA </option><option value=\"PROGRAMADA\"> PROGRAMADA </option>", 5);
-var _hoisted_23 = ["onChange"];
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"EJECUCION\"> EN EJECUCIÓN </option><option value=\"TERMINADA\"> TERMINADA </option><option value=\"CANCELADA\"> CANCELADA </option><option value=\"REPROGRAMADA\"> REPROGRAMADA </option><option value=\"PROGRAMADA\"> PROGRAMADA </option>", 5);
 var _hoisted_24 = ["onChange"];
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("--"), -1 /* HOISTED */);
+var _hoisted_25 = ["onChange"];
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("--"), -1 /* HOISTED */);
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("--"), -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PieChart_Ejecucion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PieChart_Ejecucion");
   var _component_LineChart_Ejecucion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LineChart_Ejecucion");
   var _component_ComentarioComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ComentarioComponent");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[0] || (_cache[0] = function () {
-      return $options.submitForm && $options.submitForm.apply($options, arguments);
-    }),
-    "class": "bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
-  }, " Guardar cambios "), _hoisted_4, _hoisted_5]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Ejecucion, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Ejecucion, {
     ref: "fetchData"
-  }, null, 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LineChart_Ejecucion)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.paradamayor.actividads, function (actividad) {
+  }, null, 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LineChart_Ejecucion)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.paradamayor.actividads, function (actividad) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: actividad.id,
+      "class": "text-center border-b border-[#0A214033]"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.equipo), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.paradamayor.actividads, function (actividad) {
     var _actividad$tareas$, _actividad$tareas$2;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: actividad.id,
@@ -20376,24 +20410,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       value: actividad.estadoActividad,
       "class": "border border-gray-300 rounded-sm px-3 py-2"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.estadoActividad), 1 /* TEXT */), _hoisted_18], 40 /* PROPS, NEED_HYDRATION */, _hoisted_16)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.estadoActividad), 1 /* TEXT */), _hoisted_19], 40 /* PROPS, NEED_HYDRATION */, _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.inicioPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(actividad.finPlan), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       onChange: function onChange($event) {
         return $options.submitForm('inicioReal', $event.target.value, actividad.id);
       },
       "class": "border border-gray-300 rounded-sm px-3 py-2",
       type: "datetime-local",
       required: ""
-    }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ actividad.inicioReal ?? \"--\" }} ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ actividad.inicioReal ?? \"--\" }} ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       onChange: function onChange($event) {
         return $options.submitForm('finReal', $event.target.value, actividad.id);
       },
       "class": "border border-gray-300 rounded-sm px-3 py-2",
-      "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return _ctx.finReal = $event;
       }),
       type: "datetime-local",
       required: ""
-    }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_24), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finReal]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ actividad.finReal }} ")]), _hoisted_25, _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ComentarioComponent, {
+    }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_25), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.finReal]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ actividad.finReal }} ")]), _hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ComentarioComponent, {
       cat_comentario_base: actividad.categoriaComentario,
       comentario_base: actividad.comentario,
       actividad_id: actividad.id
@@ -20426,29 +20460,40 @@ var _hoisted_3 = {
   "class": "basis-3/4"
 };
 var _hoisted_4 = {
-  "class": "relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll"
+  "class": "col-auto"
 };
 var _hoisted_5 = {
+  "class": "overflow-hidden"
+};
+var _hoisted_6 = {
+  ref: "carrusel",
+  "class": "flex transition-transform duration-1000 ease-in-out h-28 m-5"
+};
+var _hoisted_7 = ["src"];
+var _hoisted_8 = {
+  "class": "relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll mt-5"
+};
+var _hoisted_9 = {
   "class": "w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
   "class": "text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "EMPRESA"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " EMPRESA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "DIVISIÓN"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " DIVISIÓN "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
 }, " NOMBRE PARADA "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "ENCARGADO"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " ENCARGADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "ESTADO"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " ESTADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
 }, " INICIO PROGRAMADO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -20460,65 +20505,72 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, " INICIO REAL "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "FIN REAL"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, " FIN REAL "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
   "class": "px-3 py-3"
-}, "OPCIONES")])], -1 /* HOISTED */);
-var _hoisted_7 = {
+}, " OPCIONES ")])], -1 /* HOISTED */);
+var _hoisted_11 = {
   "class": "text-center text-black"
 };
-var _hoisted_8 = {
+var _hoisted_12 = {
   "class": "font-semibold"
 };
-var _hoisted_9 = {
+var _hoisted_13 = {
   "class": "py-3"
 };
-var _hoisted_10 = ["href"];
-var _hoisted_11 = ["onClick"];
-var _hoisted_12 = ["onClick"];
-var _hoisted_13 = {
+var _hoisted_14 = ["href"];
+var _hoisted_15 = ["onClick"];
+var _hoisted_16 = ["onClick"];
+var _hoisted_17 = {
   "class": "basis-1/4 pl-5"
 };
-var _hoisted_14 = {
+var _hoisted_18 = {
   "class": "col-auto"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form>", 1);
-var _hoisted_16 = {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<form><label for=\"default-search\" class=\"mb-2 text-sm font-medium text-gray-900 sr-only\">Buscar</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input type=\"search\" id=\"default-search\" class=\"block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500\" placeholder=\"Buscar\"><button type=\"submit\" class=\"text-white absolute right-2.5 bottom-2.5 bg-[#F57C00] hover:bg-[#F57C00BF] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"> Buscar </button></div></form>", 1);
+var _hoisted_20 = {
   "class": "flex justify-center mt-10"
 };
-var _hoisted_17 = {
+var _hoisted_21 = {
   "class": "m-10 flex space-x-10"
 };
-var _hoisted_18 = {
+var _hoisted_22 = {
   "class": "bg-slate-100 rounded-2xl w-full flex justify-center mx-auto"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PieChart_Listado = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PieChart_Listado");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.paradasmayores, function (item, index) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.images, function (image, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+      key: index,
+      src: image,
+      alt: "Carousel Image",
+      "class": "w-1/5 flex-shrink-0 p-5"
+    }, null, 8 /* PROPS */, _hoisted_7);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.paradasmayores, function (item, index) {
     var _item$inicioReal, _item$finReal;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: index,
       "class": "text-center border-b border-[#0A214033]"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.empresa.nombreEmpresa), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.empresa.divisionEmpresa), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.nombreParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.encargadoParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.estadoParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.inicioPlanificado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.finPlanificado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_item$inicioReal = item.inicioReal) !== null && _item$inicioReal !== void 0 ? _item$inicioReal : "AAAA/MM/DD HH:MM"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_item$finReal = item.finReal) !== null && _item$finReal !== void 0 ? _item$finReal : "AAAA/MM/DD HH:MM"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.empresa.nombreEmpresa), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.empresa.divisionEmpresa), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.nombreParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.encargadoParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.estadoParada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.inicioPlanificado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.finPlanificado), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_item$inicioReal = item.inicioReal) !== null && _item$inicioReal !== void 0 ? _item$inicioReal : "AAAA/MM/DD HH:MM"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_item$finReal = item.finReal) !== null && _item$finReal !== void 0 ? _item$finReal : "AAAA/MM/DD HH:MM"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "/pm_planificacion/".concat(item.id),
       "class": "text-white bg-[#00B0AB] hover:bg-[#00B0ABCC] rounded-lg px-2 py-2 mx-2"
-    }, " Ver detalle ", 8 /* PROPS */, _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, " Ver detalle ", 8 /* PROPS */, _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.editarParada(item.id);
       },
       "class": "text-white bg-[#297DE0] hover:bg-[#297DE0CC] rounded-lg px-4 py-2 mx-2"
-    }, " Editar ", 8 /* PROPS */, _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, " Editar ", 8 /* PROPS */, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.confirmarEliminacion(item.id);
       },
       "class": "text-white bg-red-500 hover:bg-red-600 rounded-lg px-4 py-2 mx-2"
-    }, " Eliminar ", 8 /* PROPS */, _hoisted_12)])]);
-  }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, " Eliminar ", 8 /* PROPS */, _hoisted_16)])]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.crearParada && $options.crearParada.apply($options, arguments);
     }),
     "class": "text-white bg-[#F57C00] hover:bg-[#F57C00BF] rounded-lg text-sm px-4 py-2 font-semibold"
-  }, " Agregar Parada ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Listado)])])])])])]);
+  }, " Agregar Parada ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PieChart_Listado)])])])])])]);
 }
 
 /***/ }),

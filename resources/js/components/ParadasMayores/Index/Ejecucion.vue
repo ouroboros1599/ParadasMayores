@@ -2,19 +2,21 @@
     <div class="w-full h-full">
         <div class="m-10 flex space-x-10">
             <div class="flex-1 text-right space-x-10">
-                <button
+                <!-- <button
                     @click="submitForm"
                     class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
                 >
                     Guardar cambios
-                </button>
+                </button> -->
                 <button
                     class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+                    disabled
                 >
                     Exportar
                 </button>
                 <button
                     class="bg-[#F57C00] hover:bg-[#F57C00BF] rounded-2xl p-3 text-white font-bold"
+                    disabled
                 >
                     Hallazgos
                 </button>
@@ -72,6 +74,35 @@
             <div class="bg-slate-100 rounded-2xl flex-1">
                 <LineChart_Ejecucion></LineChart_Ejecucion>
             </div>
+
+            <div class="rounded-2xl basis-1/4">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table
+                        class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
+                    >
+                        <thead
+                            class="text-sm text-center font-semibold text-white uppercase bg-[#F57C00]"
+                        >
+                            <tr>
+                                <th scope="col" class="px-3 py-3">
+                                    Listado de equipos
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center text-black">
+                            <tr
+                                v-for="actividad in paradamayor.actividads"
+                                :key="actividad.id"
+                                class="text-center border-b border-[#0A214033]"
+                            >
+                                <td>
+                                    {{ actividad.equipo }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <div class="m-10 flex">
@@ -83,7 +114,7 @@
                         class="w-full text-sm text-left rtl:text-right text-blue-100 table-auto"
                     >
                         <thead
-                            class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00] dark:text-white"
+                            class="text-xs text-center font-semibold text-white uppercase bg-[#F57C00]"
                         >
                             <tr>
                                 <th scope="col" class="px-3 py-3">

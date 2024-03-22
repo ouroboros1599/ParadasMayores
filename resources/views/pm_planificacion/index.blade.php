@@ -3,7 +3,7 @@
 @section('tituloPagina', 'PM | Planificación')
 
 @section('contenido')
-@section('encabezado', 'Paradas Mayores')
+@section('encabezado', 'PLANIFICACIÓN DE PARADA MAYOR')
 
 <div>
     <planificacion_component :paradamayor="{{ $parada_mayor }}" :actividads="{{ $actividads }}">
