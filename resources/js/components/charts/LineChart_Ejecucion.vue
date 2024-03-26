@@ -1,15 +1,19 @@
-<!-- <template>
-    <LineChart :chartData="chartData" />
+<template>
+    <div>
+        <LineChart :chartData="chartData" />
+    </div>
 </template>
 
 <script>
-import axios from "axios";
+import { defineComponent } from "vue";
 import { LineChart } from "vue-chart-3";
+import { Chart, registerables } from "chart.js";
+import axios from "axios";
 
-export default {
-    components: {
-        LineChart,
-    },
+Chart.register(...registerables);
+
+export default defineComponent({
+    components: { LineChart },
     data() {
         return {
             chartData: null,
@@ -21,104 +25,43 @@ export default {
     methods: {
         async fetchData() {
             try {
-                const response = await axios.get("/api/actividad");
-                const data = response.data;
+                const responseActividad = await axios.get("/api/actividad");
+                const dataActividad = responseActividad.data;
 
-                const fechaP = {};
+                const fechas = [];
+                const horasAcumuladas = []; // Array para almacenar las horas acumuladas
 
-                for (const item of data) {
-                    if (
-                        item.inicioPlan &&
-                        item.finPlan &&
-                        typeof item.inicioPlan === "string" &&
-                        typeof item.finPlan === "string"
-                    ) {
-                        const inicioP = new Date(item.inicioPlan);
-                        const finP = new Date(item.finPlan);
+                let totalHoras = 0; // Variable para almacenar el total de horas
 
-                        fechaP.push(inicioP, finP)
-                    }
-                }
-                
-                fechaP.sort((a, b) => a - b);
+                dataActividad.forEach((item) => {
+                    const fecha = new Date(item.inicioPlan);
+                    fechas.push(fecha.toLocaleDateString()); // Agregar fecha al array de fechas
+                    totalHoras += fecha.getHours(); // Sumar las horas de la fecha
+                    horasAcumuladas.push(totalHoras); // Agregar el total acumulado al array de horas acumuladas
+                });
 
-                const datosCurvaS = fechaP.map((fecha, index)=> ({
-                    x: index + 1,
-                    y: fecha.getTime(),
-                }));
+                // Calcular el porcentaje de horas acumulado para los puntos siguientes
+                const horasPorcentaje = horasAcumuladas.map((horas, index) => {
+                    if (index === 0) return 0; // Para el primer punto, el porcentaje es 0
+                    return (horas / totalHoras) * 100; // Calcular porcentaje para los puntos siguientes
+                });
 
                 this.chartData = {
-                    labels: datosCurvaS.map((dataPoint) => dataPoint.x),
-                    datasets:[
+                    labels: fechas, // Usar fechas como etiquetas del eje X
+                    datasets: [
                         {
-                            label: "Curva S",
-                            data: datosCurvaS,
-                            borderColor: "#0A2140",
-                            backgroundColor: "transparent",
-                            pointRadius: 0,
+                            label: "PLANIFICADO",
+                            data: horasPorcentaje, // Usar los porcentajes de horas como datos del eje Y
+                            backgroundColor: "#0000FF", // Color de fondo
+                            borderColor: "#0000FFCC", // Color del borde
+                            borderWidth: 1.5, // Ancho del borde
                         },
                     ],
                 };
-
             } catch (error) {
-                console.error("Error al cargar los datos: ", error);
+                console.error("Error al obtener los datos", error);
             }
         },
-    },
-};
-</script> -->
-<template>
-    <LineChart :chartData="testData" />
-</template>
-
-<script>
-import { defineComponent } from "vue";
-import { LineChart } from "vue-chart-3";
-import { Chart, registerables } from "chart.js";
-
-Chart.register(...registerables);
-
-export default defineComponent({
-    name: "Curva-S",
-    components: { LineChart },
-
-    setup() {
-        const testData = {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
-            datasets: [
-                {
-                    label: "PROGRAMADO",
-                    borderColor: "#0019FF",
-                    data: [0, 10, 20, 30, 40, 50, 60, 100],
-                },
-                {
-                    label: "REAL",
-                    borderColor: "#FF0000",
-                    data: [0, 5, 15, 35, 40, 45, 60, 100],
-                },
-                {
-                    label: "PROYECTADO",
-                    borderColor: "#FFA800",
-                    data: [0, 15, 25, 35, 40, 55, 65, 100],
-                },
-            ],
-        };
-
-        const options = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    type: "linear",
-                    position: "bottom",
-                },
-                y: {
-                    type: "linear",
-                    position: "left",
-                },
-            },
-        };
-        return { testData, options };
     },
 });
 </script>

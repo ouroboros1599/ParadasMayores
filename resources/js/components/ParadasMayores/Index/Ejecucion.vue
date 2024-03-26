@@ -120,7 +120,7 @@
                                 <th scope="col" class="px-3 py-3">
                                     Actividades
                                 </th>
-                                <th scope="col" class="px-3 py-3 w-full">
+                                <th scope="col" class="px-3 py-3 w-1/4  ">
                                     Tareas
                                 </th>
                                 <th scope="col" class="px-3 py-3">
@@ -131,6 +131,7 @@
                                 <th scope="col" class="px-3 py-3">
                                     Estado Actividad
                                 </th>
+                                <th scope="col" class="px-3 py-3"></th>
                                 <th scope="col" class="px-3 py-3">
                                     Inicio Programado
                                 </th>
@@ -161,13 +162,7 @@
                                 <td>{{ actividad.nombreActividad }}</td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
                                 <td>
-                                    {{
-                                        actividad.critica === 1
-                                            ? "✓"
-                                            : actividad.critica === 0
-                                            ? "X"
-                                            : " "
-                                    }}
+                                    {{ actividad.critica === 1 ? "🔴" : "🟢" }}
                                 </td>
                                 <td>
                                     {{
@@ -207,6 +202,23 @@
                                             PROGRAMADA
                                         </option>
                                     </select>
+                                </td>
+                                <td>
+                                    <span
+                                        v-if="
+                                            actividad.estadoActividad ===
+                                            'EJECUCION'
+                                        "
+                                        >🟡</span
+                                    >
+                                    <span
+                                        v-else-if="
+                                            actividad.estadoActividad ===
+                                            'TERMINADA'
+                                        "
+                                        >🟢</span
+                                    >
+                                    <span v-else>🔴</span>
                                 </td>
                                 <td>{{ actividad.inicioPlan }}</td>
                                 <td>{{ actividad.finPlan }}</td>

@@ -15,7 +15,7 @@
                                 <th scope="col" class="px-3 py-3">
                                     Actividades
                                 </th>
-                                <th scope="col" class="px-3 py-3 w-4/12">
+                                <th scope="col" class="px-3 py-3 w-1/4">
                                     Tareas
                                 </th>
                                 <th scope="col" class="px-3 py-3">
@@ -53,13 +53,17 @@
                                 :key="actividad.id"
                                 class="text-center border-b border-[#0A214033]"
                             >
-                                <td>{{ actividad.nombreActividad }}</td>
+                                <td class="font-semibold">
+                                    {{ actividad.nombreActividad }}
+                                </td>
                                 <td>{{ actividad.tareas[0]?.nombreTarea }}</td>
                                 <td>
                                     {{ actividad.tareas[0]?.campoRevision }}
                                 </td>
                                 <td>{{ actividad.tareas[0]?.ordenTrabajo }}</td>
-                                <td>{{ actividad.critica === 1? '✓' : actividad.critica === 0? 'X': ' ' }}</td>
+                                <td>
+                                    {{ actividad.critica === 1 ? "✓" : "X" }}
+                                </td>
                                 <td>
                                     {{
                                         actividad.tareas[0]?.personals[0]
@@ -175,42 +179,6 @@
                         class="m-10 flex space-x-12 justify-center tareas-center"
                     >
                         <BarChart_Planificacion></BarChart_Planificacion>
-                        <!-- <div class="flex-1">
-                                <div
-                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                                >
-                                    <div
-                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                        style="width: 80%"
-                                    >
-                                        % OT Liberadas
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div
-                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                                >
-                                    <div
-                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                        style="width: 80%"
-                                    >
-                                        % Materiales Disponibles
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div
-                                    class="w-full bg-gray-200 rounded-full dark:bg-gray-300"
-                                >
-                                    <div
-                                        class="bg-slate-800 text-xs font-medium text-blue-100 text-center p-2 leading-none rounded-full"
-                                        style="width: 80%"
-                                    >
-                                        % Servicios Disponibles
-                                    </div>
-                                </div>
-                            </div> -->
                     </div>
                 </div>
             </div>

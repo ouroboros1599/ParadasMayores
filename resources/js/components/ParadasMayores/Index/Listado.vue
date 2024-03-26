@@ -6,14 +6,14 @@
                     <div class="overflow-hidden">
                         <div
                             ref="carrusel"
-                            class="flex transition-transform duration-1000 ease-in-out h-28 m-5" 
+                            class="flex transition-transform duration-1000 ease-in-out h-28 m-5"
                         >
                             <img
                                 v-for="(image, index) in images"
                                 :key="index"
                                 :src="image"
                                 alt="Carousel Image"
-                                class="w-1/5 flex-shrink-0 p-5"
+                                class="w-1/5 flex-shrink-0 p-5 cursor-pointer"
                             />
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center text-black ">
+                                <tbody class="text-center text-black">
                                     <tr
                                         v-for="(item, index) in paradasmayores"
                                         :key="index"
@@ -205,6 +205,7 @@ export default {
             ],
             currentIndex: 0,
             intervalId: null,
+            empresaSeleccionada: 0,
         };
     },
     mounted() {
