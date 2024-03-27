@@ -19126,7 +19126,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMP
     fetchData: function fetchData() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var responseActividad, dataActividad, fechas, horasAcumuladas, totalHoras, horasPorcentaje;
+        var responseActividad, dataActividad, totalHoras, totalHorasFinPlan, totalHorasFinReal, fechasFinPlan, fechasFinReal, horasAcumuladasFinPlan, horasAcumuladasFinReal, horasPorcentajeFinPlan, horasPorcentajeFinReal;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -19136,46 +19136,74 @@ chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register.apply(chart_js__WEBPACK_IMP
             case 3:
               responseActividad = _context.sent;
               dataActividad = responseActividad.data;
-              fechas = [];
-              horasAcumuladas = []; // Array para almacenar las horas acumuladas
-              totalHoras = 0; // Variable para almacenar el total de horas
+              totalHoras = 0;
+              totalHorasFinPlan = 0;
+              totalHorasFinReal = 0;
+              fechasFinPlan = [];
+              fechasFinReal = [];
+              horasAcumuladasFinPlan = [];
+              horasAcumuladasFinReal = [];
               dataActividad.forEach(function (item) {
-                var fecha = new Date(item.inicioPlan);
-                fechas.push(fecha.toLocaleDateString()); // Agregar fecha al array de fechas
-                totalHoras += fecha.getHours(); // Sumar las horas de la fecha
-                horasAcumuladas.push(totalHoras); // Agregar el total acumulado al array de horas acumuladas
+                var fechaFinPlan = new Date(item.finPlan);
+                fechasFinPlan.push(fechaFinPlan.toLocaleDateString());
+                totalHorasFinPlan += fechaFinPlan.getHours();
+                horasAcumuladasFinPlan.push(totalHorasFinPlan);
+                if (item.finReal) {
+                  var fechaFinReal = new Date(item.finReal);
+                  fechasFinReal.push(fechaFinReal.toLocaleDateString());
+                  totalHorasFinReal += fechaFinReal.getHours();
+                  horasAcumuladasFinReal.push(totalHorasFinReal);
+                }
               });
-
-              // Calcular el porcentaje de horas acumulado para los puntos siguientes
-              horasPorcentaje = horasAcumuladas.map(function (horas, index) {
-                if (index === 0) return 0; // Para el primer punto, el porcentaje es 0
-                return horas / totalHoras * 100; // Calcular porcentaje para los puntos siguientes
+              if (!(fechasFinReal.length === 0)) {
+                _context.next = 16;
+                break;
+              }
+              // Si no hay valores en finReal, no renderizar el gráfico
+              _this.chartData = null;
+              return _context.abrupt("return");
+            case 16:
+              if (totalHorasFinReal > totalHorasFinPlan) {
+                // Si las horas acumuladas de finReal son mayores, usarlas como total de horas
+                totalHoras = totalHorasFinReal;
+              } else {
+                totalHoras = totalHorasFinPlan;
+              }
+              horasPorcentajeFinPlan = horasAcumuladasFinPlan.map(function (horas, index) {
+                if (index === 0) return 0;
+                return horas / totalHoras * 100;
+              });
+              horasPorcentajeFinReal = horasAcumuladasFinReal.map(function (horas, index) {
+                if (index === 0) return 0;
+                return horas / totalHoras * 100;
               });
               _this.chartData = {
-                labels: fechas,
-                // Usar fechas como etiquetas del eje X
+                labels: fechasFinPlan,
                 datasets: [{
+                  label: "REAL",
+                  data: horasPorcentajeFinReal,
+                  backgroundColor: "#FF0000",
+                  borderColor: "#FF0000CC",
+                  borderWidth: 2
+                }, {
                   label: "PLANIFICADO",
-                  data: horasPorcentaje,
-                  // Usar los porcentajes de horas como datos del eje Y
+                  data: horasPorcentajeFinPlan,
                   backgroundColor: "#0000FF",
-                  // Color de fondo
                   borderColor: "#0000FFCC",
-                  // Color del borde
-                  borderWidth: 1.5 // Ancho del borde
+                  borderWidth: 2
                 }]
               };
-              _context.next = 16;
+              _context.next = 25;
               break;
-            case 13:
-              _context.prev = 13;
+            case 22:
+              _context.prev = 22;
               _context.t0 = _context["catch"](0);
               console.error("Error al obtener los datos", _context.t0);
-            case 16:
+            case 25:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 13]]);
+        }, _callee, null, [[0, 22]]);
       }))();
     }
   }
@@ -20782,11 +20810,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "flex justify-center mt-1 mb-1"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_LineChart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LineChart");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LineChart, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_ctx.chartData ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_LineChart, {
+    key: 0,
     chartData: _ctx.chartData
-  }, null, 8 /* PROPS */, ["chartData"])]);
+  }, null, 8 /* PROPS */, ["chartData"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return _ctx.fetchData && _ctx.fetchData.apply(_ctx, arguments);
+    }),
+    "class": "bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-2 text-white font-bold"
+  }, " Actualizar ")])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

@@ -1,6 +1,14 @@
 <template>
     <div>
-        <LineChart :chartData="chartData" />
+        <LineChart v-if="chartData" :chartData="chartData" />
+    </div>
+    <div class="flex justify-center mt-1 mb-1">
+        <button
+            @click="fetchData"
+            class="bg-[#00b0ab] hover:bg-[#00b0abBF] rounded-2xl p-2 text-white font-bold"
+        >
+            Actualizar
+        </button>
     </div>
 </template>
 
@@ -28,33 +36,72 @@ export default defineComponent({
                 const responseActividad = await axios.get("/api/actividad");
                 const dataActividad = responseActividad.data;
 
-                const fechas = [];
-                const horasAcumuladas = []; // Array para almacenar las horas acumuladas
+                let totalHoras = 0;
+                let totalHorasFinPlan = 0;
+                let totalHorasFinReal = 0;
 
-                let totalHoras = 0; // Variable para almacenar el total de horas
+                const fechasFinPlan = [];
+                const fechasFinReal = [];
+                const horasAcumuladasFinPlan = [];
+                const horasAcumuladasFinReal = [];
 
                 dataActividad.forEach((item) => {
-                    const fecha = new Date(item.inicioPlan);
-                    fechas.push(fecha.toLocaleDateString()); // Agregar fecha al array de fechas
-                    totalHoras += fecha.getHours(); // Sumar las horas de la fecha
-                    horasAcumuladas.push(totalHoras); // Agregar el total acumulado al array de horas acumuladas
+                    const fechaFinPlan = new Date(item.finPlan);
+                    fechasFinPlan.push(fechaFinPlan.toLocaleDateString());
+                    totalHorasFinPlan += fechaFinPlan.getHours();
+                    horasAcumuladasFinPlan.push(totalHorasFinPlan);
+
+                    if (item.finReal) {
+                        const fechaFinReal = new Date(item.finReal);
+                        fechasFinReal.push(fechaFinReal.toLocaleDateString());
+                        totalHorasFinReal += fechaFinReal.getHours();
+                        horasAcumuladasFinReal.push(totalHorasFinReal);
+                    }
                 });
 
-                // Calcular el porcentaje de horas acumulado para los puntos siguientes
-                const horasPorcentaje = horasAcumuladas.map((horas, index) => {
-                    if (index === 0) return 0; // Para el primer punto, el porcentaje es 0
-                    return (horas / totalHoras) * 100; // Calcular porcentaje para los puntos siguientes
-                });
+                if (fechasFinReal.length === 0) {
+                    // Si no hay valores en finReal, no renderizar el gráfico
+                    this.chartData = null;
+                    return;
+                }
+
+                if (totalHorasFinReal > totalHorasFinPlan) {
+                    // Si las horas acumuladas de finReal son mayores, usarlas como total de horas
+                    totalHoras = totalHorasFinReal;
+                } else {
+                    totalHoras = totalHorasFinPlan;
+                }
+
+                const horasPorcentajeFinPlan = horasAcumuladasFinPlan.map(
+                    (horas, index) => {
+                        if (index === 0) return 0;
+                        return (horas / totalHoras) * 100;
+                    }
+                );
+
+                const horasPorcentajeFinReal = horasAcumuladasFinReal.map(
+                    (horas, index) => {
+                        if (index === 0) return 0;
+                        return (horas / totalHoras) * 100;
+                    }
+                );
 
                 this.chartData = {
-                    labels: fechas, // Usar fechas como etiquetas del eje X
+                    labels: fechasFinPlan,
                     datasets: [
                         {
+                            label: "REAL",
+                            data: horasPorcentajeFinReal,
+                            backgroundColor: "#FF0000",
+                            borderColor: "#FF0000CC",
+                            borderWidth: 2,
+                        },
+                        {
                             label: "PLANIFICADO",
-                            data: horasPorcentaje, // Usar los porcentajes de horas como datos del eje Y
-                            backgroundColor: "#0000FF", // Color de fondo
-                            borderColor: "#0000FFCC", // Color del borde
-                            borderWidth: 1.5, // Ancho del borde
+                            data: horasPorcentajeFinPlan,
+                            backgroundColor: "#0000FF",
+                            borderColor: "#0000FFCC",
+                            borderWidth: 2,
                         },
                     ],
                 };
